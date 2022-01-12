@@ -1,4 +1,4 @@
-package com.SynergyFitness.SynergyFitness;
+package com.revature.SynergyFitness;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
