@@ -2,21 +2,21 @@ package com.revature.SynergyFitness.Beans;
 
 public class AboutMe {
 	private int aboutMeId;
-	private int userId;
-	private int mediaId;
 	private String description;
 	private int trainerAge;
 	private String certs;
 	private String experience;
+	private Users user;
+	private Media media;
 	
 	public AboutMe () {
 		aboutMeId = 0;
-		userId = 0;
-		mediaId = 0;
 		description = "";
 		trainerAge = 0;
 		certs = "";
 		experience = "";
+		user = new Users();
+		media = new Media();
 	}
 
 	public int getAboutMeId() {
@@ -25,22 +25,6 @@ public class AboutMe {
 
 	public void setAboutMeId(int aboutMeId) {
 		this.aboutMeId = aboutMeId;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-	public int getMediaId() {
-		return mediaId;
-	}
-
-	public void setMediaId(int mediaId) {
-		this.mediaId = mediaId;
 	}
 
 	public String getDescription() {
@@ -75,6 +59,22 @@ public class AboutMe {
 		this.experience = experience;
 	}
 
+	public Users getUser() {
+		return user;
+	}
+
+	public void setUser(Users user) {
+		this.user = user;
+	}
+
+	public Media getMedia() {
+		return media;
+	}
+
+	public void setMedia(Media media) {
+		this.media = media;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -83,9 +83,9 @@ public class AboutMe {
 		result = prime * result + ((certs == null) ? 0 : certs.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((experience == null) ? 0 : experience.hashCode());
-		result = prime * result + mediaId;
+		result = prime * result + ((media == null) ? 0 : media.hashCode());
 		result = prime * result + trainerAge;
-		result = prime * result + userId;
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -115,18 +115,25 @@ public class AboutMe {
 				return false;
 		} else if (!experience.equals(other.experience))
 			return false;
-		if (mediaId != other.mediaId)
+		if (media == null) {
+			if (other.media != null)
+				return false;
+		} else if (!media.equals(other.media))
 			return false;
 		if (trainerAge != other.trainerAge)
 			return false;
-		if (userId != other.userId)
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "AboutMe [aboutMeId=" + aboutMeId + ", userId=" + userId + ", mediaId=" + mediaId + ", description="
-				+ description + ", trainerAge=" + trainerAge + ", certs=" + certs + ", experience=" + experience + "]";
+		return "AboutMe [aboutMeId=" + aboutMeId + ", description=" + description + ", trainerAge=" + trainerAge
+				+ ", certs=" + certs + ", experience=" + experience + ", user=" + user + ", media=" + media + "]";
 	}
+
 }
