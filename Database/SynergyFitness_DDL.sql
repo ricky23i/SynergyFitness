@@ -55,7 +55,7 @@ create table if not exists user_comment(
 	user_comment_id serial primary key,
 	user_id integer not null references users(user_id),
 	post_id integer not null references post(post_id),
-	reply_id integer references post(post_id),
+	reply_id integer references user_comment(user_comment_id),
 	comment_data varchar(500) not null
 );
 alter table if exists media
