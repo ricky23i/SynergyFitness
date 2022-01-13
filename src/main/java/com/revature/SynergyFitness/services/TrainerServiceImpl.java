@@ -1,5 +1,5 @@
 package com.revature.SynergyFitness.services;
 
-public interface UserService {
+public class TrainerServiceImpl {
 
 }
