@@ -4,21 +4,15 @@ import java.util.Objects;
 
 public class Post {
 	private int post_id;
-	private int user;
+	private Users user;
 	private String post_data;
 	
 	
 	public Post() {
 		post_id=0;
-		user=0;
+		user=new Users();
 		post_data="";
 		
-	}
-
-
-	@Override
-	public String toString() {
-		return "Post [post_id=" + post_id + ", user=" + user + ", post_data=" + post_data + "]";
 	}
 
 
@@ -26,7 +20,6 @@ public class Post {
 	public int hashCode() {
 		return Objects.hash(post_data, post_id, user);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -37,29 +30,29 @@ public class Post {
 		if (getClass() != obj.getClass())
 			return false;
 		Post other = (Post) obj;
-		return Objects.equals(post_data, other.post_data) && post_id == other.post_id && user == other.user;
+		return Objects.equals(post_data, other.post_data) && post_id == other.post_id
+				&& Objects.equals(user, other.user);
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Post [post_id=" + post_id + ", user=" + user + ", post_data=" + post_data + "]";
+	}
 
 	public int getPost_id() {
 		return post_id;
 	}
 
-
 	public void setPost_id(int post_id) {
 		this.post_id = post_id;
 	}
 
-
-
-
-
-	public int getUser() {
+	public Users getUser() {
 		return user;
 	}
 
 
-	public void setUser(int user) {
+	public void setUser(Users user) {
 		this.user = user;
 	}
 
