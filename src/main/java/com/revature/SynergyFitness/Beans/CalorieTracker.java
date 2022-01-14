@@ -2,8 +2,14 @@ package com.revature.SynergyFitness.Beans;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+@Entity
 public class CalorieTracker {
-
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
 	private int tracker_id;
 	private int total_calories;
 	private String food_list;
