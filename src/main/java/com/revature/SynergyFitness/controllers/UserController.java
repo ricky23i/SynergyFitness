@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.SynergyFitness.Beans.CalorieTracker;
-import com.revature.SynergyFitness.Beans.Users;
+import com.revature.SynergyFitness.Beans.Person;
 import com.revature.SynergyFitness.exceptions.UserNameAlreadyExistsException;
 import com.revature.SynergyFitness.services.TrainerService;
 import com.revature.SynergyFitness.services.UserService;
@@ -25,14 +25,14 @@ import com.revature.SynergyFitness.exceptions.IncorrectCredentialsException;
 @RestController // basically puts @ResponseBody over ALL methods - no returning views
 @RequestMapping(path="/users") // all requests starting with /pets come to this controller
 @CrossOrigin(origins="http://localhost:4200") // accepts requests from angular
-public class UsersController {
+public class UserController {
 	@Autowired
 	private UserService userServ;
 	@Autowired
 	private TrainerService trainServ;
 	
 	@PostMapping
-	public ResponseEntity<Void> register(@RequestBody Users newUser) {
+	public ResponseEntity<Void> register(@RequestBody Person newUser) {
 	if (newUser !=null) {
 		try {
 			userServ.register(newUser);
@@ -50,7 +50,7 @@ public class UsersController {
 		String password = credentials.get("password");
 		
 		try {
-			Users user = userServ.logIn(username, password);
+			Person user = userServ.logIn(username, password);
 			String token = Integer.toString(user.getUserId());
 			return ResponseEntity.ok(token);
 		} catch (IncorrectCredentialsException e) {
@@ -61,10 +61,10 @@ public class UsersController {
 	
 	
 	@GetMapping(path="/{userid}/auth")
-	public ResponseEntity<Users> checkLogin(@RequestBody String token, @PathVariable int userId){
+	public ResponseEntity<Person> checkLogin(@RequestBody String token, @PathVariable int userId){
 		try {
 
-			Users loggedInPerson =userServ.getUserById(userId);
+			Person loggedInPerson =userServ.getUserById(userId);
 			if(loggedInPerson!=null)
 				return ResponseEntity.ok(loggedInPerson);
 			else
@@ -76,10 +76,10 @@ public class UsersController {
 		
 	}
 	@GetMapping(path="/{userid}")
-	public ResponseEntity<Users> getUserById(@PathVariable int userId) {
+	public ResponseEntity<Person> getUserById(@PathVariable int userId) {
 		
 		
-		Users user = userServ.getUserById(userId);
+		Person user = userServ.getUserById(userId);
 		if (user != null)
 			return ResponseEntity.ok(user);
 		else
@@ -96,8 +96,8 @@ public class UsersController {
 			return ResponseEntity.notFound().build();
 	}
 	@PutMapping(path="/{userId}")
-	public ResponseEntity<Users> updateUser(@PathVariable int userId,
-			@RequestBody Users userToEdit) {
+	public ResponseEntity<Person> updateUser(@PathVariable int userId,
+			@RequestBody Person userToEdit) {
 		
 		if (userToEdit != null && userToEdit.getUserId() == userId) {
 			userToEdit = userServ.updateUser(userToEdit);
@@ -112,9 +112,9 @@ public class UsersController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<Set<Users>> viewAllTrainers() {
+	public ResponseEntity<Set<Person>> viewAllTrainers() {
 
-		Set<Users> availablePets = userServ.viewTrainers();
+		Set<Person> availablePets = userServ.viewTrainers();
 		return ResponseEntity.ok(availablePets);
 	
 	}

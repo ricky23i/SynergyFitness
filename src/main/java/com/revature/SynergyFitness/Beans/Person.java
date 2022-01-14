@@ -2,7 +2,7 @@ package com.revature.SynergyFitness.Beans;
 
 import java.util.Objects;
 
-public class Users {
+public class Person {
 	private int userId;
 	private int roleId;
 	private String trainer;
@@ -12,7 +12,7 @@ public class Users {
 	private String lastname;
 	private String lastSignInDate;
 	
-	public Users () {
+	public Person () {
 		userId = 0;
 		roleId = 0;
 		trainer = " ";
@@ -110,7 +110,7 @@ public class Users {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Users other = (Users) obj;
+		Person other = (Person) obj;
 		return Objects.equals(firstname, other.firstname) && Objects.equals(gymUsername, other.gymUsername)
 				&& Objects.equals(lastSignInDate, other.lastSignInDate) && Objects.equals(lastname, other.lastname)
 				&& Objects.equals(password, other.password) && roleId == other.roleId

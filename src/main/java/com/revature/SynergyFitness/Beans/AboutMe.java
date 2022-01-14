@@ -1,12 +1,26 @@
 package com.revature.SynergyFitness.Beans;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class AboutMe {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int aboutMeId;
+	
 	private String description;
+	
 	private int trainerAge;
+	
 	private String certs;
+	
 	private String experience;
-	private Users user;
+	
+	private Person user;
+	
 	private Media media;
 	
 	public AboutMe () {
@@ -15,7 +29,7 @@ public class AboutMe {
 		trainerAge = 0;
 		certs = "";
 		experience = "";
-		user = new Users();
+		user = new Person();
 		media = new Media();
 	}
 
@@ -59,11 +73,11 @@ public class AboutMe {
 		this.experience = experience;
 	}
 
-	public Users getUser() {
+	public Person getUser() {
 		return user;
 	}
 
-	public void setUser(Users user) {
+	public void setUser(Person user) {
 		this.user = user;
 	}
 
