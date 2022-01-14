@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.SynergyFitness.Beans.Person;
 import com.revature.SynergyFitness.Beans.Post;
-import com.revature.SynergyFitness.Beans.Users;
+import com.revature.SynergyFitness.services.PersonService;
 import com.revature.SynergyFitness.services.TrainerService;
-import com.revature.SynergyFitness.services.UserService;
 
 
 
@@ -29,14 +29,14 @@ public class PostController {
 
 	// field injection
 		@Autowired
-		private UserService userServ;
+		private PersonService userServ;
 		@Autowired
 		private TrainerService trainServ;
 		
 		@GetMapping(path="/Post")
-		public ResponseEntity<Set<Users>> getPosts() {
+		public ResponseEntity<Set<Person>> getPosts() {
 			
-			Set<Users> availablePosts = userServ.viewTrainers();
+			Set<Person> availablePosts = userServ.viewTrainers();
 			return ResponseEntity.ok(availablePosts);
 			//return ResponseEntity.status(HttpStatus.OK).body(availablePets);
 		}
