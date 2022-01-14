@@ -75,8 +75,7 @@ public class PersonServiceImpl implements PersonService{
 
 	@Override
 	public Set<Person> viewTrainers() {
-		// TODO Auto-generated method stub
-		return null;
+	return personRepo.findByRoleName("trainer");
 	}
 
 
