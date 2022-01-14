@@ -26,6 +26,7 @@ public class TrainerServiceImpl implements TrainerService{
 	}
 
 	@Override
+	@Transactional
 	public Post editPost(Post postToEdit) {
 		Post postFromDatabase = postRepo.findById(postToEdit.getPostId()).get();
 		if (postFromDatabase !=null) {
@@ -35,17 +36,22 @@ public class TrainerServiceImpl implements TrainerService{
 	}
 
 	@Override
+	@Transactional
 	public Post deletePost(Post postToDelete) {
+		Post postFromDatabase = postRepo.findById(postToDelete.getPostId()).get();
+		if (postFromDatabase !=null) {
 		return postRepo.delete(postToDelete).getPostId();
 	}
 
 	@Override
+	@Transactional
 	public Post addVideo(Post mediaToAdd) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	@Transactional
 	public Post deleteVideo(Post mediaToRemove) {
 		// TODO Auto-generated method stub
 		return null;

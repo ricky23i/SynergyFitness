@@ -68,7 +68,7 @@ public class PostController {
 				@RequestBody Post postToEdit) {
 
 			
-			if (postToEdit != null && postToEdit.getPost_id() == post) {
+			if (postToEdit != null) {
 				postToEdit = trainServ.editPost(postToEdit);
 				if (postToEdit != null)
 					return ResponseEntity.ok(postToEdit);
