@@ -35,12 +35,12 @@ public class UserServiceImpl implements UserService{
 		return null;
 	}
 
-	/*@Override
+	@Override
 	public Users getStreak(int UserId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-*/
+
 	@Override
 	public Set<Users> viewTrainers() {
 		// TODO Auto-generated method stub
