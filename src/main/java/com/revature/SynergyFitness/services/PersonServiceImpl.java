@@ -2,15 +2,23 @@ package com.revature.SynergyFitness.services;
 
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.revature.SynergyFitness.Beans.CalorieTracker;
 import com.revature.SynergyFitness.Beans.Person;
 import com.revature.SynergyFitness.Beans.Post;
 import com.revature.SynergyFitness.Beans.UserComments;
+import com.revature.SynergyFitness.data.PersonRepository;
 import com.revature.SynergyFitness.exceptions.IncorrectCredentialsException;
 import com.revature.SynergyFitness.exceptions.UserNameAlreadyExistsException;
 
 public class PersonServiceImpl implements PersonService{
-
+	private PersonRepository personRepo;
+	@Autowired
+	public PersonServiceImpl(PersonRepository personRepo) {
+		this.personRepo=personRepo;
+	}
+	
 	@Override
 	public Person register(Person newUser) throws UserNameAlreadyExistsException {
 		// TODO Auto-generated method stub
