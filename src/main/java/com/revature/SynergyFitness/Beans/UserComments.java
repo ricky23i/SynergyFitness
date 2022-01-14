@@ -1,5 +1,6 @@
 package com.revature.SynergyFitness.Beans;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ public class UserComments {
 	
 	@OneToMany
 	@JoinColumn(name="user_comment_id")
-	private UserComments comment;
+	private List<UserComments> comment;
 	
 	private String comment_data;
 	
@@ -54,13 +55,13 @@ public class UserComments {
 	/**
 	 * @return the reply_id
 	 */
-	public UserComments getComment() {
+	public List<UserComments> getComment() {
 		return comment;
 	}
 	/**
 	 * @param reply_id the reply_id to set
 	 */
-	public void setComment(UserComments comment) {
+	public void setComment(List<UserComments> comment) {
 		this.comment = comment;
 }
 	/**
