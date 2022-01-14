@@ -11,24 +11,51 @@ import javax.persistence.Id;
 public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Post post;
+	private int postId;
 	
 	private Person user;
 	
-	private String post_data;
-	
+	private String postData;
 	
 	public Post() {
-		post= new Post();
-		user=new Person();
-		post_data="";
+		postId = 0;
+		user = new Person();
+		postData="";
 		
 	}
 
+	public int getPostId() {
+		return postId;
+	}
+
+	public void setPostId(int postId) {
+		this.postId = postId;
+	}
+
+	public Person getUser() {
+		return user;
+	}
+
+	public void setUser(Person user) {
+		this.user = user;
+	}
+
+	public String getpostData() {
+		return postData;
+	}
+
+	public void setpostData(String postData) {
+		this.postData = postData;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(post_data, post, user);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + postId;
+		result = prime * result + ((postData == null) ? 0 : postData.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
 	}
 
 	@Override
@@ -40,39 +67,27 @@ public class Post {
 		if (getClass() != obj.getClass())
 			return false;
 		Post other = (Post) obj;
-		return Objects.equals(post_data, other.post_data) && post == other.post
-				&& Objects.equals(user, other.user);
+		if (postId != other.postId)
+			return false;
+		if (postData == null) {
+			if (other.postData != null)
+				return false;
+		} else if (!postData.equals(other.postData))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Post [post_id=" + post + ", user=" + user + ", post_data=" + post_data + "]";
+		return "Post [postId=" + postId + ", user=" + user + ", postData=" + postData + "]";
 	}
 
-	public Post getPost_id() {
-		return post;
-	}
-
-	public void setPost_id(Post post_id) {
-		this.post = post_id;
-	}
-
-	public Person getUser() {
-		return user;
-	}
-
-
-	public void setUser(Person user) {
-		this.user = user;
-	}
-
-
-	public String getPost_data() {
-		return post_data;
-	}
-
-
-	public void setPost_data(String post_data) {
-		this.post_data = post_data;
-	}
 }
+	
+
+
