@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Users {
 	private int userId;
 	private int roleId;
+	private int streakCounter;
 	private String trainer;
 	private String gymUsername;
 	private String password;
@@ -15,6 +16,7 @@ public class Users {
 	public Users () {
 		userId = 0;
 		roleId = 0;
+		streakCounter=0;
 		trainer = " ";
 		gymUsername = " ";
 		password = " ";
@@ -22,6 +24,14 @@ public class Users {
 		lastname = " ";
 		lastSignInDate = " ";
 		
+	}
+
+	public int getStreakCounter() {
+		return streakCounter;
+	}
+
+	public void setStreakCounter(int streakCounter) {
+		this.streakCounter = streakCounter;
 	}
 
 	public int getUserId() {
