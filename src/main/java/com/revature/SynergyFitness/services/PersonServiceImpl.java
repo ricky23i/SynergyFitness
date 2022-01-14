@@ -12,6 +12,7 @@ import com.revature.SynergyFitness.Beans.Post;
 import com.revature.SynergyFitness.Beans.UserComments;
 import com.revature.SynergyFitness.data.CommentRepository;
 import com.revature.SynergyFitness.data.PersonRepository;
+import com.revature.SynergyFitness.data.PostRepository;
 import com.revature.SynergyFitness.exceptions.IncorrectCredentialsException;
 import com.revature.SynergyFitness.exceptions.UserNameAlreadyExistsException;
 
@@ -19,10 +20,12 @@ import com.revature.SynergyFitness.exceptions.UserNameAlreadyExistsException;
 public class PersonServiceImpl implements PersonService{
 	private PersonRepository personRepo;
 	private CommentRepository comRepo;
+	private PostRepository postRepo;
 	@Autowired
-	public PersonServiceImpl(PersonRepository personRepo, CommentRepository comRepo) {
+	public PersonServiceImpl(PersonRepository personRepo, CommentRepository comRepo,PostRepository postRepo) {
 		this.personRepo=personRepo;
 		this.comRepo=comRepo;
+		this.postRepo=postRepo;
 	}
 	
 	@Override
