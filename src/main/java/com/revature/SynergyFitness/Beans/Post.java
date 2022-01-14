@@ -2,15 +2,25 @@ package com.revature.SynergyFitness.Beans;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Post {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int post_id;
-	private Users user;
+	
+	private Person user;
+	
 	private String post_data;
 	
 	
 	public Post() {
 		post_id=0;
-		user=new Users();
+		user=new Person();
 		post_data="";
 		
 	}
@@ -47,12 +57,12 @@ public class Post {
 		this.post_id = post_id;
 	}
 
-	public Users getUser() {
+	public Person getUser() {
 		return user;
 	}
 
 
-	public void setUser(Users user) {
+	public void setUser(Person user) {
 		this.user = user;
 	}
 
