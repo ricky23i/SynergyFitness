@@ -9,7 +9,7 @@ import com.revature.SynergyFitness.Beans.UserComments;
 import com.revature.SynergyFitness.exceptions.IncorrectCredentialsException;
 import com.revature.SynergyFitness.exceptions.UserNameAlreadyExistsException;
 
-public interface UserService {
+public interface PersonService {
 	public Person register(Person newUser) throws UserNameAlreadyExistsException;
 	public Person logIn(String username, String password) throws IncorrectCredentialsException;
 	public Person getUserById(int UserId);
