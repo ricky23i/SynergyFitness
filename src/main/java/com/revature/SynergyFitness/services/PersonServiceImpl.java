@@ -3,6 +3,8 @@ package com.revature.SynergyFitness.services;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.SynergyFitness.Beans.CalorieTracker;
 import com.revature.SynergyFitness.Beans.Person;
@@ -12,7 +14,7 @@ import com.revature.SynergyFitness.data.CommentRepository;
 import com.revature.SynergyFitness.data.PersonRepository;
 import com.revature.SynergyFitness.exceptions.IncorrectCredentialsException;
 import com.revature.SynergyFitness.exceptions.UserNameAlreadyExistsException;
-import com.revature.petapp.exceptions.UsernameAlreadyExistsException;
+
 
 public class PersonServiceImpl implements PersonService{
 	private PersonRepository personRepo;
@@ -24,8 +26,9 @@ public class PersonServiceImpl implements PersonService{
 	}
 	
 	@Override
+	@Transactional
 	public Person register(Person newUser) throws UserNameAlreadyExistsException {
-		int newId = personRepo.save(newUser).getId();
+		int newId = personRepo.save(newUser).getUserId();
 		if (newId > 0) {
 			newUser.setUserId(newId);
 			return newUser;
@@ -37,19 +40,27 @@ public class PersonServiceImpl implements PersonService{
 
 	@Override
 	public Person logIn(String username, String password) throws IncorrectCredentialsException {
-		// TODO Auto-generated method stub
-		return null;
+		Person personFromDatabase = personRepo.findByUsername(username);
+		if (personFromDatabase != null && personFromDatabase.getPassword().equals(password)) {
+			return personFromDatabase;
+		} else {
+			throw new IncorrectCredentialsException();
+		}
 	}
 
 	@Override
 	public Person getUserById(int UserId) {
-		// TODO Auto-generated method stub
-		return null;
+		return personRepo.findById(UserId).get();
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
 	public Person updateUser(Person userToUpdate) {
-		// TODO Auto-generated method stub
+		if (personRepo.existsById(userToUpdate.getUserId())) {
+			personRepo.save(userToUpdate);
+			userToUpdate = personRepo.findById(userToUpdate.getUserId()).get();
+			return userToUpdate;
+		}
 		return null;
 	}
 

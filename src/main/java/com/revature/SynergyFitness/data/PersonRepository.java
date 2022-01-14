@@ -6,4 +6,5 @@ import com.revature.SynergyFitness.Beans.Person;
 @Repository
 public interface PersonRepository extends JpaRepository <Person, Integer>{
 
+	public Person findByUsername(String username);
 }
