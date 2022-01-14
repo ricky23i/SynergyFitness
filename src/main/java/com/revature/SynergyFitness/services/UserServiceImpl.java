@@ -3,46 +3,46 @@ package com.revature.SynergyFitness.services;
 import java.util.Set;
 
 import com.revature.SynergyFitness.Beans.CalorieTracker;
+import com.revature.SynergyFitness.Beans.Person;
 import com.revature.SynergyFitness.Beans.Post;
 import com.revature.SynergyFitness.Beans.UserComments;
-import com.revature.SynergyFitness.Beans.Users;
 import com.revature.SynergyFitness.exceptions.IncorrectCredentialsException;
 import com.revature.SynergyFitness.exceptions.UserNameAlreadyExistsException;
 
 public class UserServiceImpl implements UserService{
 
 	@Override
-	public Users register(Users newUser) throws UserNameAlreadyExistsException {
+	public Person register(Person newUser) throws UserNameAlreadyExistsException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Users logIn(String username, String password) throws IncorrectCredentialsException {
+	public Person logIn(String username, String password) throws IncorrectCredentialsException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Users getUserById(int UserId) {
+	public Person getUserById(int UserId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Users updateUser(Users userToUpdate) {
+	public Person updateUser(Person userToUpdate) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Users getStreak(int UserId) {
+	public Person getStreak(int UserId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Set<Users> viewTrainers() {
+	public Set<Person> viewTrainers() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public Users inputCalories(int userId, int Calories, String foodList) {
+	public Person inputCalories(int userId, int Calories, String foodList) {
 		// TODO Auto-generated method stub
 		return null;
 	}
