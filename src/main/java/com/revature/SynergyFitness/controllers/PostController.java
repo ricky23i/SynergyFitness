@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import com.revature.SynergyFitness.Beans.Post;
 import com.revature.SynergyFitness.Beans.Users;
 import com.revature.SynergyFitness.services.TrainerService;
 import com.revature.SynergyFitness.services.UserService;
+
 
 
 
@@ -31,7 +33,7 @@ public class PostController {
 		@Autowired
 		private TrainerService trainServ;
 		
-		@GetMapping
+		@GetMapping(path="/Post")
 		public ResponseEntity<Set<Users>> getPosts() {
 			
 			Set<Users> availablePosts = userServ.viewTrainers();
@@ -53,7 +55,7 @@ public class PostController {
 		}
 		
 		@GetMapping(path="/{postId}")
-		public ResponseEntity<Post> getPetById(@PathVariable int postId) {
+		public ResponseEntity<Post> getPostById(@PathVariable int postId) {
 			
 			Post post = userServ.getPostById(postId);
 			if (post != null)
@@ -61,8 +63,20 @@ public class PostController {
 			else
 				return ResponseEntity.notFound().build();
 		}
-		
-		
-		
-		
+		@PutMapping(path="/{postId}")
+		public ResponseEntity<Post> updatePost(@PathVariable int postId,
+				@RequestBody Post postToEdit) {
+
+			
+			if (postToEdit != null && postToEdit.getPost_id() == postId) {
+				postToEdit = trainServ.editPost(postToEdit);
+				if (postToEdit != null)
+					return ResponseEntity.ok(postToEdit);
+				else
+					return ResponseEntity.notFound().build();
+			} else {
+				// conflict: the id doesn't match the id of the user sent
+				return ResponseEntity.status(HttpStatus.CONFLICT).build();
+			}
+		}
 }
