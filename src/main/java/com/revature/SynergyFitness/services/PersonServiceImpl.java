@@ -60,7 +60,7 @@ public class PersonServiceImpl implements PersonService{
 	}
 
 	@Override
-	public Set<Post> getPostByTrainer(int userId) {
+	public Set<Post> getPostByTrainer(String gymUsername) {
 		// TODO Auto-generated method stub
 		return null;
 	}

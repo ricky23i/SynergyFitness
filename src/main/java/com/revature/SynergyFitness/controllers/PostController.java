@@ -64,11 +64,11 @@ public class PostController {
 				return ResponseEntity.notFound().build();
 		}
 		@PutMapping(path="/{postId}")
-		public ResponseEntity<Post> updatePost(@PathVariable int postId,
+		public ResponseEntity<Post> updatePost(@PathVariable Post post,
 				@RequestBody Post postToEdit) {
 
 			
-			if (postToEdit != null && postToEdit.getPost_id() == postId) {
+			if (postToEdit != null && postToEdit.getPost_id() == post) {
 				postToEdit = trainServ.editPost(postToEdit);
 				if (postToEdit != null)
 					return ResponseEntity.ok(postToEdit);

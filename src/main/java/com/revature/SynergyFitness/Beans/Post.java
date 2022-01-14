@@ -11,7 +11,7 @@ import javax.persistence.Id;
 public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int post_id;
+	private Post post;
 	
 	private Person user;
 	
@@ -19,7 +19,7 @@ public class Post {
 	
 	
 	public Post() {
-		post_id=0;
+		post= new Post();
 		user=new Person();
 		post_data="";
 		
@@ -28,7 +28,7 @@ public class Post {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(post_data, post_id, user);
+		return Objects.hash(post_data, post, user);
 	}
 
 	@Override
@@ -40,21 +40,21 @@ public class Post {
 		if (getClass() != obj.getClass())
 			return false;
 		Post other = (Post) obj;
-		return Objects.equals(post_data, other.post_data) && post_id == other.post_id
+		return Objects.equals(post_data, other.post_data) && post == other.post
 				&& Objects.equals(user, other.user);
 	}
 	
 	@Override
 	public String toString() {
-		return "Post [post_id=" + post_id + ", user=" + user + ", post_data=" + post_data + "]";
+		return "Post [post_id=" + post + ", user=" + user + ", post_data=" + post_data + "]";
 	}
 
-	public int getPost_id() {
-		return post_id;
+	public Post getPost_id() {
+		return post;
 	}
 
-	public void setPost_id(int post_id) {
-		this.post_id = post_id;
+	public void setPost_id(Post post_id) {
+		this.post = post_id;
 	}
 
 	public Person getUser() {

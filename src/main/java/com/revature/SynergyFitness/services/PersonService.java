@@ -18,7 +18,7 @@ public interface PersonService {
 	public Set<Person> viewTrainers();
 	public int addComment(UserComments newComment);
 	public int deleteComment(UserComments commentToDelete);
-	public Set<Post> getPostByTrainer(int userId);
+	public Set<Post> getPostByTrainer(String gymUsername);
 	public Post getPostById(int Postid);
 	public Person inputCalories(int userId, int Calories,String foodList);
 	public CalorieTracker getCalories(int userId);
