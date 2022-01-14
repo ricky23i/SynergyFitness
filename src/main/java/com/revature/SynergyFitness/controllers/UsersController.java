@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.SynergyFitness.Beans.CalorieTracker;
 import com.revature.SynergyFitness.Beans.Users;
 import com.revature.SynergyFitness.exceptions.UserNameAlreadyExistsException;
 import com.revature.SynergyFitness.services.TrainerService;
@@ -84,7 +85,16 @@ public class UsersController {
 		else
 			return ResponseEntity.notFound().build();
 	}
-	
+	@GetMapping(path="calories/{trackerid}")
+	public ResponseEntity<CalorieTracker> getCalorieTrackerById(@PathVariable int trackerId) {
+		
+		
+		CalorieTracker t = userServ.getCalories(trackerId);
+		if (t != null)
+			return ResponseEntity.ok(t);
+		else
+			return ResponseEntity.notFound().build();
+	}
 	@PutMapping(path="/{userId}")
 	public ResponseEntity<Users> updateUser(@PathVariable int userId,
 			@RequestBody Users userToEdit) {

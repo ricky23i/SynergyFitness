@@ -14,7 +14,7 @@ public interface UserService {
 	public Users logIn(String username, String password) throws IncorrectCredentialsException;
 	public Users getUserById(int UserId);
 	public Users updateUser(Users userToUpdate);
-	//public Users getStreak(int UserId);
+	public Users getStreak(int UserId);
 	public Set<Users> viewTrainers();
 	public int addComment(UserComments newComment);
 	public int deleteComment(UserComments commentToDelete);
