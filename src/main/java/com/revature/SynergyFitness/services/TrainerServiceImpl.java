@@ -42,12 +42,13 @@ public class TrainerServiceImpl implements TrainerService{
 
 	@Override
 	@Transactional
-	public Post deletePost(Post postToDelete) {
+	public void deletePost(Post postToDelete) {
 		Post postFromDatabase = postRepo.findById(postToDelete.getPostId()).get();
 		if (postFromDatabase !=null) {
-		return postRepo.delete(postToDelete).getPostId();
+		postRepo.delete(postFromDatabase);
+		}
 	}
-
+	
 	@Override
 	@Transactional
 	public int addVideo(Media MediaToAdd) {
@@ -67,11 +68,10 @@ public class TrainerServiceImpl implements TrainerService{
 
 	@Override
 	@Transactional
-	public Media deleteVideo(Media mediaToRemove) {
+	public void deleteVideo(Media mediaToRemove) {
 		Media mediaFromDatabase = mediaRepo.findById(mediaToRemove.getMediaId()).get();
 		if (mediaFromDatabase !=null) {
-			return mediaRepo.delete(mediaToRemove).getPostId();
-		} 
-		return null;
-
+			mediaRepo.delete(mediaToRemove);
+		}
+	}
 }
