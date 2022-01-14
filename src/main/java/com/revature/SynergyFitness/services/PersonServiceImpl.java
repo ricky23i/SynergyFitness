@@ -82,43 +82,41 @@ public class PersonServiceImpl implements PersonService{
 
 	@Override
 	public Set<Post> getPostByTrainer(String gymUsername) {
-		// TODO Auto-generated method stub
-		return null;
+		return postRepo.getPostByTrainer(gymUsername);
 	}
 
 	@Override
 	public Post getPostById(int Postid) {
-		// TODO Auto-generated method stub
-		return null;
+		return postRepo.getById(Postid);
 	}
 
 	@Override
 	public Person inputCalories(int userId, int Calories, String foodList) {
-		// TODO Auto-generated method stub
-		return null;
+		return personRepo.inputCalories(userId, Calories, foodList);
 	}
 
 	@Override
 	public CalorieTracker getCalories(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return personRepo.getCalories(userId);
 	}
 
 	@Override
-	public UserComments addComment(UserComments newComment) {
-		// TODO Auto-generated method stub
-		return null;
+	public int addComment(UserComments newComment) {
+		return comRepo.save(newComment).getUser_comment_id();
 	}
 
 	@Override
 	public UserComments editComment(UserComments upComment) {
-		// TODO Auto-generated method stub
+		UserComments commentFromDatabase = comRepo.findById(upComment.getUser_comment_id()).get();
 		return null;
 	}
 
 	@Override
 	public void deleteComment(UserComments commentToDelete) {
-		// TODO Auto-generated method stub
+		UserComments commentFromDatabase = comRepo.findById(commentToDelete.getUser_comment_id()).get();
+		if (commentFromDatabase !=null) {
+			comRepo.delete(commentFromDatabase);
+		}
 		
 	}
 
