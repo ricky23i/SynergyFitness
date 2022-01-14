@@ -12,7 +12,7 @@ import com.revature.SynergyFitness.data.CommentRepository;
 import com.revature.SynergyFitness.data.PersonRepository;
 import com.revature.SynergyFitness.exceptions.IncorrectCredentialsException;
 import com.revature.SynergyFitness.exceptions.UserNameAlreadyExistsException;
-import com.revature.petapp.exceptions.UsernameAlreadyExistsException;
+
 
 public class PersonServiceImpl implements PersonService{
 	private PersonRepository personRepo;
@@ -25,7 +25,7 @@ public class PersonServiceImpl implements PersonService{
 	
 	@Override
 	public Person register(Person newUser) throws UserNameAlreadyExistsException {
-		int newId = personRepo.save(newUser).getId();
+		int newId = personRepo.save(newUser).getUserId();
 		if (newId > 0) {
 			newUser.setUserId(newId);
 			return newUser;
