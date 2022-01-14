@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class UserComments {
@@ -19,7 +20,8 @@ public class UserComments {
 	@JoinColumn(name="user_id")
 	private Person user;
 	
-	
+	@OneToMany
+	@JoinColumn(name="user_comment_id")
 	private UserComments comment;
 	
 	private String comment_data;
