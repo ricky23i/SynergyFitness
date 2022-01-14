@@ -1,5 +1,10 @@
 package com.revature.SynergyFitness.Beans;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="user_role")
 public class Role {
 	private int roleId;
 	private String roleName;
