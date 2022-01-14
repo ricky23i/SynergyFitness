@@ -1,9 +1,16 @@
 package com.revature.SynergyFitness.Beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class AboutMe {
@@ -19,9 +26,13 @@ public class AboutMe {
 	
 	private String experience;
 	
+	@ManyToOne
+	@JoinColumn(name="user_id")
 	private Person user;
 	
-	private Media media;
+	@OneToMany
+	@JoinColumn(name="media_id")
+	private List<Media> media;
 	
 	public AboutMe () {
 		aboutMeId = 0;
@@ -30,7 +41,7 @@ public class AboutMe {
 		certs = "";
 		experience = "";
 		user = new Person();
-		media = new Media();
+		media = new ArrayList<>();
 	}
 
 	public int getAboutMeId() {
@@ -81,11 +92,11 @@ public class AboutMe {
 		this.user = user;
 	}
 
-	public Media getMedia() {
+	public List<Media> getMedia() {
 		return media;
 	}
 
-	public void setMedia(Media media) {
+	public void setMedia(List<Media> media) {
 		this.media = media;
 	}
 
