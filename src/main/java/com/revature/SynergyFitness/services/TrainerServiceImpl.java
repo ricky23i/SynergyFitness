@@ -1,25 +1,42 @@
 package com.revature.SynergyFitness.services;
 
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.revature.SynergyFitness.Beans.Post;
+import com.revature.SynergyFitness.data.PersonRepository;
+import com.revature.SynergyFitness.data.PostRepository;
 
+@Service
 public class TrainerServiceImpl implements TrainerService{
-
+	private PersonRepository personRepo;
+	private PostRepository postRepo;
+	
+	@Autowired
+	public TrainerServiceImpl(PersonRepository personRepo, PostRepository postRepo) {
+		this.personRepo = personRepo;
+		this.postRepo = postRepo;
+	}
 	@Override
+	@Transactional
 	public int addPost(Post newPost) {
-		// TODO Auto-generated method stub
-		return 0;
+		return postRepo.save(newPost).getPostId();
 	}
 
 	@Override
 	public Post editPost(Post postToEdit) {
-		// TODO Auto-generated method stub
+		Post postFromDatabase = postRepo.findById(postToEdit.getPostId()).get();
+		if (postFromDatabase !=null) {
+			postRepo.save(postToEdit);
+			return postRepo.findById(postToEdit.getPostId()).get();		}
 		return null;
 	}
 
 	@Override
 	public Post deletePost(Post postToDelete) {
-		// TODO Auto-generated method stub
-		return null;
+		return postRepo.delete(postToDelete).getPostId();
 	}
 
 	@Override
