@@ -11,6 +11,7 @@ public class CalorieTracker {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
 	private int tracker_id;
+    
 	private int total_calories;
 	private String food_list;
 	
