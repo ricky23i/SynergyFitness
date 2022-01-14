@@ -16,8 +16,9 @@ public interface PersonService {
 	public Person updateUser(Person userToUpdate);
 	public Person getStreak(int UserId);
 	public Set<Person> viewTrainers();
-	public int addComment(UserComments newComment);
-	public int deleteComment(UserComments commentToDelete);
+	public UserComments addComment(UserComments newComment);
+	public UserComments editComment(UserComments upComment);
+	public void deleteComment(UserComments commentToDelete);
 	public Set<Post> getPostByTrainer(int userId);
 	public Post getPostById(int Postid);
 	public Person inputCalories(int userId, int Calories,String foodList);

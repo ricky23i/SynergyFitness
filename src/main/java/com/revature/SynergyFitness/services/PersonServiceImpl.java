@@ -47,17 +47,7 @@ public class PersonServiceImpl implements PersonService{
 		return null;
 	}
 
-	@Override
-	public int addComment(UserComments newComment) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
-	@Override
-	public int deleteComment(UserComments commentToDelete) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public Set<Post> getPostByTrainer(int userId) {
@@ -81,6 +71,24 @@ public class PersonServiceImpl implements PersonService{
 	public CalorieTracker getCalories(int userId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public UserComments addComment(UserComments newComment) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UserComments editComment(UserComments upComment) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteComment(UserComments commentToDelete) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
