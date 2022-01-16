@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { CalorieComponent } from './calorie/calorie.component';
 import { HeaderComponent } from './header/header.component';
 import { BuildGuideComponent } from './build-guide/build-guide.component';
 import { SignupComponent } from './signup/signup.component';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { SignupComponent } from './signup/signup.component';
     CalorieComponent,
     HeaderComponent,
     BuildGuideComponent,
-    SignupComponent
+    SignupComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
