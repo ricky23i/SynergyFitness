@@ -2,13 +2,15 @@ package com.revature.SynergyFitness.services;
 
 import java.util.Set;
 
+import org.springframework.stereotype.Service;
+
 import com.revature.SynergyFitness.Beans.CalorieTracker;
 import com.revature.SynergyFitness.Beans.Person;
 import com.revature.SynergyFitness.Beans.Post;
 import com.revature.SynergyFitness.Beans.UserComments;
 import com.revature.SynergyFitness.exceptions.IncorrectCredentialsException;
 import com.revature.SynergyFitness.exceptions.UserNameAlreadyExistsException;
-
+@Service
 public interface PersonService {
 	public Person register(Person newUser) throws UserNameAlreadyExistsException;
 	public Person logIn(String username, String password) throws IncorrectCredentialsException;

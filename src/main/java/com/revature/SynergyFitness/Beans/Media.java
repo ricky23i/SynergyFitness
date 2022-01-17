@@ -1,15 +1,16 @@
 package com.revature.SynergyFitness.Beans;
 
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+
 import javax.persistence.JoinColumn;
 @Entity
-@Table(name="media")
 public class Media {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,12 +18,12 @@ public class Media {
 	@ManyToOne
 	@JoinColumn(name="post_id")
 	private Post post;
-	private String media_path;
+	private String mediaPath;
 	
 	public Media() {
 		mediaId=0;
 		post= new Post();
-		media_path="";
+		mediaPath="";
 		
 		
 	}
@@ -33,32 +34,48 @@ public class Media {
 	public void setPost(Post post) {
 		this.post = post;
 	}
-	/**
-	 * @return the media_int
-	 */
+	
 	public int getMediaId() {
 		return mediaId;
 	}
-	/**
-	 * @param media_int the media_int to set
-	 */
+	
 	public void setMediaId(int mediaId) {
 		this.mediaId = mediaId;
 	}
-	
-	/**
-	 * @return the media_path
-	 */
-	public String getMedia_path() {
-		return media_path;
-	}
-	/**
-	 * @param media_path the media_path to set
-	 */
-	public void setMedia_path(String media_path) {
-		this.media_path = media_path;
+
+	public String getMediaPath() {
+		return mediaPath;
 	}
 
+	public void setMediaPath(String mediaPath) {
+		this.mediaPath = mediaPath;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(mediaId, mediaPath, post);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Media other = (Media) obj;
+		return mediaId == other.mediaId && Objects.equals(mediaPath, other.mediaPath)
+				&& Objects.equals(post, other.post);
+	}
+
+	@Override
+	public String toString() {
+		return "Media [mediaId=" + mediaId + ", post=" + post + ", mediaPath=" + mediaPath + "]";
+	}
+	
+
+	
 
 	
 }

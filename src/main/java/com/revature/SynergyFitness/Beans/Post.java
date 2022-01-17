@@ -6,13 +6,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int postId;
-	
+	@ManyToOne
+	@JoinColumn(name="user_id")
 	private Person user;
 	
 	private String postData;

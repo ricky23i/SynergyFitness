@@ -1,3 +1,4 @@
+create schema if not exists synergyfitness;
 DROP TABLE IF EXISTS user_role CASCADE;
 DROP TABLE IF EXISTS person CASCADE;
 DROP TABLE IF EXISTS media CASCADE;
