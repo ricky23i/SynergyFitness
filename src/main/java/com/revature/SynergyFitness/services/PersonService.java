@@ -14,7 +14,7 @@ public interface PersonService {
 	public Person logIn(String username, String password) throws IncorrectCredentialsException;
 	public Person getUserById(int UserId);
 	public Person updateUser(Person userToUpdate);
-	public Person getStreak(int UserId);
+	public int getStreak(int UserId);
 	public Set<Person> viewTrainers();
 	public Set<Post> getPostByTrainer(String gymUsername);
 	public int addComment(UserComments newComment);
