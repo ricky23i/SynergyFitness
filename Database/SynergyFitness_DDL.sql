@@ -20,14 +20,15 @@ create table if not exists person(
 	passwd varchar(50) not null,
 	first_name varchar(50),
 	last_name varchar(50),
-	Last_Sign_In_Date date
+	sign_in_counter integer,
+	last_sign_in_date date
 );
 
 
 create table if not exists calorie_tracker(
 	tracker_id serial primary key,
 	user_id integer not null references person(user_id),
-	total_calories integer not null,
+	total_calories integer,
 	food_list varchar(250) 
 );
 create table if not exists media(

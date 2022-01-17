@@ -1,7 +1,7 @@
 package com.revature.SynergyFitness.Beans;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +27,13 @@ public class UserComments {
 	
 	private String comment_data;
 	
-	
+	public UserComments() {
+		user_comment_id=0;
+		user=new Person();
+		comment= new ArrayList<UserComments>();
+		comment_data="";
+		
+	}
 	/**
 	 * @return the user_comment_id
 	 */

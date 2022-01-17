@@ -1,6 +1,6 @@
 package com.revature.SynergyFitness.Beans;
 
-import java.util.Objects;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
