@@ -35,6 +35,7 @@ public class Person {
 	
 	private String lastSignInDate;
 	
+	private int signInCounter;
 	@OneToOne
 	@JoinColumn(name="user_id")
 	private Person trainer;
@@ -48,8 +49,39 @@ public class Person {
 		firstname = " ";
 		lastname = " ";
 		lastSignInDate = " ";
+		signInCounter=0;
 		
 		
+	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+	public int getSignInCounter() {
+		return signInCounter;
+	}
+
+
+
+	public void setSignInCounter(int signInCounter) {
+		this.signInCounter = signInCounter;
+	}
+
+
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 
