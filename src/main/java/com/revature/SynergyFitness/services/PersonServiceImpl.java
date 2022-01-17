@@ -68,9 +68,9 @@ public class PersonServiceImpl implements PersonService{
 	}
 
 	@Override
-	public Person getStreak(int UserId) {
-		// TODO Auto-generated method stub
-		return null;
+	public int getStreak(int UserId) {
+		
+		return personRepo.getById(UserId).getSignInCounter();
 	}
 
 	@Override
@@ -107,8 +107,8 @@ public class PersonServiceImpl implements PersonService{
 
 	@Override
 	public UserComments editComment(UserComments upComment) {
-		UserComments commentFromDatabase = comRepo.findById(upComment.getUser_comment_id()).get();
-		return null;
+	
+		return comRepo.findById(upComment.getUser_comment_id()).get();
 	}
 
 	@Override
