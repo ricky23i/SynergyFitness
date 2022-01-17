@@ -3,6 +3,7 @@ package com.revature.SynergyFitness.services;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +17,7 @@ import com.revature.SynergyFitness.data.PostRepository;
 import com.revature.SynergyFitness.exceptions.IncorrectCredentialsException;
 import com.revature.SynergyFitness.exceptions.UserNameAlreadyExistsException;
 
-
+@Service
 public class PersonServiceImpl implements PersonService{
 	private PersonRepository personRepo;
 	private CommentRepository comRepo;

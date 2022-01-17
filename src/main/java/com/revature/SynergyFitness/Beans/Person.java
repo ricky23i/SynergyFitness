@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Person {
 	@Id
@@ -38,19 +40,19 @@ public class Person {
 	private int signInCounter;
 	@OneToOne
 	@JoinColumn(name="user_id")
+	@JsonIgnoreProperties
 	private Person trainer;
 	
 	public Person () {
 		id = 0;
 		role = new Role();
-		trainer = new Person();
+		trainer = null;
 		gymUsername = " ";
 		password = " ";
 		firstname = " ";
 		lastname = " ";
 		lastSignInDate = " ";
 		signInCounter=0;
-		
 		
 	}
 
@@ -159,7 +161,7 @@ public class Person {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(firstname, gymUsername, lastSignInDate, lastname, password, role, trainer, id);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -171,10 +173,7 @@ public class Person {
 		if (getClass() != obj.getClass())
 			return false;
 		Person other = (Person) obj;
-		return Objects.equals(firstname, other.firstname) && Objects.equals(gymUsername, other.gymUsername)
-				&& Objects.equals(lastSignInDate, other.lastSignInDate) && Objects.equals(lastname, other.lastname)
-				&& Objects.equals(password, other.password) && role == other.role
-				&& Objects.equals(trainer, other.trainer) && id == other.id;
+		return  id == other.id;
 	}
 
 }

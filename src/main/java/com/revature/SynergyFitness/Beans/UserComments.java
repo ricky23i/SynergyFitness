@@ -34,51 +34,35 @@ public class UserComments {
 		comment_data="";
 		
 	}
-	/**
-	 * @return the user_comment_id
-	 */
+	
 	public int getUser_comment_id() {
 		return user_comment_id;
 	}
-	/**
-	 * @param user_comment_id the user_comment_id to set
-	 */
+	
 	public void setUser_comment_id(int user_comment_id) {
 		this.user_comment_id = user_comment_id;
 	}
-	/**
-	 * @return the user_id
-	 */
+	
 	public Person getUser() {
 		return user;
 	}
-	/**
-	 * @param user_id the user_id to set
-	 */
+	
 	public void setUser(Person user) {
 		this.user = user;
 	}
-	/**
-	 * @return the reply_id
-	 */
+	
 	public List<UserComments> getComment() {
 		return comment;
 	}
-	/**
-	 * @param reply_id the reply_id to set
-	 */
+	
 	public void setComment(List<UserComments> comment) {
 		this.comment = comment;
 }
-	/**
-	 * @return the comment_data
-	 */
+	
 	public String getComment_data() {
 		return comment_data;
 	}
-	/**
-	 * @param comment_data the comment_data to set
-	 */
+
 	public void setComment_data(String comment_data) {
 		this.comment_data = comment_data;
 	}

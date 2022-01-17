@@ -3,13 +3,17 @@ package com.revature.SynergyFitness.Beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class AboutMe {
@@ -29,8 +33,7 @@ public class AboutMe {
 	@JoinColumn(name="user_id")
 	private Person user;
 	
-	@OneToMany
-	@JoinColumn(name="media_id")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="mediaId")
 	private List<Media> media;
 	
 	public AboutMe () {
@@ -40,7 +43,7 @@ public class AboutMe {
 		certs = "";
 		experience = "";
 		user = new Person();
-		media = new ArrayList<>();
+		media = new ArrayList<Media>();
 	}
 
 	public int getAboutMeId() {
