@@ -10,8 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="user_comment")
 public class UserComments {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

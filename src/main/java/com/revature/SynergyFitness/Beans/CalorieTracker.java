@@ -6,43 +6,65 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 @Entity
 public class CalorieTracker {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-	private int tracker_id;
-    
-	private int total_calories;
-	private String food_list;
+	private int trackerId;
+    @OneToOne
+    @JoinColumn(name="user_id")
+    private Person user;
+	private int totalCalories;
+	private String foodList;
 	
 	public CalorieTracker() {
-		tracker_id = 0;
-		total_calories = 0;
-		food_list = "";
+		trackerId = 0;
+		user=null;
+		totalCalories = 0;
+		foodList = "";
 	}
+
+	public Person getUser() {
+		return user;
+	}
+
+	public void setUser(Person user) {
+		this.user = user;
+	}
+
+	public int getTrackerId() {
+		return trackerId;
+	}
+
+	public void setTrackerId(int trackerId) {
+		this.trackerId = trackerId;
+	}
+
 	
-	public int getTracker_id() {
-		return tracker_id;
+
+	public int getTotalCalories() {
+		return totalCalories;
 	}
-	public void setTracker_id(int tracker_id) {
-		this.tracker_id = tracker_id;
+
+	public void setTotalCalories(int totalCalories) {
+		this.totalCalories = totalCalories;
 	}
-	public int getTotal_calories() {
-		return total_calories;
+
+	public String getFoodList() {
+		return foodList;
 	}
-	public void setTotal_calories(int total_calories) {
-		this.total_calories = total_calories;
+
+	public void setFoodList(String foodList) {
+		this.foodList = foodList;
 	}
-	public String getFood_list() {
-		return food_list;
-	}
-	public void setFood_list(String food_list) {
-		this.food_list = food_list;
-	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(food_list, total_calories, tracker_id);
+		return Objects.hash(foodList, totalCalories, trackerId, user);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -52,10 +74,15 @@ public class CalorieTracker {
 		if (getClass() != obj.getClass())
 			return false;
 		CalorieTracker other = (CalorieTracker) obj;
-		return Objects.equals(food_list, other.food_list) && total_calories == other.total_calories
-				&& tracker_id == other.tracker_id;
+		return Objects.equals(foodList, other.foodList) && totalCalories == other.totalCalories
+				&& trackerId == other.trackerId && Objects.equals(user, other.user);
 	}
-	
+
+	@Override
+	public String toString() {
+		return "CalorieTracker [trackerId=" + trackerId + ", user=" + user + ", totalCalories=" + totalCalories
+				+ ", foodList=" + foodList + "]";
+	}
 	
 	
 }

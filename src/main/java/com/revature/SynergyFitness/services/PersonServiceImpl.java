@@ -43,8 +43,9 @@ public class PersonServiceImpl implements PersonService{
 	}
 
 	@Override
+	@Transactional
 	public Person logIn(String username, String password) throws IncorrectCredentialsException {
-		Person personFromDatabase = personRepo.findByUsername(username);
+		Person personFromDatabase = personRepo.findBygymUsername(username);
 		if (personFromDatabase != null && personFromDatabase.getPassword().equals(password)) {
 			return personFromDatabase;
 		} else {
@@ -53,6 +54,7 @@ public class PersonServiceImpl implements PersonService{
 	}
 
 	@Override
+	@Transactional
 	public Person getUserById(int UserId) {
 		return personRepo.findById(UserId).get();
 	}
@@ -69,50 +71,59 @@ public class PersonServiceImpl implements PersonService{
 	}
 
 	@Override
+	@Transactional
 	public int getStreak(int UserId) {
 		
 		return personRepo.getById(UserId).getSignInCounter();
 	}
 
 	@Override
+	@Transactional
 	public Set<Person> viewTrainers() {
-	return personRepo.findByRoleName("trainer");
+	return personRepo.findByRole("trainer");
 	}
 
 
 
 	@Override
+	@Transactional
 	public Set<Post> getPostByTrainer(String gymUsername) {
 		return postRepo.getPostByTrainer(gymUsername);
 	}
 
 	@Override
+	@Transactional
 	public Post getPostById(int Postid) {
 		return postRepo.getById(Postid);
 	}
 
 	@Override
+	@Transactional
 	public Person inputCalories(int userId, int Calories, String foodList) {
 		return personRepo.inputCalories(userId, Calories, foodList);
 	}
 
 	@Override
+	@Transactional
 	public CalorieTracker getCalories(int userId) {
-		return personRepo.getCalories(userId);
+		return personRepo.findbyCaloriesTracker(userId);
 	}
 
 	@Override
+	@Transactional
 	public int addComment(UserComments newComment) {
 		return comRepo.save(newComment).getUser_comment_id();
 	}
 
 	@Override
+	@Transactional
 	public UserComments editComment(UserComments upComment) {
 	
 		return comRepo.findById(upComment.getUser_comment_id()).get();
 	}
 
 	@Override
+	@Transactional
 	public void deleteComment(UserComments commentToDelete) {
 		UserComments commentFromDatabase = comRepo.findById(commentToDelete.getUser_comment_id()).get();
 		if (commentFromDatabase !=null) {
