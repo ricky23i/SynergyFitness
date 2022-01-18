@@ -8,10 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class BuildGuideComponent implements OnInit {
 
   button:string = `
-  <div class="col-lg-6">
     <button type="button" class="btn btn-primary btn-sm">Button Sample</button>
-    <button type="button" class="btn btn-secondary btn-md">Button Sample</button>
-  </div>`;
+    <button type="button" class="btn btn-secondary btn-md">Button Sample</button>`;
 
   text:string=`
   <div class="form-group">
