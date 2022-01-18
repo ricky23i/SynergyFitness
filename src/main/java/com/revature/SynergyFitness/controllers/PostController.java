@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.SynergyFitness.Beans.Person;
 import com.revature.SynergyFitness.Beans.Post;
+import com.revature.SynergyFitness.Beans.UserComments;
 import com.revature.SynergyFitness.services.PersonService;
 import com.revature.SynergyFitness.services.TrainerService;
 
@@ -33,7 +34,7 @@ public class PostController {
 		@Autowired
 		private TrainerService trainServ;
 		
-		@GetMapping(path="/Post")
+		@GetMapping(path="/posts")
 		public ResponseEntity<Set<Person>> getPosts() {
 			
 			Set<Person> availablePosts = userServ.viewTrainers();
@@ -79,4 +80,5 @@ public class PostController {
 				return ResponseEntity.status(HttpStatus.CONFLICT).build();
 			}
 		}
+		
 }
