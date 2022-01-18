@@ -12,7 +12,5 @@ public interface PersonRepository extends JpaRepository <Person, Integer>{
 	
 	public Person findBygymUsername(String username);
 	public Set<Person> findByRole(String roleName);
-	public CalorieTracker findbyCaloriesTracker(int trackerId);
-	public Person inputCalories(int userId, int calories, String foodList);
 
 }

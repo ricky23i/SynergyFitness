@@ -83,12 +83,10 @@ public class PersonServiceImpl implements PersonService{
 	return personRepo.findByRole("trainer");
 	}
 
-
-
 	@Override
 	@Transactional
 	public Set<Post> getPostByTrainer(String gymUsername) {
-		return postRepo.getPostByTrainer(gymUsername);
+		return postRepo.findByUserGymUsername(gymUsername);
 	}
 
 	@Override
@@ -100,13 +98,21 @@ public class PersonServiceImpl implements PersonService{
 	@Override
 	@Transactional
 	public Person inputCalories(int userId, int Calories, String foodList) {
-		return personRepo.inputCalories(userId, Calories, foodList);
+	
+		if(personRepo.existsById(userId)) {
+		Person input= personRepo.getById(userId);
+		input.getCalorieTracker().setTotalCalories(Calories);
+		input.getCalorieTracker().setFoodList(foodList);
+		personRepo.save(input);
+		return input;
+		}
+		return null;
 	}
 
 	@Override
 	@Transactional
 	public CalorieTracker getCalories(int userId) {
-		return personRepo.findbyCaloriesTracker(userId);
+		return personRepo.getById(userId).getCalorieTracker();
 	}
 
 	@Override

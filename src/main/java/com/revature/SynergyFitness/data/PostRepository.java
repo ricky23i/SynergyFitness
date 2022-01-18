@@ -8,6 +8,6 @@ import com.revature.SynergyFitness.Beans.Post;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {
-	public Set<Post> getPostByTrainer (String gymUsername);
+	public Set<Post> findByUserGymUsername(String gymUsername);
 
 }
