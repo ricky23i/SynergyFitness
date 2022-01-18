@@ -33,6 +33,10 @@ public class Person {
 	
 	private String firstname;
 	
+	@OneToOne
+	@JoinColumn(name="tracker_id")
+	private CalorieTracker calorieTracker;
+	
 	private String lastname;
 	
 	private String lastSignInDate;
@@ -53,7 +57,20 @@ public class Person {
 		lastname = " ";
 		lastSignInDate = " ";
 		signInCounter=0;
+		calorieTracker=new CalorieTracker();
 		
+	}
+
+
+
+	public CalorieTracker getCalorieTracker() {
+		return calorieTracker;
+	}
+
+
+
+	public void setCalorieTracker(CalorieTracker calorieTracker) {
+		this.calorieTracker = calorieTracker;
 	}
 
 

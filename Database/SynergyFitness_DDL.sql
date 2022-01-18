@@ -1,11 +1,13 @@
 create schema if not exists synergyfitness;
-DROP TABLE IF EXISTS user_role CASCADE;
+DROP TABLE IF EXISTS role CASCADE;
+DROP TABLE IF EXISTS roles CASCADE;
 DROP TABLE IF EXISTS person CASCADE;
 DROP TABLE IF EXISTS media CASCADE;
 DROP TABLE IF EXISTS calorie_tracker CASCADE;
 DROP TABLE IF EXISTS about_me CASCADE;
 DROP TABLE IF EXISTS post CASCADE;
 DROP TABLE IF EXISTS user_comment CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 
 create table if not exists user_role(
 	role_id serial primary key,
@@ -22,6 +24,7 @@ create table if not exists person(
 	first_name varchar(50),
 	last_name varchar(50),
 	sign_in_counter integer,
+	tracker_id integer,
 	last_sign_in_date date
 );
 
@@ -35,7 +38,8 @@ create table if not exists calorie_tracker(
 create table if not exists media(
 	media_id serial primary key,
 	post_id integer not null,
-	media_path varchar(100) not null
+	file_name varchar(50),
+	media_url varchar(100) 
 );
 create table if not exists about_me(
 	about_me_id serial primary key,
@@ -63,3 +67,5 @@ alter table if exists media
 add foreign key(post_id) references post(post_id);
 alter table if exists user_comment
 add foreign key(reply_id) references user_comment(comment_id);
+alter table if exists person
+add foreign key(tracker_id) references calorie_tracker(tracker_id);

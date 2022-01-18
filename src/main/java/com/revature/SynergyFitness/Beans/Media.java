@@ -18,42 +18,53 @@ public class Media {
 	@ManyToOne
 	@JoinColumn(name="post_id")
 	private Post post;
-	private String mediaPath;
+	private String mediaUrl;
+	private String fileName;
 	
 	public Media() {
 		mediaId=0;
 		post= new Post();
-		mediaPath="";
+		mediaUrl="";
+		fileName="";
 		
 		
 	}
-	
-	public Post getPost() {
-		return post;
-	}
-	public void setPost(Post post) {
-		this.post = post;
-	}
-	
+
 	public int getMediaId() {
 		return mediaId;
 	}
-	
+
 	public void setMediaId(int mediaId) {
 		this.mediaId = mediaId;
 	}
 
-	public String getMediaPath() {
-		return mediaPath;
+	public Post getPost() {
+		return post;
 	}
 
-	public void setMediaPath(String mediaPath) {
-		this.mediaPath = mediaPath;
+	public void setPost(Post post) {
+		this.post = post;
+	}
+
+	public String getMediaUrl() {
+		return mediaUrl;
+	}
+
+	public void setMediaUrl(String mediaUrl) {
+		this.mediaUrl = mediaUrl;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(mediaId, mediaPath, post);
+		return Objects.hash(fileName, mediaId, mediaUrl, post);
 	}
 
 	@Override
@@ -65,16 +76,15 @@ public class Media {
 		if (getClass() != obj.getClass())
 			return false;
 		Media other = (Media) obj;
-		return mediaId == other.mediaId && Objects.equals(mediaPath, other.mediaPath)
-				&& Objects.equals(post, other.post);
+		return Objects.equals(fileName, other.fileName) && mediaId == other.mediaId
+				&& Objects.equals(mediaUrl, other.mediaUrl) && Objects.equals(post, other.post);
 	}
 
 	@Override
 	public String toString() {
-		return "Media [mediaId=" + mediaId + ", post=" + post + ", mediaPath=" + mediaPath + "]";
+		return "Media [mediaId=" + mediaId + ", post=" + post + ", mediaUrl=" + mediaUrl + ", fileName=" + fileName
+				+ "]";
 	}
-	
-
 	
 
 	
