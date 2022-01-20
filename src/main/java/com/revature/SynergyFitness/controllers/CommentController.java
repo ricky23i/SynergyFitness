@@ -25,8 +25,6 @@ public class CommentController {
 	
 	@PostMapping
 	public ResponseEntity<Void> addComment(@RequestBody UserComments newComment) {
-		
-		
 		if (newComment !=null) {
 			userServ.addComment(newComment);
 			return ResponseEntity.status(HttpStatus.CREATED).build();

@@ -26,8 +26,14 @@ public class Media {
 		post= new Post();
 		mediaUrl="";
 		fileName="";
-		
-		
+	}
+
+	public Media(int mediaId, Post post, String mediaUrl, String fileName) {
+		super();
+		this.mediaId = mediaId;
+		this.post = post;
+		this.mediaUrl = mediaUrl;
+		this.fileName = fileName;
 	}
 
 	public int getMediaId() {
