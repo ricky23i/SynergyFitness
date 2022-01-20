@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Post {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int postId;
 	@ManyToOne
 	@JoinColumn(name="user_id")

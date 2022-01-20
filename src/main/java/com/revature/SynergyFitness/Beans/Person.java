@@ -3,6 +3,7 @@ package com.revature.SynergyFitness.Beans;
 
 import java.util.Objects;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,34 +14,36 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Person {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="user_id")
 	private int id;
 	
 	@ManyToOne
 	@JoinColumn(name="role_id")
 	private Role role;
-	
+	@Column(name="gym_user_name")
 	private String gymUsername;
 	
 	@Column(name="passwd")
 	private String password;
-	
+	@Column(name="first_name")
 	private String firstname;
 	
 	@OneToOne
 	@JoinColumn(name="tracker_id")
 	private CalorieTracker calorieTracker;
-	
+	@Column(name="last_name")
 	private String lastname;
-	
+	@Column(name="last_sign_in_date")
 	private String lastSignInDate;
-	
+	@Column(name="sign_in_counter")
 	private int signInCounter;
 	@OneToOne
 	@JoinColumn(name="user_id")
@@ -60,7 +63,10 @@ public class Person {
 		calorieTracker=new CalorieTracker();
 		
 	}
-
+	public Person(int id) {
+		super();
+		this.id=id;
+	}
 
 
 	public CalorieTracker getCalorieTracker() {

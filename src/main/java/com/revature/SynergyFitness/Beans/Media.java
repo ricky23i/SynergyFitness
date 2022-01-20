@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 @Entity
 public class Media {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int mediaId;
 	@ManyToOne
 	@JoinColumn(name="post_id")
