@@ -18,7 +18,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class AboutMe {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int aboutMeId;
 	
 	private String description;
