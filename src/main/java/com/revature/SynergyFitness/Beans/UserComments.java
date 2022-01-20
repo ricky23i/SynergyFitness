@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name="user_comment")
 public class UserComments {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int user_comment_id;
 	
 	@ManyToOne

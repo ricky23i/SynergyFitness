@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class CalorieTracker {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int trackerId;
     @OneToOne
     @JoinColumn(name="user_id")
