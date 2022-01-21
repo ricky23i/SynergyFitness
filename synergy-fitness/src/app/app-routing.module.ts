@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { PostComponent } from './post/post.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
+import { UploadComponent } from './upload/upload.component';
 
 const routes: Routes = [
   { path:'', component: HomeComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'build-guide', component: BuildGuideComponent },
   { path: 'login', component: LoginComponent },
   { path: 'post', component: PostComponent },
+  { path: 'upload', component: UploadComponent }
 ];
 
 @NgModule({

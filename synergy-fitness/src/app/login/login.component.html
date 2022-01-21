@@ -1,14 +1,14 @@
 <form id="login">
-    <div class="form-group">
-        <label for="txtUsername">Username</label>
-        <input type="text" class="form-control" placeholder="Username" id="username" [(ngModel)]="usernameInput" name="username">
-      </div>    
-    <br>
-   
- <div class="input-group mb-3">
-    <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-    <input id="password" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="passwordInput" name="password">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" placeholder="Username" id="username" [(ngModel)]="usernameInput" name="username">
   </div>
-    <br>
-    <button type="button" class="btn btn-primary btn-sm" id="loginBtn" (click)="logIn()">Submit</button>
+  <br>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+    <input id="password" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="passwordInput" name="password">
+  </div>
+  <br>
+  <button type="button" class="btn btn-primary btn-sm" id="loginBtn" (click)="logIn()">Submit</button>
 </form>

@@ -1,1 +1,13 @@
-<p>upload works!</p>
+<div class="container">
+  <input id="media" type="file" (change)="onFileSelected($event.target.files)" accept="image/*,video/*" multiple #filePicker>
+  <button (click)="filePicker.click()">Select File</button>
+  <div class="panel-body">
+    <!-- <div  *ngIf="fileProgress.status === 'uploading'"> -->
+    <div class="progress">
+      <div class="progress-bar progress-bar-animated bg-info" role="progressbar" [style.width.%]="fileProgress.percentage" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+        {{ fileProgress.percentage }} %
+      </div>
+    </div>
+  <!-- </div> -->
+  </div>
+</div>
