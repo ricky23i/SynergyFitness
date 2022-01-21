@@ -1,6 +1,6 @@
 import { HttpErrorResponse, HttpEvent, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { MediaService } from '../services/media.service';
+import { MediaService } from '../../services/media.service';
 
 @Component({
   selector: 'app-upload',
