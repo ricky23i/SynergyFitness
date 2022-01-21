@@ -1,7 +1,9 @@
+
 import { Component, Input, OnInit } from '@angular/core';
 import { Person } from '../../models/person';
 import { AboutMe } from '../../models/about-me';
 import { UserService } from '../../services/user.service';
+
 
 @Component({
   selector: 'app-profile',
@@ -10,6 +12,7 @@ import { UserService } from '../../services/user.service';
 })
 export class ProfileComponent implements OnInit {
 
+
   @Input() aboutMe:AboutMe;
   message:string = '';
 
@@ -17,6 +20,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
   async UpdateAboutMe() {
     if (this.userServ.loggedInUser && (this.aboutMe.user = this.userServ.loggedInUser)) {
