@@ -2,6 +2,7 @@ import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/htt
 import { Component, OnInit } from '@angular/core';
 import { MediaService } from '../services/media.service';
 
+
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
