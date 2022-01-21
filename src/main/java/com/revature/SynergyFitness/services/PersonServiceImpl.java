@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.SynergyFitness.Beans.AboutMe;
 import com.revature.SynergyFitness.Beans.CalorieTracker;
 import com.revature.SynergyFitness.Beans.Person;
 import com.revature.SynergyFitness.Beans.Post;
 import com.revature.SynergyFitness.Beans.UserComments;
+import com.revature.SynergyFitness.data.AboutMeRepository;
 import com.revature.SynergyFitness.data.CommentRepository;
 import com.revature.SynergyFitness.data.PersonRepository;
 import com.revature.SynergyFitness.data.PostRepository;
@@ -19,14 +21,23 @@ import com.revature.SynergyFitness.exceptions.UserNameAlreadyExistsException;
 
 @Service
 public class PersonServiceImpl implements PersonService{
+	
+
 	private PersonRepository personRepo;
 	private CommentRepository comRepo;
 	private PostRepository postRepo;
+	private AboutMeRepository meRepo;
 	@Autowired
 	public PersonServiceImpl(PersonRepository personRepo, CommentRepository comRepo,PostRepository postRepo) {
 		this.personRepo=personRepo;
 		this.comRepo=comRepo;
 		this.postRepo=postRepo;
+	}
+	@Override
+	@Transactional
+	public AboutMe getAboutMeById(int aboutMeId) {
+		
+		return meRepo.getById(aboutMeId);
 	}
 	
 	@Override

@@ -12,3 +12,4 @@ INSERT INTO synergyfitness.person (role_id,gym_user_name,passwd,first_name,last_
 INSERT INTO synergyfitness.person (role_id,assigned_trainer,gym_user_name,passwd,first_name,last_name,sign_in_counter)
 	VALUES (2,2,'user23','123456789','test','user',0);
 */
+commit;

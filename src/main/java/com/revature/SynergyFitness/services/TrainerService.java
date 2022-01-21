@@ -2,6 +2,7 @@ package com.revature.SynergyFitness.services;
 
 import org.springframework.stereotype.Service;
 
+import com.revature.SynergyFitness.Beans.AboutMe;
 import com.revature.SynergyFitness.Beans.Media;
 import com.revature.SynergyFitness.Beans.Post;
 @Service
@@ -12,4 +13,6 @@ public interface TrainerService {
 	public int addVideo(Media mediaToAdd);
 	public Media editVideo(Media mediaToEdit);
 	public void deleteVideo(Media mediaToRemove);
+	public int addAboutMe(AboutMe me);
+	public AboutMe editAboutMe(AboutMe upme);
 }
