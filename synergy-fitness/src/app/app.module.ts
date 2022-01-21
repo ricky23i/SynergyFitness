@@ -11,7 +11,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { PostComponent } from './components/post/post.component';
 import { CalorieComponent } from './components/calorie/calorie.component';
 import { HeaderComponent } from './components/header/header.component';
-import { BuildGuideComponent } from './build-guide/build-guide.component';
+import { BuildGuideComponent } from './components/build-guide/build-guide.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { UserService } from './services/user.service';

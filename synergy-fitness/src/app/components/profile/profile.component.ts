@@ -12,16 +12,6 @@ import { UserService } from '../../services/user.service';
 })
 export class ProfileComponent implements OnInit {
 
-
-  @Input() aboutMe:AboutMe;
-  message:string = '';
-
-  constructor(private userServ:UserService ) { }
-
-  ngOnInit(): void {
-  }
-
-
   async UpdateAboutMe() {
     if (this.userServ.loggedInUser && (this.aboutMe.user = this.userServ.loggedInUser)) {
       let success = await this.userServ.updateAboutMe(this.aboutMe.id, this.userServ.loggedInUser, this.aboutMe.media, this.aboutMe.age, this.aboutMe.certs, this.aboutMe.description, this.aboutMe.experience, );
