@@ -1,3 +1,4 @@
+
 import { HttpErrorResponse, HttpEvent, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MediaService } from '../../services/media.service';
@@ -8,16 +9,6 @@ import { MediaService } from '../../services/media.service';
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent implements OnInit {
-
-  filenames: string[] = [];
-  // fileProgress: { status: string, percentage: number };
-  fileProgress = { status: '', percentage: 65 };
-
-
-  constructor(private mediaService: MediaService) { }
-  ngOnInit(): void {
-  }
-
   onFileSelected(event) {
     console.log(event);
 
@@ -67,6 +58,39 @@ export class UploadComponent implements OnInit {
     this.fileProgress.status = 'uploading';
     this.fileProgress.percentage = Math.round((loaded / total) * 100);
 
+  onUploadMedia(file: File): void {
+    const formData = new FormData();
+
+    formData.append('file', file, file.name);
+    this.mediaService.upload(formData).subscribe(
+      event => {
+        console.log(event);
+        this.reportProgress(event);
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    );
+  }
+  reportProgress(event: HttpEvent<string>): void {
+    // throw new Error('Method not implemented.');
+    switch(event.type) {
+      case HttpEventType.UploadProgress:
+        this.updateStatus(event.loaded, event.total, 'Uploading...');
+        break;
+      case HttpEventType.ResponseHeader:
+        console.log('Header ', event);
+        this.status = event.statusText;
+        break;
+      case HttpEventType.Response:
+        console.log(event.body);
+        if(event.body) {
+          this.filename = event.body;
+        }
+    }
+  }
+  updateStatus(loaded: number, total: number | undefined, arg2: string) {
+    throw new Error('Method not implemented.');
   }
 
 }
