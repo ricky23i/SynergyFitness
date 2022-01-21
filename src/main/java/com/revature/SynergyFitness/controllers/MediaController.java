@@ -35,24 +35,23 @@ public class MediaController {
 	}
 	
 	@PostMapping("/upload")
-	public ResponseEntity<Boolean> uploadFiles(@RequestParam("files")List<MultipartFile> multipartFiles) throws IOException{
-		boolean isUploaded = false;
+	public ResponseEntity<List<String>> uploadFiles(@RequestParam("files")List<MultipartFile> multipartFiles) throws IOException{
+//		boolean isUploaded = false;
+		List<String> filenames = new ArrayList<>();
 		try {
 
 			for(MultipartFile file : multipartFiles) {
 				String filename = StringUtils.cleanPath(file.getOriginalFilename());
 				Path mediaStorage = Paths.get(MEDIA_URL, filename).toAbsolutePath().normalize();
 				Files.copy(file.getInputStream(), mediaStorage, StandardCopyOption.REPLACE_EXISTING);
+				filenames.add(filename);
 			}
-			isUploaded = true;
+//			isUploaded = true;
 		} catch (IOException e) {
-			isUploaded = false;
-			return ResponseEntity.internalServerError().body(isUploaded);
+//			isUploaded = false;
+			return ResponseEntity.internalServerError().body(filenames);
 		}
 		
-		return ResponseEntity.ok().body(isUploaded);
+		return ResponseEntity.ok().body(filenames);
 	}
-
-	
-	
 }
