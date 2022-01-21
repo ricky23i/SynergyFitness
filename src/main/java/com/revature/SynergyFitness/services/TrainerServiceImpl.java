@@ -5,8 +5,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.SynergyFitness.Beans.AboutMe;
 import com.revature.SynergyFitness.Beans.Media;
 import com.revature.SynergyFitness.Beans.Post;
+import com.revature.SynergyFitness.data.AboutMeRepository;
 import com.revature.SynergyFitness.data.MediaRepository;
 import com.revature.SynergyFitness.data.PersonRepository;
 import com.revature.SynergyFitness.data.PostRepository;
@@ -16,7 +18,24 @@ public class TrainerServiceImpl implements TrainerService{
 	private PersonRepository personRepo;
 	private PostRepository postRepo;
 	private MediaRepository mediaRepo;
+	private AboutMeRepository meRepo;
 	
+	@Override
+	@Transactional
+	public int addAboutMe(AboutMe me) {
+		
+		return meRepo.save(me).getAboutMeId();
+	}
+	@Override
+	@Transactional
+	public AboutMe editAboutMe(AboutMe upme) {
+		AboutMe aboutMeFromDatabase = meRepo.findById(upme.getAboutMeId()).get();
+		if (aboutMeFromDatabase !=null) {
+			meRepo.save(upme);
+			return meRepo.findById(upme.getAboutMeId()).get();		
+		}
+		return null;
+	}
 	@Autowired
 	public TrainerServiceImpl(PersonRepository personRepo, PostRepository postRepo, MediaRepository mediaRepo) {
 		this.personRepo = personRepo;

@@ -4,6 +4,7 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
+import com.revature.SynergyFitness.Beans.AboutMe;
 import com.revature.SynergyFitness.Beans.CalorieTracker;
 import com.revature.SynergyFitness.Beans.Person;
 import com.revature.SynergyFitness.Beans.Post;
@@ -25,4 +26,5 @@ public interface PersonService {
 	public Post getPostById(int Postid);
 	public Person inputCalories(int userId, int Calories,String foodList);
 	public CalorieTracker getCalories(int userId);
+	public AboutMe getAboutMeById(int aboutMeId);
 }
