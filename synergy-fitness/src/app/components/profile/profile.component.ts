@@ -11,6 +11,14 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  
+  @Input() aboutMe:AboutMe;
+  message:string = '';
+
+  constructor(private userServ:UserService ) { }
+
+  ngOnInit(): void {
+  }
 
   async UpdateAboutMe() {
     if (this.userServ.loggedInUser && (this.aboutMe.user = this.userServ.loggedInUser)) {
