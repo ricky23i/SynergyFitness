@@ -16,6 +16,9 @@ import { SignupComponent } from './components/signup/signup.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { UserService } from './services/user.service';
 import { UrlService } from './services/url.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MaterialModule} from './material/material.module';
+import { CreatePostComponent } from './tools/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +31,16 @@ import { UrlService } from './services/url.service';
     HeaderComponent,
     BuildGuideComponent,
     SignupComponent,
-    UploadComponent
+    UploadComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [
     UserService,
