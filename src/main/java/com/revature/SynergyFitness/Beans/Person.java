@@ -1,22 +1,28 @@
 package com.revature.SynergyFitness.Beans;
 
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
 import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Person {
@@ -45,11 +51,15 @@ public class Person {
 	private String lastSignInDate;
 	@Column(name="sign_in_counter")
 	private int signInCounter;
-	@OneToOne
-	@JoinColumn(name="user_id")
-	@JsonIgnoreProperties
+	
+	@ManyToOne
+	@JoinColumn(name="assigned_trainer")
+	@JsonIgnoreProperties("trainer")
 	private Person trainer;
 	
+	//@JsonManagedReference
+	//@OneToMany(mappedBy="trainer", fetch = FetchType.LAZY)
+	//private Set<Person> users=new HashSet<Person>();
 	public Person () {
 		id = 0;
 		role = new Role();
@@ -63,10 +73,7 @@ public class Person {
 		calorieTracker=new CalorieTracker();
 		
 	}
-	public Person(int id) {
-		super();
-		this.id=id;
-	}
+	
 
 
 	public CalorieTracker getCalorieTracker() {
@@ -175,17 +182,14 @@ public class Person {
 		this.lastSignInDate = lastSignInDate;
 	}
 
-	@Override
-	public String toString() {
-		return "Users [userId=" + id + ", roleId=" + role + ", trainer=" + trainer + ", gymUsername="
-				+ gymUsername + ", password=" + password + ", firstname=" + firstname + ", lastname=" + lastname
-				+ ", lastSignInDate=" + lastSignInDate + "]";
-	}
+
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return gymUsername.hashCode();
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -196,7 +200,15 @@ public class Person {
 		if (getClass() != obj.getClass())
 			return false;
 		Person other = (Person) obj;
-		return  id == other.id;
+		return this.gymUsername.equals(other.gymUsername);
 	}
+
+
+
+	@Override
+	public String toString() {
+		return gymUsername;
+	}
+
 
 }

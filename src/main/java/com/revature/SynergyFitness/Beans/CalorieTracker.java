@@ -13,25 +13,13 @@ public class CalorieTracker {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int trackerId;
-    @OneToOne
-    @JoinColumn(name="user_id")
-    private Person user;
 	private int totalCalories;
 	private String foodList;
 	
 	public CalorieTracker() {
 		trackerId = 0;
-		user=null;
 		totalCalories = 0;
 		foodList = "";
-	}
-
-	public Person getUser() {
-		return user;
-	}
-
-	public void setUser(Person user) {
-		this.user = user;
 	}
 
 	public int getTrackerId() {
@@ -62,7 +50,7 @@ public class CalorieTracker {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(foodList, totalCalories, trackerId, user);
+		return Objects.hash(foodList, totalCalories, trackerId);
 	}
 
 	@Override
@@ -75,14 +63,15 @@ public class CalorieTracker {
 			return false;
 		CalorieTracker other = (CalorieTracker) obj;
 		return Objects.equals(foodList, other.foodList) && totalCalories == other.totalCalories
-				&& trackerId == other.trackerId && Objects.equals(user, other.user);
+				&& trackerId == other.trackerId;
 	}
 
 	@Override
 	public String toString() {
-		return "CalorieTracker [trackerId=" + trackerId + ", user=" + user + ", totalCalories=" + totalCalories
-				+ ", foodList=" + foodList + "]";
+		return "CalorieTracker [trackerId=" + trackerId + ", totalCalories=" + totalCalories + ", foodList=" + foodList
+				+ "]";
 	}
+
 	
 	
 }
