@@ -1,30 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { AboutMe } from '../../models/about-me';
+import { UserService } from '../../services/user.service';
+import { ProfileService } from 'src/app/services/profile.service';
+
 
 @Component({
-  selector: 'app-profiles',
-  templateUrl: './profiles.component.html',
-  styleUrls: ['./profiles.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class ProfilesComponent implements OnInit {
+export class ProfileComponent implements OnInit {
+  aboutMes = AboutMe[] = [];
 
-  constructor() { }
+  constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
+    this.getAboutMes();
   }
 
-  async UpdateAboutMe() {
-    if (this.userServ.loggedInUser && (this.aboutMe.user = this.userServ.loggedInUser)) {
-      let success = await this.userServ.updateAboutMe(this.aboutMe.id, this.userServ.loggedInUser, this.aboutMe.media, this.aboutMe.age, this.aboutMe.certs, this.aboutMe.description, this.aboutMe.experience, );
-      if (success) {
-      this.aboutMe.age =  this.aboutMe.age;
-      this.aboutMe.certs = this.aboutMe.certs;
-      this.aboutMe.description = this.aboutMe.description;
-      this.aboutMe.experience = this.aboutMe.experience;
-      this.aboutMe.media = this.aboutMe.media;
-    } else this.message = 'Something went wrong. Please try again later.';
-    } else {
-      this.message = 'You have to be logged in to edit user profile!';
-    }
-  }
-
+getAboutMes(): void {
+  this.profileService.getAboutMes()
+  .subscribe(aboutMes => this.aboutMes = aboutMes)
 }
+
+} 
+

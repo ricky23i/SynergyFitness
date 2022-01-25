@@ -19,7 +19,7 @@ import { UrlService } from './services/url.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material/material.module';
 import { CreatePostComponent } from './tools/create-post/create-post.component';
-import { ProfilesComponent } from './profiles/profiles.component';
+import { ProfilesComponent } from './components/profiles/profiles.component';
 
 @NgModule({
   declarations: [

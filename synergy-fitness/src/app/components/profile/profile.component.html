@@ -1,12 +1,33 @@
+<div *ngIf="AboutMe">
 
-<ul class="aboutMe" [id]="'aboutMe + aboutMe.id">
-    <li *ngfor="let aboutMe of aboutMes">
-        <a routerLink="/aboutMes/{{aboutMe.id}}">
-            <span class="badge"{{aboutMe.id}}></span> {{AboutMe.user}}
-        </a>
-    </li>
-</ul>
-    <button *ngIf="aboutMe.user" (click)="UpdateAboutMe()" [id]="'update' + aboutMe.id"
-    [disabled]="(!this.userServ.loggedInUser || !(this.aboutMe.user = this.userServ.loggedInUser))">Update</button>
+    <h2>{{loggedInUser.gymUsername}}</h2>
+    <div><span>id:</span>{{AboutMe.id}}</div>
+    <div>
+        <label for="AboutMe-Trainer">Trainer: </label>
+        <input id="AboutMe-Trainer" [(ngmodel)]="loggedInUser.gymUsername" placeholder="Trainer Name">
+    </div>
+    <div>
+        <label for="Trainer-Picture">Image: </label>
+        <input id="Trainer-Picture" [(ngmodel)]="media.url" placeholder="Trainer Picture">
+    </div>
+    <div>
+        <label for="AboutMe-age">Age: </label>
+        <input id="AboutMe-age" [(ngmodel)]="AboutMe.age" placeholder="Trainer Age">
+    </div>
+    <div>
+        <label for="AboutMe-certs">Certifications: </label>
+        <input id="AboutMe-certs" [(ngmodel)]="AboutMe.certs" placeholder="Trainer Certifications">
+    </div>
+    <div>
+        <label for="AboutMe-Desc">Description: </label>
+        <input id="AboutMe-Desc" [(ngmodel)]="AboutMe.description" placeholder="Trainer Description">
+    </div>
+    <div>
+        <label for="AboutMe-exp">Age: </label>
+        <input id="AboutMe-exp" [(ngmodel)]="AboutMe.experience" placeholder="Trainer Experience">
+    </div>
+    <button (click)="goBack()">go back</button>
+    <button (click)="save()">save</button>
+</div>
 
 
