@@ -15,7 +15,7 @@
               [routerLinkActiveOptions]="{ exact: true }">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/calorietracker'" [routerLinkActive]="'active'">Calorie Tracker</a>
+            <a class="nav-link" [routerLink]="'/calorietracker'" [routerLinkActive]="'active'" >Calorie Tracker</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">|||</a>
@@ -37,9 +37,13 @@
             </ul>
           </li>
         </ul>
-        <button id="logout" type="button" class="btn btn-secondary btn-sm pull-right">
-          Log out
+        <button  *ngIf="!loggedInUser; else user" (click)="showLogin=!showLogin" id="login" type="button" class="btn btn-secondary btn-sm pull-right">
+          Log In
         </button>
+        <ng-template #user>
+          {{ loggedInUser.firstname }}&nbsp;&nbsp;&nbsp;
+          <button (click)="logOut()" id="logout" type="button" class="btn btn-secondary btn-sm pull-right">Log Out</button>
+      </ng-template>
       </div>
     </div>
   </nav>

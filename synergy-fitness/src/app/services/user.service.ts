@@ -48,7 +48,8 @@ export class UserService {
     if (resp.status===200) {
       let token = await resp.json();
       localStorage.setItem('Token', token);
-      //console.log("logged in success");
+      console.log("logged in success");
+      console.log(token);
       
     }
   }
