@@ -2,8 +2,8 @@ import { Person } from "./person";
 
 export class CalorieTracker {
     constructor(
-        public trackerid:number,
+        public trackerId:number,
         public totalCalories:number,
-        public foodlist:string
+        public foodList:string
     ){}
 }
