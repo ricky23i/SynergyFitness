@@ -11,7 +11,7 @@ constructor(
     public role:Role,
     public trainer:Person,
     public signincounter:number,
-    public tracker:CalorieTracker,
+    public calorieTracker:CalorieTracker,
     public lastsignindate:Date
 ){}
 }
