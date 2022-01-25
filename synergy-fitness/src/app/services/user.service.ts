@@ -14,18 +14,6 @@ export class UserService {
 
   constructor(private url:UrlService) { }
 
-  async updateAboutMe(aboutMeId:number,person:Person,media:Media,aboutMeAge:number,aboutMeCerts:String,aboutMeDescription:String,aboutMeExperience:String) {
-    this.authHeaders.Token = localStorage.getItem('Token');
-    let resp = await fetch(this.url.url + 'aboutme/update/' + aboutMeId, {method:'PUT',body:JSON.stringify(AboutMe),headers:this.authHeaders});
-
-    if (resp.status===200) {
-      this.loggedInUser = await resp.json();
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   async checkLogin() {
     let token = localStorage.getItem('Token');
     if (token) {
