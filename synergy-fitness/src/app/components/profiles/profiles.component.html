@@ -5,5 +5,3 @@
         </a>
     </li>
 </ul>
-    <button *ngIf="aboutMe.user" (click)="UpdateAboutMe()" [id]="'update' + aboutMe.id"
-    [disabled]="(!this.userServ.loggedInUser || !(this.aboutMe.user = this.userServ.loggedInUser))">Update</button>

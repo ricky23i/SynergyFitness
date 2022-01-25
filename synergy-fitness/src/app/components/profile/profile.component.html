@@ -1,6 +1,32 @@
-<div *ngIf="AboutMe">
-
-    <h2>{{loggedInUser.gymUsername}}</h2>
+<div *ngIf*="AboutMe"
+    [disabled]=(!this.userServ.loggedInUser)>
+    <div *ngIf="AboutMe"
+    [disabled]=!(this.aboutMe.user = this.userServ.loggedInUser))>
+    <h2>{{this.AboutMe.user.gymUsername}}</h2>
+    <div><span>id:</span>{{AboutMe.id}}</div>
+    <div>
+        {{this.AboutMe.user.gymUsername}}
+    </div>
+    <div>
+        {{this.AboutMe.media.url}}
+    </div>
+    <div>
+        {{this.AboutMe.age}}
+    </div>
+    <div>
+        {{this.AboutMe.certs}}
+    </div>
+    <div>
+        {{this.AboutMe.description}}
+    </div>
+    <div>
+        {{this.AboutMe.experience}}
+    </div>
+    <button (click)="goBack()">go back</button>
+</div>
+<div *ngIf="AboutMe"
+    [disabled]=!(this.aboutMe.user = this.userServ.loggedInUser))>
+    <h2>{{this.AboutMe.user.gymUsername}}</h2>
     <div><span>id:</span>{{AboutMe.id}}</div>
     <div>
         <label for="AboutMe-Trainer">Trainer: </label>

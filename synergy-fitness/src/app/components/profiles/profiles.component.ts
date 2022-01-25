@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { AboutMe } from '../../models/about-me';
 import { UserService } from '../../services/user.service';
-import { ProfileService } from 'src/app/services/profile.service';
 
 
 @Component({
@@ -12,17 +13,27 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class ProfileComponent implements OnInit {
   aboutMes = AboutMe[] = [];
+  private aboutMesUrl = '/AboutMes'
 
-  constructor(private profileService: ProfileService) { }
+  constructor(private http: HttpClient, public userServ: UserService) { }
 
   ngOnInit(): void {
     this.getAboutMes();
   }
 
-getAboutMes(): void {
-  this.profileService.getAboutMes()
-  .subscribe(aboutMes => this.aboutMes = aboutMes)
-}
+  getAboutMes(): Observable<AboutMe[]> {
+    return this.http.get<AboutMe[]>(this.aboutMesUrl)
+  }
+
+  getAboutMe(): Observable<AboutMe> {
+  }
+
+  searchAboutMes(term: string): Observable<AboutMe[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http.get<AboutMe[]>('${this.aboutMeUrl}/?')
+  }
 
 } 
 

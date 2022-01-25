@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { AboutMe } from 'src/app/models/about-me';
-import { ProfileService } from 'src/app/services/profile.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -13,10 +12,12 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ProfilesComponent implements OnInit {
   @Input() aboutMe?: AboutMe;
+  message:string="";
+
 
   constructor(
-    private route: ActivatedRoute,
-    private profilezService: ProfileService, 
+    private route: ActivatedRoute, 
+    private userServ: UserService,
     private location: Location
   ) { }
 
@@ -26,12 +27,20 @@ export class ProfilesComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-
-save(): void {
-  if (this.aboutMe) {
-    this.profilezService.updateAboutMe(this.aboutMe)
-      .subscribe(() => this.goBack)
+  async updateAboutMe(aboutme: AboutMe): Observable<any> {
+    if (this.userServ.loggedInUser && (this.aboutMe.user = this.userServ.loggedInUser)) {
+      let success = await this.updateAboutMe(this.aboutMe);
+      if (success) {
+      this.aboutMe.age =  this.aboutMe.age;
+      this.aboutMe.certs = this.aboutMe.certs;
+      this.aboutMe.description = this.aboutMe.description;
+      this.aboutMe.experience = this.aboutMe.experience;
+      this.aboutMe.media = this.aboutMe.media;
+      this.message = "AboutMe Updated";
+    } else this.message = 'Something went wrong. Please try again later.';
+    } else {
+      this.message = 'You have to be logged in to edit user profile!';
+    }
   }
 }
-  }
 
