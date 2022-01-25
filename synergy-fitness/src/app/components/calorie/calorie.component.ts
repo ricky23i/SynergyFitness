@@ -27,8 +27,9 @@ export class CalorieComponent implements OnInit {
     async addCalories(){
       if (this.userServ.loggedInUser){
         this.caltracker=this.user.calorieTracker;
-        this.caltracker.trackerid=this.user.calorieTracker.trackerid;
-        this.caltracker.foodlist=this.caltracker.foodlist +":"+ (<HTMLInputElement>document.getElementById("foodl")).value;
+        this.caltracker.trackerId=this.user.calorieTracker.trackerId;
+        this.caltracker.foodList=this.caltracker.foodList +":"+ (<HTMLInputElement>document.getElementById("foodl")).value;
+        console.log((<HTMLInputElement>document.getElementById("foodl")).value);
         this.caltracker.totalCalories=this.caltracker.totalCalories +(<HTMLInputElement>document.getElementById("calsadd")).valueAsNumber;
         this.user.calorieTracker=this.caltracker;
         console.log(this.caltracker.totalCalories);
