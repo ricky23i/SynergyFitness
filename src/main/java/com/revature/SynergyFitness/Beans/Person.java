@@ -42,7 +42,7 @@ public class Person {
 	@Column(name="first_name")
 	private String firstname;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="tracker_id")
 	private CalorieTracker calorieTracker;
 	@Column(name="last_name")
@@ -70,7 +70,7 @@ public class Person {
 		lastname = " ";
 		lastSignInDate = " ";
 		signInCounter=0;
-		calorieTracker=new CalorieTracker();
+		calorieTracker=null;
 		
 	}
 	
