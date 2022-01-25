@@ -32,6 +32,12 @@ export class UserService {
       let resp = await fetch(this.url.url + 'users/' + token + '/auth');
       if (resp.status===200) {
         this.loggedInUser = await resp.json();
+        //comment this out if no worko
+        if(!(this.loggedInUser.lastsignindate==new Date()))
+        this.loggedInUser.signincounter++;
+
+        this.loggedInUser.lastsignindate= new Date();
+
       }
     }
   }
@@ -48,9 +54,6 @@ export class UserService {
     if (resp.status===200) {
       let token = await resp.json();
       localStorage.setItem('Token', token);
-      console.log("logged in success");
-      console.log(token);
-      
     }
   }
 

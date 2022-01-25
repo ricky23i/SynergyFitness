@@ -2,9 +2,10 @@
 <div class="calorietracker"  >
     <h2>Track your calories for {{currentDate | date:'MM-dd-yyyy'}}</h2>
    <h3>Total Calories</h3>
- <!---  <p>{{caltracker.totalcalories}}</p>--->
+ <p>{{this.user.calorieTracker.totalCalories }}
+ </p>
     <h3>All Food</h3>
-  <!--- <p>{{caltracker.foodlist}}</p>--->
+  <p>{{this.user.calorieTracker.foodList }}</p>
     
 </div>
 <div class="input-group mb-3">
