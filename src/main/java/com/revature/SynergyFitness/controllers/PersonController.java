@@ -61,10 +61,10 @@ public class PersonController {
 	
 	
 	@GetMapping(path="/{userid}/auth")
-	public ResponseEntity<Person> checkLogin(@RequestBody String token, @PathVariable int userId){
+	public ResponseEntity<Person> checkLogin(@PathVariable int userid){
 		try {
 
-			Person loggedInPerson =userServ.getUserById(userId);
+			Person loggedInPerson =userServ.getUserById(userid);
 			if(loggedInPerson!=null)
 				return ResponseEntity.ok(loggedInPerson);
 			else
@@ -76,12 +76,14 @@ public class PersonController {
 		
 	}
 	@GetMapping(path="/{userid}")
-	public ResponseEntity<Person> getUserById(@PathVariable int userId) {
+	public ResponseEntity<Person> getUserById(@PathVariable int userid) {
 		
 		
-		Person user = userServ.getUserById(userId);
-		if (user != null)
+		Person user = userServ.getUserById(userid);
+	
+		if (user != null) {
 			return ResponseEntity.ok(user);
+		}
 		else
 			return ResponseEntity.notFound().build();
 	}
@@ -101,6 +103,7 @@ public class PersonController {
 		
 		if (userToEdit != null && userToEdit.getUserId() == userId) {
 			userToEdit = userServ.updateUser(userToEdit);
+			
 			if (userToEdit != null)
 				return ResponseEntity.ok(userToEdit);
 			else

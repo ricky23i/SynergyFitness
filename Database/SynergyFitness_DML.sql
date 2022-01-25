@@ -6,10 +6,13 @@ INSERT INTO synergyfitness.user_role (role_name)
 
 
 
-
 INSERT INTO synergyfitness.person (role_id,gym_user_name,passwd,first_name,last_name,sign_in_counter)
 	VALUES (1,'ricky23i','123456789','Richard','Duenas',0);
 INSERT INTO synergyfitness.person (role_id,assigned_trainer,gym_user_name,passwd,first_name,last_name,sign_in_counter)
 	VALUES (2,2,'user23','123456789','test','user',0);
 */
+INSERT INTO synergyfitness.calorie_tracker (user_id,total_calories)
+	VALUES (1,0);
+INSERT INTO synergyfitness.calorie_tracker (user_id,total_calories)
+	VALUES (2,0);
 commit;
