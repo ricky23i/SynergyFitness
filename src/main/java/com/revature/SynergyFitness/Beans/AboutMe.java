@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,27 +15,39 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
+@Table(name="about_me")
 public class AboutMe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column (name = "about_me_id")
 	private int aboutMeId;
 	
-	private String description;
-	
-	private int trainerAge;
-	
-	private String certs;
-	
-	private String experience;
-	
-	@ManyToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id")
 	private Person user;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="mediaId")
-	private List<Media> media;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="media_id")
+	private Media media;
+	
+	@Column (name = "description")
+	private String description;
+	
+	@Column (name = "trainer_age")
+	private int trainerAge;
+	
+	@Column (name = "certs")
+	private String certs;
+	
+	@Column (name = "experience")
+	private String experience;
+
 	
 	public AboutMe () {
 		aboutMeId = 0;
@@ -43,7 +56,7 @@ public class AboutMe {
 		certs = "";
 		experience = "";
 		user = new Person();
-		media = new ArrayList<Media>();
+		media = new Media();
 	}
 
 	public int getAboutMeId() {
@@ -94,11 +107,11 @@ public class AboutMe {
 		this.user = user;
 	}
 
-	public List<Media> getMedia() {
+	public Media getMedia() {
 		return media;
 	}
 
-	public void setMedia(List<Media> media) {
+	public void setMedia(Media media) {
 		this.media = media;
 	}
 
