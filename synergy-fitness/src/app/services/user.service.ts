@@ -33,10 +33,10 @@ export class UserService {
       if (resp.status===200) {
         this.loggedInUser = await resp.json();
         //comment this out if no worko
-        if(!(this.loggedInUser.lastsignindate==new Date()))
-        this.loggedInUser.signincounter++;
+        //if(!(this.loggedInUser.lastsignindate==new Date()))
+        //this.loggedInUser.signincounter++;
 
-        this.loggedInUser.lastsignindate= new Date();
+        //this.loggedInUser.lastsignindate= new Date();
 
       }
     }
