@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.Transient;
 import javax.persistence.JoinColumn;
 @Entity
 public class Media {
@@ -17,6 +17,8 @@ public class Media {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="media_id")
 	private int mediaId;
+	
+	@Transient
 	@ManyToOne
 	@JoinColumn(name="post_id")
 	private Post post;
