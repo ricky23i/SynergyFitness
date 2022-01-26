@@ -27,4 +27,5 @@ public interface PersonService {
 	public Person inputCalories(int userId, int Calories,String foodList);
 	public CalorieTracker getCalories(int userId);
 	public AboutMe getAboutMeById(int aboutMeId);
+	public Set<AboutMe> viewAboutMes();
 }
