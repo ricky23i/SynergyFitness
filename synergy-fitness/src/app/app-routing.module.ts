@@ -11,19 +11,19 @@ import { UploadComponent } from './components/upload/upload.component';
 import { ProfilesComponent } from './components/profiles/profiles.component';
 
 const routes: Routes = [
-  { path:'', component: HomeComponent },
+  { path:'', component: HomeComponent },
+  { path:'user', component: ProfileComponent  },
   { path:'user', component: ProfilesComponent  },
-  { path:'user', component: ProfileComponent  },
-  { path: 'signup', component: SignupComponent },
-  { path: 'calorietracker', component: CalorieComponent },
-  { path: 'build-guide', component: BuildGuideComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'post', component: PostComponent },
-  { path: 'upload', component: UploadComponent }
+  { path: 'signup', component: SignupComponent },
+  { path: 'calorietracker', component: CalorieComponent },
+  { path: 'build-guide', component: BuildGuideComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'post', component: PostComponent },
+  { path: 'upload', component: UploadComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
