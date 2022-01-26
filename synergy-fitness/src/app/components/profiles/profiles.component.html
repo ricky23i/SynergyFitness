@@ -1,0 +1,7 @@
+<ul class="aboutMe" [id]="'aboutMe + aboutMe.id">
+    <li *ngfor="let aboutMe of aboutMes">
+        <a routerLink="/aboutMes/{{aboutMe.id}}">
+            <span class="badge"{{aboutMe.id}}></span> {{AboutMe.user}}
+        </a>
+    </li>
+</ul>
