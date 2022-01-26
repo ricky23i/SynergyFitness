@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { Person } from 'src/app/models/person';
 import { Post } from 'src/app/models/post';
 import { UserService } from 'src/app/services/user.service';
@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CreatePostComponent implements OnInit {
 selectedImageFile
-newpost:Post;
+newpost:Post = new Post(1, null, " ");
 message:string="";
 user:Person;
 
@@ -20,6 +20,7 @@ user:Person;
     this.userServ.checkLogin().then(resp => {
         this.user=this.userServ.loggedInUser;
         console.log(this.user);
+        console.log(this.user.role);
       });
 
   }
@@ -42,9 +43,9 @@ user:Person;
 
 async addPost(){
     if(this.userServ.loggedInUser){
-        this.newpost.postUser=this.user;
+        this.newpost.user=this.user;
         this.newpost.postData= (<HTMLInputElement>document.getElementById("wrkout")).value;
-        console.log(this.newpost.postData);
+        console.log(this.newpost);
         let success = await this.userServ.addPost(this.newpost);
         this.message="Post Uploaded";
     }

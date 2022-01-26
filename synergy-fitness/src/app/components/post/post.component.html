@@ -1,4 +1,4 @@
-<app-home></app-home>
+<app-home *ng for="let post of posts"></app-home>
 <button (click)="onCreatePostClick()"
    mat-fab color="warn"  id="post-button">Post</button> 
 
