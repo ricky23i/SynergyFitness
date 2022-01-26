@@ -2,9 +2,9 @@ import { Post } from "./post";
 
 export class Media {
     constructor(
-        public id:number,
+        public mediaId:number,
         public post:Post,
-        public fname:string,
-        public url:string
+        public fileName:string,
+        public mediaUrl:string
     ){}
 }

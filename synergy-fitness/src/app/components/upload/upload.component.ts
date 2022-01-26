@@ -1,6 +1,7 @@
 
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Media } from 'src/app/models/media';
 import { MediaService } from '../../services/media.service';
 
 @Component({
@@ -28,6 +29,7 @@ export class UploadComponent implements OnInit {
       formData.append('files', file, file.name);
     }
 
+
     this.mediaService.upload(formData).subscribe(
         event => {
           console.log(event);
@@ -54,8 +56,13 @@ export class UploadComponent implements OnInit {
         break;
       case HttpEventType.Response:
         console.log(event.body);
-        for(const filename of event.body) {
-          this.filenames.unshift(filename);
+
+        for(const media of event.body) {
+          // // this.filenames.unshift(filename);
+          // let newMedia: Media;
+          // newMedia.fileName = media['fileName'];
+          // newMedia.mediaUrl = media['mediaUrl'];
+          this.mediaService.saveInfo(media)
         }
         break;
     }
