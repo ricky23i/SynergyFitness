@@ -19,6 +19,7 @@ import { UrlService } from './services/url.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material/material.module';
 import { CreatePostComponent } from './tools/create-post/create-post.component';
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CreatePostComponent } from './tools/create-post/create-post.component';
     BuildGuideComponent,
     SignupComponent,
     UploadComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    UserprofileComponent
   ],
   imports: [
     BrowserModule,
