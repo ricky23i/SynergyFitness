@@ -42,12 +42,10 @@ user:Person;
 
 async addPost(){
     if(this.userServ.loggedInUser){
-        this.newpost=this.user.post;
-        this.newpost.postId=this.user.post.postId;
-        this.newpost.postData=this.newpost.postData + ":" + (<HTMLInputElement>document.getElementById("wrkout")).value;
-        this.user.newpost.postData=this.newpost;
+        this.newpost.postUser=this.user;
+        this.newpost.postData= (<HTMLInputElement>document.getElementById("wrkout")).value;
         console.log(this.newpost.postData);
-        let success = await this.userServ.updateUser(this.user);
+        let success = await this.userServ.addPost(this.newpost);
         this.message="Post Uploaded";
     }
 
