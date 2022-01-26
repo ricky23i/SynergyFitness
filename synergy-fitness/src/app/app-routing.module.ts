@@ -11,6 +11,7 @@ import { ProfileSearchComponent } from './components/profile-search/profile-sear
 import { SignupComponent } from './components/signup/signup.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
+import { CreatePostComponent } from './tools/create-post/create-post.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'post', component: PostComponent },
   { path: 'upload', component: UploadComponent },
   { path: 'userprofile', component: UserprofileComponent },
-  { path: 'userprofile', component: UserprofileComponent }
+  { path: 'userprofile', component: UserprofileComponent },
+  { path: 'createpost', component: CreatePostComponent }
 ];
 
 @NgModule({

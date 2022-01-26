@@ -72,14 +72,11 @@ export class UserService {
     else return false;
   }
 
-  async addPost(post:Post): Promise<Post> {
+  async addPost(post:Post): Promise<void> {
     let resp = await fetch(this.url.url + 'posts', {method:'POST',body:JSON.stringify(post),
     headers:this.regHeaders});
-  if (resp.status===200 || resp.status===201) {
-    return resp.json();
-    } 
-    else return null;
-  }
+ 
+}
 
   async getPosts(): Promise<Post[]> {
     let resp = await fetch(this.url.url + 'posts');
