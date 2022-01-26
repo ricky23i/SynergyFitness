@@ -13,8 +13,7 @@ import { AboutMeService } from 'src/app/services/about-me.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  @Input() aboutMe?: AboutMe;
-
+  @Input() aboutMe: AboutMe;
   message:string="";
   user:Person;
 
@@ -35,10 +34,17 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  getAboutMe(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.aboutMeServ.getAboutMe(id)
-      .subscribe(aboutMe => this.aboutMe = aboutMe);
+  // getAboutMe(): void {
+  //   const id = Number(this.route.snapshot.paramMap.get('id'));
+  //   this.aboutMeServ.getAboutMe(id)
+  //     .subscribe(aboutMe => this.aboutMe = aboutMe);
+  // }
+  async getAboutMe() { 
+    if (this.aboutMe.id) {
+      let aboutMe = await this.aboutMeServ.getAboutMe(this.aboutMe.id);
+      if (aboutMe) this.aboutMe = aboutMe;
+
+    }
   }
 
 
@@ -61,10 +67,16 @@ export class ProfileComponent implements OnInit {
   //   }
   // }
 
-  save(): void {
-    if (this.aboutMe) {
-      this.aboutMeServ.updateAboutMe(this.aboutMe)
-      .subscribe(() => this.goBack)
+  // save(): void {
+  //   if (this.aboutMe) {
+  //     this.aboutMeServ.updateAboutMe(this.aboutMe)
+  //     .subscribe(() => this.goBack)
+  //   }
+  // }
+
+  async save(){
+    if (this.userServ.loggedInUser){
+      let success = await this.aboutMeServ.updateAboutMe(this.aboutMe);
     }
   }
   // async updateAboutMe(aboutme: AboutMe): Promsie<boolean> {

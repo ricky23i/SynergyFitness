@@ -32,9 +32,12 @@ export class ProfilesComponent implements OnInit {
     });
   }
 
-  getAboutMes(): void {
-    this.aboutMeServ.getAboutMes()
-    .subscribe(aboutMes => this.aboutMes =  aboutMes);
+  // getAboutMes(): void {
+  //   this.aboutMeServ.getAboutMes()
+  //   .subscribe(aboutMes => this.aboutMes =  aboutMes);
+  // }
+  async getAboutMes(): Promise<void> {
+    this.aboutMes = await this.aboutMeServ.getAboutMes();
   }
 
   goBack(): void {
