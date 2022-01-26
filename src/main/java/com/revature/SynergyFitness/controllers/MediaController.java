@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -66,7 +67,7 @@ public class MediaController {
 	}
 	
 	@PostMapping(path="/saveinfo")
-	public ResponseEntity<Void> safeInfo(@RequestParam Media media) {
+	public ResponseEntity<Void> safeInfo(@RequestBody Media media) {
 		try {
 			if(media != null) {
 				mediaServ.saveMedia(media);
