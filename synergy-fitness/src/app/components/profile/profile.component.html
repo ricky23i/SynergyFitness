@@ -1,56 +1,56 @@
-<div *ngIf*="AboutMe"
-    [disabled]=(!this.userServ.loggedInUser)>
-    <div *ngIf="AboutMe">
+<p>profile works!</p>
+<div>
+    <div>
     <!-- [disabled]=((this.AboutMe.user) == (this.userServ.loggedInUser))> -->
-    <h2>{{this.AboutMe.user.gymUsername}}</h2>
-    <div><span>id:</span>{{AboutMe.id}}</div>
+    <h2>{{this.aboutMe.user.gymUsername}}</h2>
+    <div><span>id:</span>{{aboutMe.id}}</div>
     <div>
-        {{this.AboutMe.user.gymUsername}}
+        {{this.aboutMe.user.gymUsername}}
     </div>
     <div>
-        {{this.AboutMe.media.url}}
+        {{this.aboutMe.media.url}}
     </div>
     <div>
-        {{this.AboutMe.age}}
+        {{this.aboutMe.age}}
     </div>
     <div>
-        {{this.AboutMe.certs}}
+        {{this.aboutMe.certs}}
     </div>
     <div>
-        {{this.AboutMe.description}}
+        {{this.aboutMe.description}}
     </div>
     <div>
-        {{this.AboutMe.experience}}
+        {{this.aboutMe.experience}}
     </div>
     <button (click)="goBack()">go back</button>
 </div>
-<div *ngIf="AboutMe"></div>
+<div *ngIf="aboutMe">
     <!-- [disabled]=!((this.AboutMe.user) == (this.userServ.loggedInUser)) -->
-    <h2>{{this.AboutMe.user.gymUsername}}</h2>
-    <div><span>id:</span>{{AboutMe.id}}</div>
+    <h2>{{this.aboutMe.user.gymUsername}}</h2>
+    <div><span>id:</span>{{aboutMe.id}}</div>
     <div>
         <label for="AboutMe-Trainer">Trainer: </label>
-        <input id="AboutMe-Trainer" [(ngmodel)]="loggedInUser.gymUsername" placeholder="Trainer Name">
+        <input id="AboutMe-Trainer" [(ngmodel)]="this.aboutMe.user.gymUsername" placeholder="Trainer Name">
     </div>
     <div>
         <label for="Trainer-Picture">Image: </label>
-        <input id="Trainer-Picture" [(ngmodel)]="media.url" placeholder="Trainer Picture">
+        <input id="Trainer-Picture" [(ngmodel)]="this.aboutMe.media.url" placeholder="Trainer Picture">
     </div>
     <div>
         <label for="AboutMe-age">Age: </label>
-        <input id="AboutMe-age" [(ngmodel)]="AboutMe.age" placeholder="Trainer Age">
+        <input id="AboutMe-age" [(ngmodel)]="this.aboutMe.age" placeholder="Trainer Age">
     </div>
     <div>
         <label for="AboutMe-certs">Certifications: </label>
-        <input id="AboutMe-certs" [(ngmodel)]="AboutMe.certs" placeholder="Trainer Certifications">
+        <input id="AboutMe-certs" [(ngmodel)]="this.aboutMe.certs" placeholder="Trainer Certifications">
     </div>
     <div>
         <label for="AboutMe-Desc">Description: </label>
-        <input id="AboutMe-Desc" [(ngmodel)]="AboutMe.description" placeholder="Trainer Description">
+        <input id="AboutMe-Desc" [(ngmodel)]="this.aboutMe.description" placeholder="Trainer Description">
     </div>
     <div>
         <label for="AboutMe-exp">Age: </label>
-        <input id="AboutMe-exp" [(ngmodel)]="AboutMe.experience" placeholder="Trainer Experience">
+        <input id="AboutMe-exp" [(ngmodel)]="this.aboutMe.experience" placeholder="Trainer Experience">
     </div>
     <button (click)="goBack()">go back</button>
     <button (click)="save()">save</button>

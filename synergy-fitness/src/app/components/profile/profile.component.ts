@@ -1,12 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { AboutMe } from 'src/app/models/about-me';
 import { Person } from 'src/app/models/person';
 import { UserService } from 'src/app/services/user.service';
-import { Observable } from 'rxjs';
+import { AboutMeService } from 'src/app/services/about-me.service';
 
 @Component({
   selector: 'app-profiles',
@@ -15,11 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class ProfileComponent implements OnInit {
   @Input() aboutMe?: AboutMe;
-  private aboutMeUrl = '/AboutMe'
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-  
+
   message:string="";
   user:Person;
 
@@ -27,16 +22,25 @@ export class ProfileComponent implements OnInit {
   constructor(
     private route: ActivatedRoute, 
     private userServ: UserService,
+    private aboutMeServ: AboutMeService,
     private location: Location,
-    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
+    this.getAboutMe();
+
     this.userServ.checkLogin().then(resp => {
       this.user=this.userServ.loggedInUser;
       console.log(this.user);
     });
   }
+
+  getAboutMe(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.aboutMeServ.getAboutMe(id)
+      .subscribe(aboutMe => this.aboutMe = aboutMe);
+  }
+
 
   goBack(): void {
     this.location.back();
@@ -57,8 +61,11 @@ export class ProfileComponent implements OnInit {
   //   }
   // }
 
-  updateAboutMe(aboutMe: AboutMe): Observable<any> {
-    return this.http.put(this.aboutMeUrl, aboutMe, this.httpOptions);
+  save(): void {
+    if (this.aboutMe) {
+      this.aboutMeServ.updateAboutMe(this.aboutMe)
+      .subscribe(() => this.goBack)
+    }
   }
   // async updateAboutMe(aboutme: AboutMe): Promsie<boolean> {
   //   this.authHeaders.Token 
