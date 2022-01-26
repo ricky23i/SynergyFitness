@@ -17,18 +17,18 @@ import { UploadComponent } from './components/upload/upload.component';
 import { UserService } from './services/user.service';
 import { UrlService } from './services/url.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MaterialModule} from './material/material.module';
+import { MaterialModule } from './material/material.module';
 import { CreatePostComponent } from './tools/create-post/create-post.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { ProfilesComponent } from './components/profiles/profiles.component';
+import { ProfileSearchComponent } from './components/profile-search/profile-search.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ProfileComponent,
-    ProfilesComponent,
     PostComponent,
     CalorieComponent,
     HeaderComponent,
@@ -37,7 +37,9 @@ import { ProfilesComponent } from './components/profiles/profiles.component';
     UploadComponent,
     CreatePostComponent,
     UserprofileComponent,
-    ProfilesComponent
+    ProfileComponent,
+    ProfilesComponent,
+    ProfileSearchComponent
   ],
   imports: [
     BrowserModule,

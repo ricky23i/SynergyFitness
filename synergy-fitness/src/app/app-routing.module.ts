@@ -6,14 +6,18 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PostComponent } from './components/post/post.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ProfilesComponent } from './components/profiles/profiles.component';
+import { ProfileSearchComponent } from './components/profile-search/profile-search.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
-import { ProfilesComponent } from './components/profiles/profiles.component';
+
 
 const routes: Routes = [
   { path:'', component: HomeComponent },
-  { path:'user', component: ProfileComponent  },
+  { path:'user/:id', component: ProfileComponent  },
+  { path:'users', component: ProfilesComponent  },
+  { path: 'users/search/:id', component: ProfileSearchComponent  },
   { path: 'signup', component: SignupComponent },
   { path: 'calorietracker', component: CalorieComponent },
   { path: 'build-guide', component: BuildGuideComponent },

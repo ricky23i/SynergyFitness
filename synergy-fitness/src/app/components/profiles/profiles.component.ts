@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { AboutMe } from '../../models/about-me';
 import { Person } from 'src/app/models/person';
 import { UserService } from '../../services/user.service';
+import { AboutMeService } from 'src/app/services/about-me.service';
 
 
 
@@ -15,10 +14,9 @@ import { UserService } from '../../services/user.service';
 })
 export class ProfilesComponent implements OnInit {
   aboutMes: AboutMe[] = [];
-  private aboutMesUrl = '/AboutMes'
   user:Person;
 
-  constructor(private http: HttpClient, public userServ: UserService) { }
+  constructor(private aboutMeServ: AboutMeService , public userServ: UserService) { }
 
   ngOnInit(): void {
     this.getAboutMes();
@@ -29,20 +27,9 @@ export class ProfilesComponent implements OnInit {
     });
   }
 
-  getAboutMes(): Observable<AboutMe[]> {
-    return this.http.get<AboutMe[]>(this.aboutMesUrl);
-  }
-
-  getAboutMe(id: number): Observable<AboutMe> {
-    const url = '${this.aboutMeUrl}/${id}';
-    return this.http.get<AboutMe>(url);
-  }
-
-  searchAboutMes(term: string): Observable<AboutMe[]> {
-    if (!term.trim()) {
-      return of([]);
-    }
-    return this.http.get<AboutMe[]>('${this.aboutMeUrl}/?')
+  getAboutMes(): void {
+    this.aboutMeServ.getAboutMes()
+    .subscribe(aboutMes => this.aboutMes =  aboutMes);
   }
 
 } 
