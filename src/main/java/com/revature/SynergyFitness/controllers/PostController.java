@@ -1,5 +1,6 @@
 package com.revature.SynergyFitness.controllers;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,11 +35,9 @@ public class PostController {
 		@Autowired
 		private TrainerService trainServ;
 		
-		@GetMapping(path="/posts")
-		public ResponseEntity<Set<Person>> getPosts() {
-			
-			Set<Person> availablePosts = userServ.viewTrainers();
-			return ResponseEntity.ok(availablePosts);
+		@GetMapping
+		public ResponseEntity<List<Post>> getPosts() {
+			return ResponseEntity.ok(trainServ.getAllPosts());
 			//return ResponseEntity.status(HttpStatus.OK).body(availablePets);
 		}
 		

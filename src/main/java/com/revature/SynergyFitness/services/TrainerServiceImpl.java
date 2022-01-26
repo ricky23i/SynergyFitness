@@ -1,5 +1,8 @@
 package com.revature.SynergyFitness.services;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +62,12 @@ public class TrainerServiceImpl implements TrainerService{
 		return null;
 	}
 
+	@Override
+	@Transactional
+	public List<Post> getAllPosts() {
+		List<Post> posts = postRepo.findAll();
+		return posts;
+	}
 	@Override
 	@Transactional
 	public void deletePost(Post postToDelete) {
