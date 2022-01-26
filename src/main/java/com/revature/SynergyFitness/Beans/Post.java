@@ -2,6 +2,8 @@ package com.revature.SynergyFitness.Beans;
 
 
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,11 +15,13 @@ import javax.persistence.ManyToOne;
 public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column (name="post_id")
 	private int postId;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id")
 	private Person user;
 	
+	@Column(name="post_data")
 	private String postData;
 	
 	public Post() {
