@@ -73,8 +73,10 @@ public class PersonServiceImpl implements PersonService{
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED)
 	public Person updateUser(Person userToUpdate) {
+		System.out.println(userToUpdate);
 		if (personRepo.existsById(userToUpdate.getUserId())) {
 			personRepo.save(userToUpdate);
+			System.out.println("save");
 			userToUpdate = personRepo.findById(userToUpdate.getUserId()).get();
 			return userToUpdate;
 		}
