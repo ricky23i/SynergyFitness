@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AboutMe } from '../models/about-me';
 import { Media } from '../models/media';
 import { Person } from '../models/person';
+import { Post } from '../models/post';
 import { UrlService } from './url.service';
 
 @Injectable({
@@ -70,4 +71,24 @@ export class UserService {
     }
     else return false;
   }
+
+  async addPost(post:Post): Promise<Post> {
+    let resp = await fetch(this.url.url + 'posts', {method:'POST',body:JSON.stringify(post),
+    headers:this.regHeaders});
+  if (resp.status===200 || resp.status===201) {
+    return resp.json();
+    } 
+    else return null;
+  }
+
+  async getPosts(): Promise<Post[]> {
+    let resp = await fetch(this.url.url + 'posts');
+    if (resp.status===200 || resp.status===201){
+      return resp.json();
+    }
+    else return null;
+  }
 }
+
+
+

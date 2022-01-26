@@ -15,6 +15,5 @@ constructor(
     public signincounter:number,
     public calorieTracker:CalorieTracker,
     public lastsignindate:Date,
-    public post:Post
 ){}
 }
