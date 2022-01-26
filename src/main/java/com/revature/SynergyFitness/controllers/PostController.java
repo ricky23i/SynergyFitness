@@ -25,7 +25,7 @@ import com.revature.SynergyFitness.services.TrainerService;
 
 @RestController // basically puts @ResponseBody over ALL methods - no returning views
 @RequestMapping(path="/posts") // all requests starting with /pets come to this controller
-@CrossOrigin(origins="http://localhost:4200") // accepts requests from angular
+@CrossOrigin(origins="http://localhost:4200/") // accepts requests from angular
 public class PostController {
 
 	// field injection
