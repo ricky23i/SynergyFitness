@@ -1,7 +1,7 @@
 <p>profiles works!</p>
 <ul class="aboutme">
     <li *ngfor="let aboutMe of aboutMes">
-        <a routerLink="/AboutMe/{{aboutMe.id}}">
+        <a routerLink="/user/{{aboutMe.id}}">
             <span class="badge">{{aboutMe.id}}</span> {{AboutMe.user}}
         </a>
     </li>

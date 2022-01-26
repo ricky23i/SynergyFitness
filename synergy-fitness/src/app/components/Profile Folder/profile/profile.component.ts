@@ -74,11 +74,11 @@ export class ProfileComponent implements OnInit {
   //   }
   // }
 
-  async save(){
-    if (this.userServ.loggedInUser){
-      let success = await this.aboutMeServ.updateAboutMe(this.aboutMe);
-    }
-  }
+  // async save(){
+  //   if (this.userServ.loggedInUser){
+  //     let success = await this.aboutMeServ.updateAboutMe(this.aboutMe);
+  //   }
+  // }
   // async updateAboutMe(aboutme: AboutMe): Promsie<boolean> {
   //   this.authHeaders.Token 
   //   let resp = await fetch(this.url.url + 'AboutMes/' + this.aboutMe.id), {method:'PUT', body:JSON.stringify(aboutme)}

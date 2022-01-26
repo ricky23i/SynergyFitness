@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
-import { AboutMe } from '../../models/about-me';
+import { AboutMe } from '../../../models/about-me';
 import { Person } from 'src/app/models/person';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../../services/user.service';
 import { AboutMeService } from 'src/app/services/about-me.service';
 
 
@@ -23,8 +23,9 @@ export class ProfilesComponent implements OnInit {
     private location: Location
      ) { }
 
-  ngOnInit(): void {
-    this.getAboutMes();
+  async ngOnInit(): Promise<void> {
+    // this.getAboutMes();
+    this.aboutMes = await this.aboutMeServ.getAboutMes();
     
     this.userServ.checkLogin().then(resp => {
       this.user=this.userServ.loggedInUser;
@@ -36,9 +37,9 @@ export class ProfilesComponent implements OnInit {
   //   this.aboutMeServ.getAboutMes()
   //   .subscribe(aboutMes => this.aboutMes =  aboutMes);
   // }
-  async getAboutMes(): Promise<void> {
-    this.aboutMes = await this.aboutMeServ.getAboutMes();
-  }
+  // async getAboutMes(): Promise<void> {
+  //   this.aboutMes = await this.aboutMeServ.getAboutMes();
+  // }
 
   goBack(): void {
     this.location.back();

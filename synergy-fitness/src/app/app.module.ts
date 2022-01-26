@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './components/Profile Folder/profile/profile.component';
 import { PostComponent } from './components/post/post.component';
 import { CalorieComponent } from './components/calorie/calorie.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -20,8 +20,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { CreatePostComponent } from './tools/create-post/create-post.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
-import { ProfilesComponent } from './components/profiles/profiles.component';
-import { ProfileSearchComponent } from './components/profile-search/profile-search.component';
+import { ProfilesComponent } from './components/Profile Folder/profiles/profiles.component';
+import { ProfileSearchComponent } from './components/Profile Folder/profile-search/profile-search.component';
+import { EditProfileComponent } from './components/Profile Folder/edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ProfileSearchComponent } from './components/profile-search/profile-sear
     UserprofileComponent,
     ProfileComponent,
     ProfilesComponent,
-    ProfileSearchComponent
+    ProfileSearchComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
