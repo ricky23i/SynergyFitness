@@ -21,11 +21,10 @@ export class UserService {
       if (resp.status===200) {
         this.loggedInUser = await resp.json();
         //comment this out if no worko
-        //if(!(this.loggedInUser.lastsignindate==new Date()))
-        //this.loggedInUser.signincounter++;
-
-        //this.loggedInUser.lastsignindate= new Date();
-
+        let currentDate = new Date()
+        if(this.loggedInUser.lastsignindate!=currentDate)
+        this.loggedInUser.signincounter++;
+        this.loggedInUser.lastsignindate= currentDate;
       }
     }
   }
@@ -58,14 +57,17 @@ export class UserService {
     }
   }
 
-  async updateUser(person:Person): Promise<void> {
+  async updateUser(person:Person): Promise<boolean> {
     if (person.id===this.loggedInUser.id) {
       this.authHeaders.Token = localStorage.getItem('Token');
       let resp = await fetch(this.url.url + 'users/' + person.id, {method:'PUT',body:JSON.stringify(person),
         headers:this.authHeaders});
       if (resp.status===200) {
         this.loggedInUser = await resp.json();
+        return true;
       }
+      else return false;
     }
+    else return false;
   }
 }

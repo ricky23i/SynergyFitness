@@ -8,22 +8,24 @@ import { PostComponent } from './components/post/post.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UploadComponent } from './components/upload/upload.component';
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { ProfilesComponent } from './components/profiles/profiles.component';
 
 const routes: Routes = [
-  { path:'', component: HomeComponent },
-  { path:'user', component: ProfileComponent  },
-  { path:'user', component: ProfilesComponent  },
-  { path: 'signup', component: SignupComponent },
-  { path: 'calorietracker', component: CalorieComponent },
-  { path: 'build-guide', component: BuildGuideComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'post', component: PostComponent },
-  { path: 'upload', component: UploadComponent }
+  { path:'', component: HomeComponent },
+  { path:'user', component: ProfileComponent  },
+  { path: 'signup', component: SignupComponent },
+  { path: 'calorietracker', component: CalorieComponent },
+  { path: 'build-guide', component: BuildGuideComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'post', component: PostComponent },
+  { path: 'upload', component: UploadComponent },
+  { path: 'userprofile', component: UserprofileComponent },
+  { path: 'userprofile', component: UserprofileComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

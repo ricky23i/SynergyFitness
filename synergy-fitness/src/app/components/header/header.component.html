@@ -30,6 +30,7 @@
               <li><a class="dropdown-item" [routerLink]="'/post'">post page</a></li>
               <li><a class="dropdown-item" [routerLink]="'/signup'">signup page</a></li>
               <li><a class="dropdown-item" [routerLink]="'/upload'">upload</a></li>
+              <li><a class="dropdown-item" [routerLink]="'/userprofile'">user</a></li>
 
               <li>
                 <hr class="dropdown-divider">
@@ -37,7 +38,7 @@
             </ul>
           </li>
         </ul>
-        <button  *ngIf="!loggedInUser; else user" (click)="showLogin=!showLogin" id="login" type="button" class="btn btn-secondary btn-sm pull-right">
+        <button  *ngIf="!loggedInUser; else user" (click)="showLogin=!showLogin" id="login" type="button" class="btn btn-secondary btn-sm pull-right" [routerLink]="'/login'">
           Log In
         </button>
         <ng-template #user>

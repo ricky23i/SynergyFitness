@@ -19,6 +19,7 @@ import { UrlService } from './services/url.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material/material.module';
 import { CreatePostComponent } from './tools/create-post/create-post.component';
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { ProfilesComponent } from './components/profiles/profiles.component';
 
 @NgModule({
@@ -35,6 +36,7 @@ import { ProfilesComponent } from './components/profiles/profiles.component';
     SignupComponent,
     UploadComponent,
     CreatePostComponent,
+    UserprofileComponent,
     ProfilesComponent
   ],
   imports: [
