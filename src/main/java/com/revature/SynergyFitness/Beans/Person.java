@@ -131,9 +131,6 @@ public class Person {
 		return role;
 	}
 
-	public void setRoleId(Role roleId) {
-		this.role = roleId;
-	}
 
 	public Person getTrainer() {
 		return trainer;

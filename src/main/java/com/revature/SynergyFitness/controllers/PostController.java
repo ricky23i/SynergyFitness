@@ -47,7 +47,8 @@ public class PostController {
 		public ResponseEntity<Void> addPost(@RequestBody Post newPost) {
 			
 			
-			if (newPost !=null) {
+			if (newPost !=null
+					) {System.out.println(newPost);
 				trainServ.addPost(newPost);
 				return ResponseEntity.status(HttpStatus.CREATED).build();
 			}
