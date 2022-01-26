@@ -148,5 +148,9 @@ public class PersonServiceImpl implements PersonService{
 		}
 		
 	}
+	@Override
+	public Set<AboutMe> viewAboutMes() {
+		return meRepo.getAboutMes();
+	}
 
 }
