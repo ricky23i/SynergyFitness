@@ -1,5 +1,5 @@
 <div class="container">
-  <input id="media" type="file" (change)="onFileSelected($event.target.files)" accept="image/*,video/*" multiple #filePicker>
+  <input id="media" type="file" (change)="onUploadMedia($event.target.files)" accept="image/*,video/*" multiple #filePicker>
   <button (click)="filePicker.click()">Select File</button>
   <div class="panel-body">
     <!-- <div  *ngIf="fileProgress.status === 'uploading'"> -->
