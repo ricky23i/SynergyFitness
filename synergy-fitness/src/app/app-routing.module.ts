@@ -8,10 +8,12 @@ import { PostComponent } from './components/post/post.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UploadComponent } from './components/upload/upload.component';
+import { ProfilesComponent } from './components/profiles/profiles.component';
 
 const routes: Routes = [
   { path:'', component: HomeComponent },
   { path:'user', component: ProfileComponent  },
+  { path:'user', component: ProfilesComponent  },
   { path: 'signup', component: SignupComponent },
   { path: 'calorietracker', component: CalorieComponent },
   { path: 'build-guide', component: BuildGuideComponent },

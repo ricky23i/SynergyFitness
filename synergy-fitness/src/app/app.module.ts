@@ -27,6 +27,7 @@ import { ProfilesComponent } from './components/profiles/profiles.component';
     LoginComponent,
     HomeComponent,
     ProfileComponent,
+    ProfilesComponent,
     PostComponent,
     CalorieComponent,
     HeaderComponent,
