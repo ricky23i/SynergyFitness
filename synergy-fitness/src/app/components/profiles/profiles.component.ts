@@ -3,29 +3,39 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { AboutMe } from '../../models/about-me';
+import { Person } from 'src/app/models/person';
 import { UserService } from '../../services/user.service';
+
 
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  templateUrl: './profiles.component.html',
+  styleUrls: ['./profiles.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfilesComponent implements OnInit {
   aboutMes = AboutMe[] = [];
   private aboutMesUrl = '/AboutMes'
+  user:Person;
 
   constructor(private http: HttpClient, public userServ: UserService) { }
 
   ngOnInit(): void {
     this.getAboutMes();
+    
+    this.userServ.checkLogin().then(resp => {
+      this.user=this.userServ.loggedInUser;
+      console.log(this.user);
+    });
   }
 
   getAboutMes(): Observable<AboutMe[]> {
-    return this.http.get<AboutMe[]>(this.aboutMesUrl)
+    return this.http.get<AboutMe[]>(this.aboutMesUrl);
   }
 
-  getAboutMe(): Observable<AboutMe> {
+  getAboutMe(id: number): Observable<AboutMe> {
+    const url = '${this.aboutMeUrl}/${id}';
+    return this.http.get<AboutMe>(url);
   }
 
   searchAboutMes(term: string): Observable<AboutMe[]> {
