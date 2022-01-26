@@ -18,7 +18,7 @@ export class AboutMeService {
   constructor( private http: HttpClient) { }
 
   getAboutMes(): Observable<AboutMe[]> {
-    return this.http.get<AboutMe[]>(this.aboutMeUrl);
+    return this.http.get<AboutMe[]>(this.aboutMeUrl)
   }
 
   getAboutMe(id: number): Observable<AboutMe> {
