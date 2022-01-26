@@ -10,7 +10,5 @@ import com.revature.SynergyFitness.Beans.Person;
 
 @Repository
 public interface AboutMeRepository extends JpaRepository <AboutMe, Integer>{
-	
-	public Set<AboutMe> getAboutMes();
 
 }

@@ -1,5 +1,6 @@
 package com.revature.SynergyFitness.controllers;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -29,8 +30,8 @@ public class AboutMeController {
 	private TrainerService trainServ;
 	
 	@GetMapping
-	public ResponseEntity<Set<AboutMe>> viewAllAboutMes() {
-		Set<AboutMe> AboutMes = userServ.viewAboutMes();
+	public ResponseEntity<List<AboutMe>> viewAllAboutMes() {
+		List<AboutMe> AboutMes = userServ.viewAboutMes();
 		return ResponseEntity.ok(AboutMes);
 	}
 			

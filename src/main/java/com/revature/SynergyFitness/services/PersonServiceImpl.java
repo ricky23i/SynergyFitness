@@ -1,5 +1,6 @@
 package com.revature.SynergyFitness.services;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -149,8 +150,9 @@ public class PersonServiceImpl implements PersonService{
 		
 	}
 	@Override
-	public Set<AboutMe> viewAboutMes() {
-		return meRepo.getAboutMes();
+	@Transactional
+	public List<AboutMe> viewAboutMes() {
+		return meRepo.findAll();
 	}
 
 }
