@@ -14,7 +14,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./profiles.component.css']
 })
 export class ProfilesComponent implements OnInit {
-  aboutMes = AboutMe[] = [];
+  aboutMes: AboutMe[] = [];
   private aboutMesUrl = '/AboutMes'
   user:Person;
 
