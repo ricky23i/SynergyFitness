@@ -25,12 +25,12 @@ public class AboutMe {
 	@Column (name = "about_me_id")
 	private int aboutMeId;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id")
 	private Person user;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="mediaId")
-	private List<Media> media;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Media media;
 	
 	@Column (name = "description")
 	private String description;
@@ -52,7 +52,7 @@ public class AboutMe {
 		certs = "";
 		experience = "";
 		user = new Person();
-		media = new ArrayList<Media>();
+		media = new Media();
 	}
 
 	public int getAboutMeId() {
@@ -103,11 +103,11 @@ public class AboutMe {
 		this.user = user;
 	}
 
-	public List<Media> getMedia() {
+	public Media getMedia() {
 		return media;
 	}
 
-	public void setMedia(List<Media> media) {
+	public void setMedia(Media media) {
 		this.media = media;
 	}
 

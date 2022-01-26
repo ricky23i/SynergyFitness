@@ -2,6 +2,7 @@ package com.revature.SynergyFitness.Beans;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -42,13 +43,13 @@ public class Person {
 	@Column(name="first_name")
 	private String firstname;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="tracker_id")
 	private CalorieTracker calorieTracker;
 	@Column(name="last_name")
 	private String lastname;
 	@Column(name="last_sign_in_date")
-	private String lastSignInDate;
+	private Date lastSignInDate;
 	@Column(name="sign_in_counter")
 	private int signInCounter;
 	
@@ -68,9 +69,9 @@ public class Person {
 		password = " ";
 		firstname = " ";
 		lastname = " ";
-		lastSignInDate = " ";
+		lastSignInDate = new Date();
 		signInCounter=0;
-		calorieTracker=new CalorieTracker();
+		calorieTracker=null;
 		
 	}
 	
@@ -174,11 +175,14 @@ public class Person {
 		this.lastname = lastname;
 	}
 
-	public String getLastSignInDate() {
+
+	public Date getLastSignInDate() {
 		return lastSignInDate;
 	}
 
-	public void setLastSignInDate(String lastSignInDate) {
+
+
+	public void setLastSignInDate(Date lastSignInDate) {
 		this.lastSignInDate = lastSignInDate;
 	}
 

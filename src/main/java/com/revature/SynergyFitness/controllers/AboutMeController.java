@@ -29,6 +29,7 @@ public class AboutMeController {
 	@Autowired
 	private TrainerService trainServ;
 	
+	
 	@GetMapping
 	public ResponseEntity<List<AboutMe>> viewAllAboutMes() {
 		List<AboutMe> AboutMes = userServ.viewAboutMes();
