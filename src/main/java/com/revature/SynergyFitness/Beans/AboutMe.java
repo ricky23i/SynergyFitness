@@ -17,6 +17,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Table(name="about_me")
 public class AboutMe {
@@ -30,6 +33,7 @@ public class AboutMe {
 	private Person user;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="media_id")
 	private Media media;
 	
 	@Column (name = "description")
