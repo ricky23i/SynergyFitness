@@ -3,6 +3,7 @@ package com.revature.SynergyFitness.Beans;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,11 +15,16 @@ import javax.persistence.JoinColumn;
 public class Media {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="media_id")
 	private int mediaId;
 	@ManyToOne
 	@JoinColumn(name="post_id")
 	private Post post;
+	
+	@Column(name="media_url")
 	private String mediaUrl;
+	
+	@Column(name="file_name")
 	private String fileName;
 	
 	public Media() {
@@ -82,8 +88,7 @@ public class Media {
 		if (getClass() != obj.getClass())
 			return false;
 		Media other = (Media) obj;
-		return Objects.equals(fileName, other.fileName) && mediaId == other.mediaId
-				&& Objects.equals(mediaUrl, other.mediaUrl) && Objects.equals(post, other.post);
+		return this.mediaId == other.mediaId;
 	}
 
 	@Override

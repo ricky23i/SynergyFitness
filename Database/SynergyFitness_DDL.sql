@@ -69,3 +69,5 @@ alter table if exists user_comment
 add foreign key(reply_id) references user_comment(comment_id);
 alter table if exists person
 add foreign key(tracker_id) references calorie_tracker(tracker_id);
+
+alter table if exists media	alter column post_id drop not null;

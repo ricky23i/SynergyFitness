@@ -1,5 +1,6 @@
 package com.revature.SynergyFitness.services;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,15 +29,15 @@ public class PersonServiceImpl implements PersonService{
 	private PostRepository postRepo;
 	private AboutMeRepository meRepo;
 	@Autowired
-	public PersonServiceImpl(PersonRepository personRepo, CommentRepository comRepo,PostRepository postRepo) {
+	public PersonServiceImpl(PersonRepository personRepo, CommentRepository comRepo,PostRepository postRepo, AboutMeRepository meRepo) {
 		this.personRepo=personRepo;
 		this.comRepo=comRepo;
 		this.postRepo=postRepo;
+		this.meRepo=meRepo;
 	}
 	@Override
 	@Transactional
 	public AboutMe getAboutMeById(int aboutMeId) {
-		
 		return meRepo.getById(aboutMeId);
 	}
 	
@@ -73,8 +74,10 @@ public class PersonServiceImpl implements PersonService{
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED)
 	public Person updateUser(Person userToUpdate) {
+		System.out.println(userToUpdate);
 		if (personRepo.existsById(userToUpdate.getUserId())) {
 			personRepo.save(userToUpdate);
+			System.out.println("save");
 			userToUpdate = personRepo.findById(userToUpdate.getUserId()).get();
 			return userToUpdate;
 		}
@@ -147,6 +150,11 @@ public class PersonServiceImpl implements PersonService{
 			comRepo.delete(commentFromDatabase);
 		}
 		
+	}
+	@Override
+	@Transactional
+	public List<AboutMe> viewAboutMes() {
+		return meRepo.findAll();
 	}
 
 }
