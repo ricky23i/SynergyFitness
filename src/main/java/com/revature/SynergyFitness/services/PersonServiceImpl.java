@@ -29,15 +29,15 @@ public class PersonServiceImpl implements PersonService{
 	private PostRepository postRepo;
 	private AboutMeRepository meRepo;
 	@Autowired
-	public PersonServiceImpl(PersonRepository personRepo, CommentRepository comRepo,PostRepository postRepo) {
+	public PersonServiceImpl(PersonRepository personRepo, CommentRepository comRepo,PostRepository postRepo, AboutMeRepository meRepo) {
 		this.personRepo=personRepo;
 		this.comRepo=comRepo;
 		this.postRepo=postRepo;
+		this.meRepo=meRepo;
 	}
 	@Override
 	@Transactional
 	public AboutMe getAboutMeById(int aboutMeId) {
-		
 		return meRepo.getById(aboutMeId);
 	}
 	

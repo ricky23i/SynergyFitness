@@ -36,8 +36,8 @@ public class AboutMeController {
 	}
 			
 	@GetMapping(path="/{aboutMeId}")
-	public ResponseEntity<AboutMe> getAboutMeById(@PathVariable int AboutMeId) {
-		AboutMe aboutMe = userServ.getAboutMeById(AboutMeId);
+	public ResponseEntity<AboutMe> getAboutMeById(@PathVariable int aboutMeId) {
+		AboutMe aboutMe = userServ.getAboutMeById(aboutMeId);
 		
 		if (aboutMe != null) {
 			return ResponseEntity.ok(aboutMe);
