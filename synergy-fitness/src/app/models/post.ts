@@ -2,8 +2,8 @@ import { Person } from "./person";
 
 export class Post {
     constructor(
-        public id:number,
-        public user:Person,
-        public data:string
+        public postId:number,
+        public postUser:Person,
+        public postData:string
     ){}
 }

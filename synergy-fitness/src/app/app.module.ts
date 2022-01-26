@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material/material.module';
 import { CreatePostComponent } from './tools/create-post/create-post.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
+import { ProfilesComponent } from './components/profiles/profiles.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { UserprofileComponent } from './components/userprofile/userprofile.compo
     LoginComponent,
     HomeComponent,
     ProfileComponent,
+    ProfilesComponent,
     PostComponent,
     CalorieComponent,
     HeaderComponent,
@@ -34,7 +36,8 @@ import { UserprofileComponent } from './components/userprofile/userprofile.compo
     SignupComponent,
     UploadComponent,
     CreatePostComponent,
-    UserprofileComponent
+    UserprofileComponent,
+    ProfilesComponent
   ],
   imports: [
     BrowserModule,
