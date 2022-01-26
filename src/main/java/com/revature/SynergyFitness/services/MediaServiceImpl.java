@@ -1,7 +1,10 @@
 package com.revature.SynergyFitness.services;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.SynergyFitness.Beans.Media;
 import com.revature.SynergyFitness.data.MediaRepository;
@@ -16,28 +19,30 @@ public class MediaServiceImpl implements MediaService {
 	}
 
 	@Override
-	public boolean saveMedia(Media media) {
+	@Transactional
+	public Media saveMedia(Media media) throws IllegalArgumentException {
 		// TODO Auto-generated method stub
-		
-		return false;
+		return mediaRepo.save(media);
 	}
 
 	@Override
+	@Transactional
 	public boolean deleteMedia(Media media) {
 		// TODO Auto-generated method stub
-		return false;
+		boolean isDeleted = false;
+		try {
+			mediaRepo.delete(media);
+			isDeleted = true;
+		} catch(IllegalArgumentException e) {
+			isDeleted = false;
+		}
+		return isDeleted;
 	}
 
 	@Override
+	@Transactional
 	public Media getByID(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return mediaRepo.getById(id);
 	}
-
-	@Override
-	public String generateFilename() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

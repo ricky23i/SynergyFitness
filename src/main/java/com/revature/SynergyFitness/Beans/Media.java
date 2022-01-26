@@ -82,8 +82,7 @@ public class Media {
 		if (getClass() != obj.getClass())
 			return false;
 		Media other = (Media) obj;
-		return Objects.equals(fileName, other.fileName) && mediaId == other.mediaId
-				&& Objects.equals(mediaUrl, other.mediaUrl) && Objects.equals(post, other.post);
+		return this.mediaId == other.mediaId;
 	}
 
 	@Override
