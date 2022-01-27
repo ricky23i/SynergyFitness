@@ -23,13 +23,23 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.revature.SynergyFitness.Beans.Media;
 import com.revature.SynergyFitness.services.MediaService;
+import com.revature.SynergyFitness.services.PersonService;
+import com.revature.SynergyFitness.services.TrainerService;
 
 @RestController
 @RequestMapping(path="/media")
 @CrossOrigin(origins="http://localhost:4200")
 public class MediaController {
-	@Autowired
-	private  MediaService mediaServ;
+	
+	private static MediaService mediaServ;
+	
+	public MediaController() {super();}
+	// field injection
+		@Autowired
+		public MediaController(MediaService mediaServ) {
+			this.mediaServ=mediaServ;
+		}
+		
 	
 	private static final String MEDIA_URL = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\media";
 		

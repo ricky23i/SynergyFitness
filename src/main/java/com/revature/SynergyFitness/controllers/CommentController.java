@@ -18,10 +18,17 @@ import com.revature.SynergyFitness.services.TrainerService;
 @RequestMapping(path="/comments") // all requests starting with /pets come to this controller
 @CrossOrigin(origins="http://localhost:4200") // accepts requests from angular
 public class CommentController {
-	@Autowired
-	private PersonService userServ;
-	@Autowired
-	private TrainerService trainServ;
+	private static PersonService userServ;
+	private static TrainerService trainServ;
+	
+	public CommentController() {super();}
+	// field injection
+		@Autowired
+		public CommentController(PersonService userServ, TrainerService trainServ) {
+			this.userServ=userServ;
+			this.trainServ=trainServ;
+		}
+		
 	
 	@PostMapping
 	public ResponseEntity<Void> addComment(@RequestBody UserComments newComment) {
