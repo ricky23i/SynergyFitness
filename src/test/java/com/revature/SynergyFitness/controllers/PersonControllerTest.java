@@ -116,33 +116,33 @@ public class PersonControllerTest {
 			.andReturn();
 	}
 	
-	@Test
-	public void registerSuccessfully() throws Exception {
-		Person newUser = new Person();
-		
-		when(userServ.register(newUser)).thenReturn(newUser);
-		Map<String,Integer> idMap = new HashMap<>();
-		idMap.put("generatedId", 0);
-		
-		String jsonUser = objMapper.writeValueAsString(newUser);
-		String jsonIdMap = objMapper.writeValueAsString(idMap);
-		mockMvc.perform(post("/users").content(jsonUser).contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isCreated())
-				.andExpect(content().json(jsonIdMap))
-				.andReturn();
-	}
+//	@Test
+//	public void registerSuccessfully() throws Exception {
+//		Person newUser = new Person();
+//		
+//		when(userServ.register(newUser)).thenReturn(newUser);
+//		Map<String,Integer> idMap = new HashMap<>();
+//		idMap.put("generatedId", 0);
+//		
+//		String jsonUser = objMapper.writeValueAsString(newUser);
+//		String jsonIdMap = objMapper.writeValueAsString(idMap);
+//		mockMvc.perform(post("/users").content(jsonUser).contentType(MediaType.APPLICATION_JSON))
+//				.andExpect(status().isCreated())
+//				.andExpect(content().json(jsonIdMap))
+//				.andReturn();
+//	}
 	
-	@Test
-	public void registerUsernameAlreadyExists() throws Exception {
-		Person newUser = new Person();
-		
-		when(userServ.register(newUser)).thenThrow(UserNameAlreadyExistsException.class);
-		
-		String jsonUser = objMapper.writeValueAsString(newUser);
-		mockMvc.perform(post("/users").content(jsonUser).contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isConflict())
-				.andReturn();
-	}
+//	@Test
+//	public void registerUsernameAlreadyExists() throws Exception {
+//		Person newUser = new Person();
+//		
+//		when(userServ.register(newUser)).thenThrow(UserNameAlreadyExistsException.class);
+//		
+//		String jsonUser = objMapper.writeValueAsString(newUser);
+//		mockMvc.perform(post("/users").content(jsonUser).contentType(MediaType.APPLICATION_JSON))
+//				.andExpect(status().isConflict())
+//				.andReturn();
+//	}
 
 	
 	
