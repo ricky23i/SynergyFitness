@@ -31,13 +31,11 @@ export class ProfileComponent implements OnInit {
 
     this.userServ.checkLogin().then(resp => {
       this.user=this.userServ.loggedInUser;
-      console.log(this.user);
     });
   }
 
   async viewAboutMe() { 
     if (this.aboutMe.aboutMeId) {
-      console.log(this.aboutMe);
       let aboutMe = await this.aboutMeServ.getAboutMe(this.aboutMe.aboutMeId);
       if (aboutMe) this.aboutMe = aboutMe;
     }

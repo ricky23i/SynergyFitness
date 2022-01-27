@@ -1,31 +1,28 @@
-<p>edit-profile works!</p>
-<div *ngIf="editAboutMe">
-    <h2>{{this.aboutMe.user.gymUsername}}</h2>
-    <div><span>id:</span>{{aboutMe.aboutMeId}}</div>
-    <div>
-        <label for="AboutMe-Trainer">Trainer: </label>
-        <input id="AboutMe-Trainer" [(ngmodel)]="this.editaboutMe.user.gymUsername" placeholder="Trainer Name">
-    </div>
-    <div>
-        <label for="Trainer-Picture">Image: </label>
-        <input id="Trainer-Picture" [(ngmodel)]="this.editaboutMe.media.url" placeholder="Trainer Picture">
-    </div>
-    <div>
-        <label for="AboutMe-age">Age: </label>
-        <input id="AboutMe-age" [(ngmodel)]="this.editaboutMe.age" placeholder="Trainer Age">
-    </div>
-    <div>
-        <label for="AboutMe-certs">Certifications: </label>
-        <input id="AboutMe-certs" [(ngmodel)]="this.editaboutMe.certs" placeholder="Trainer Certifications">
-    </div>
-    <div>
-        <label for="AboutMe-Desc">Description: </label>
-        <input id="AboutMe-Desc" [(ngmodel)]="this.editaboutMe.description" placeholder="Trainer Description">
-    </div>
-    <div>
-        <label for="AboutMe-exp">Age: </label>
-        <input id="AboutMe-exp" [(ngmodel)]="this.editaboutMe.experience" placeholder="Trainer Experience">
-    </div>
-    <button (click)="goBack()">go back</button>
-    <button (click)="save()">save</button>
+<!-- <h2>{{this.user.gymUsername}}</h2> -->
+<div>
+<br>
+<label for="aboutMeId">Enter profile id to start:</label><br>
+<input type="number" class="form-control" placeholder="Enter Your Profile ID" [(ngModel)]="editAboutMe.aboutMeId" (ngModelChange)="viewAboutMe()"><br>
+<br>
 </div>
+<div>
+<label for='editAboutMe.age'>Age: </label>
+<input type='number' class="form-control" placeholder="Enter Your Age" [(ngModel)]="editAboutMe.age"><br>
+<br>
+<label for='editAboutMe.certs'>Certifications: </label>
+<input type='text' class="form-control" placeholder="Enter A List Of Certifications" [(ngModel)]="editAboutMe.certs"><br>
+<br>
+<label for='editAboutMe.experience'>Experience: </label>
+<input type='text' class="form-control" placeholder="Enter Years Of Experience" [(ngModel)]="editAboutMe.experience"><br>
+<br>
+<label for='editAboutMe.description'>Description: </label>
+<input type='text' class="form-control" placeholder="Enter a Description of Yourself (limit of 500 Characters)" [(ngModel)]="editAboutMe.description"><br>
+<br>
+</div>
+<!-- <label for='editAboutMe.media'>Media: </label>
+<input type='?' [(ngModel)]="?"><br> -->
+<button type="button" class="btn btn-primary btn-sm" (click)="save()">Update</button>
+<ng-container *ngIf="showError">
+    Something went wrong. Please try again.
+</ng-container>
+

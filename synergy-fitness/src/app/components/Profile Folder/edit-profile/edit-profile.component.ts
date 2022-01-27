@@ -13,8 +13,9 @@ import { AboutMeService } from 'src/app/services/about-me.service';
   styleUrls: ['./edit-profile.component.css']
 })
 export class EditProfileComponent implements OnInit {
-  @Input() editAboutMe: AboutMe;
+  editAboutMe: AboutMe;
   user:Person;
+  showError:Boolean;
 
   constructor(
     private route: ActivatedRoute, 
@@ -25,26 +26,33 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit(): void {
     // if (this.userServ.loggedInUser.id === this.editAboutMe.user.id)
-    this.viewAboutMe();
+    // this.viewAboutMe();
+    this.setup();
 
     this.userServ.checkLogin().then(resp => {
       this.user=this.userServ.loggedInUser;
-      console.log(this.user);
     });
   }
 
   async viewAboutMe() { 
-    if (this.editAboutMe.aboutMeId) {
-      console.log(this.editAboutMe);
-      let aboutMe = await this.aboutMeServ.getAboutMe(this.editAboutMe.aboutMeId);
-      if (aboutMe) this.editAboutMe = aboutMe;
+    if (this.editAboutMe.aboutMeId && this.editAboutMe.aboutMeId>0) {
+      let editaboutMe = await this.aboutMeServ.getAboutMe(this.editAboutMe.aboutMeId);
+      if (editaboutMe) this.editAboutMe = editaboutMe;
+      else this.editAboutMe = new AboutMe(0,null,'',null,0,'','');
     }
   }
 
   async save(){
     if (this.userServ.loggedInUser.id = this.editAboutMe.user.id){
-      let success = await this.aboutMeServ.updateAboutMe(this.editAboutMe);
+      let success = await this.aboutMeServ.updateAboutMe(this.editAboutMe)
+      if (success) this.setup();
+      else this.showError=true;
     }
+  }
+
+  setup() {
+    this.editAboutMe = new AboutMe(0,null,'',null,0,'','');
+    this.showError = false;
   }
 
 }
