@@ -1,5 +1,7 @@
 package com.revature.SynergyFitness.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +46,21 @@ public class MediaServiceImpl implements MediaService {
 	public Media getByID(int id) {
 		// TODO Auto-generated method stub
 		return mediaRepo.getById(id);
+	}
+
+	@Override
+	@Transactional
+	public List<Media> findByPost(int postId) {
+		// TODO Auto-generated method stub
+		List<Media> mediaList = mediaRepo.findAll();
+		List<Media> newMediaList = new ArrayList<>();
+		
+		mediaList.forEach(media -> {
+			if(media.getPost().getPostId() == postId) {
+				newMediaList.add(media);
+			}
+		});
+		
+		return newMediaList;
 	}
 }
