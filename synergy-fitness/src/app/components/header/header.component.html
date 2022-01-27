@@ -40,9 +40,10 @@
             </ul>
           </li>
         </ul>
-        <button  *ngIf="!loggedInUser; else user" (click)="showLogin=!showLogin" id="login" type="button" class="btn btn-secondary btn-sm pull-right" [routerLink]="'/login'">
+        <button  *ngIf="!loggedInUser; else user" (click)="showLogin=!showLogin" id="login" type="button" class="btn btn-secondary btn-sm pull-right" data-bs-target="#loginModal" data-bs-toggle="modal">
           Log In
         </button>
+        <!-- <button id="toggleLogin" class="btn btn-primary pull-right" [routerLink]="'/login'" data-bs-target="#loginModal" data-bs-toggle="modal" href="#" role="button">Login</button> -->
         <ng-template #user>
           {{ loggedInUser.firstname }}&nbsp;&nbsp;&nbsp;
           <button (click)="logOut()" id="logout" type="button" class="btn btn-secondary btn-sm pull-right">Log Out</button>
@@ -51,3 +52,12 @@
     </div>
   </nav>
 </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal" tabindex="-1" data-bs-backdrop="static">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <app-login></app-login>
+          </div>
+      </div>
+  </div>

@@ -1,15 +1,26 @@
 <form id="login">
-    <div class="form-group">
-        <label for="txtUsername">Username</label>
-        <input type="text" class="form-control" placeholder="Username" id="username" [(ngModel)]="usernameInput" name="username">
-      </div>    
-    <br>
-   
- <div class="input-group mb-3">
-    <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-    <input id="password" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="passwordInput" name="password">
+
+  <div class="modal-header">
+    <h5 class="modal-title">Login</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   </div>
+  <div class="modal-body">
+    <div class="form-group input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+      <input type="text" class="form-control" id="username" [(ngModel)]="usernameInput"
+        name="username">
+    </div>
     <br>
-    <button type="button" class="btn btn-primary btn-sm" id="loginBtn" (click)="logIn()" >Log In</button>
+    <div class="form-group input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+      <input id="password" type="password" class="form-control" aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-sm" [(ngModel)]="passwordInput" name="password">
+    </div>
+  </div>
+  <br>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" id="loginBtn" data-bs-dismiss="modal" (click)="logIn()">Log In</button>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  </div>
 
 </form>
