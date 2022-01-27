@@ -55,7 +55,7 @@ export class AboutMeService {
   // }
   async updateAboutMe(aboutMe: AboutMe): Promise<Boolean> {
     let response = await fetch(this.updateAboutMeUrl + aboutMe.aboutMeId, {
-      method: 'POST',
+      method: 'PUT',
       body: JSON.stringify(aboutMe),
       headers: this.regHeaders
     });
