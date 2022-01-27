@@ -48,7 +48,8 @@ public class PostController {
 			
 			
 			if (newPost !=null
-					) {System.out.println(newPost);
+					) {
+				System.out.println(newPost);
 				trainServ.addPost(newPost);
 				return ResponseEntity.status(HttpStatus.CREATED).build();
 			}
