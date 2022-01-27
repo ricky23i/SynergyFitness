@@ -17,7 +17,7 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column (name="post_id")
 	private int postId;
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="user_id")
 	private Person user;
 	
