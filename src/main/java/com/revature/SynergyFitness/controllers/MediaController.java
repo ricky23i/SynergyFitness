@@ -28,8 +28,15 @@ import com.revature.SynergyFitness.services.MediaService;
 @RequestMapping(path="/media")
 @CrossOrigin(origins="http://localhost:4200")
 public class MediaController {
+	private static MediaService mediaServ;
+	
+	public MediaController() { super(); }
+	
+	
 	@Autowired
-	private  MediaService mediaServ;
+	public MediaController(MediaService mediaServ) {
+		this.mediaServ= mediaServ;
+	}
 	
 	private static final String MEDIA_URL = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\media";
 		

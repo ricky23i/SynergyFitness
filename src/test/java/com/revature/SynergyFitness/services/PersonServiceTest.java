@@ -6,6 +6,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -137,7 +138,58 @@ public class PersonServiceTest {
 		Person actualPerson = personServ.register(person);
 		assertNull(actualPerson);
 	}
+	
+	@Test
+	public void updateSuccessfully() {
+		Person mockPerson = new Person();
+		mockPerson.setId(1);
+		
+		when(personRepo.existsById(1)).thenReturn(true);
+		when(personRepo.save(Mockito.any(Person.class))).thenReturn(mockPerson);
+		when(personRepo.findById(1)).thenReturn(Optional.of(mockPerson));
 
+		Person updatedPerson = personServ.updateUser(mockPerson);
+		assertNotNull(updatedPerson);
+	}
+	
+	@Test
+	public void updateSomethingWrong() {
+		Person mockPerson = new Person();
+		mockPerson.setId(1);
+		
+		when(personRepo.existsById(1)).thenReturn(false);
 
+		Person updatedPerson = personServ.updateUser(mockPerson);
+		assertNull(updatedPerson);
+	}
+	
+	@Test
+	public void getStreak() {
+		
+	}
+	
+	public void viewTrainers() {
+		
+	}
+
+	public void getPostByTrainer() {
+		
+	}
+	
+	public void getPostById() {
+		
+	}
+
+	public void addComment() {
+		
+	}
+	
+	public void getcallories() {
+		
+	}
+	
+	public void getAboutMyByID() {
+		
+	}
 }
 

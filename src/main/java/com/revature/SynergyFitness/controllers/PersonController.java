@@ -26,10 +26,16 @@ import com.revature.SynergyFitness.exceptions.IncorrectCredentialsException;
 @RequestMapping(path="/users") // all requests starting with /pets come to this controller
 @CrossOrigin(origins="http://localhost:4200") // accepts requests from angular
 public class PersonController {
+	private static PersonService userServ;
+	private static TrainerService trainServ;
+	
+	public PersonController() { super(); }
+	
 	@Autowired
-	private PersonService userServ;
-	@Autowired
-	private TrainerService trainServ;
+	public PersonController(PersonService userServ, TrainerService trainServ) {
+		this.userServ= userServ;
+		this.trainServ= trainServ;
+	}
 	
 	@PostMapping
 	public ResponseEntity<Void> register(@RequestBody Person newUser) {
