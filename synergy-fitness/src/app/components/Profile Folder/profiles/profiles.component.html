@@ -1,5 +1,8 @@
 <h2> List of Trainers' Profiles:</h2>
+<main>
 <div>
     <app-profile *ngFor="let aboutMe of aboutMes" [aboutMe]="aboutMe"></app-profile>
 </div>
-<button (click)="goBack()">go back</button>
+</main>
+<br>
+<button type="button" class="btn btn-secondary btn-md" (click)="goBack()">go back</button>

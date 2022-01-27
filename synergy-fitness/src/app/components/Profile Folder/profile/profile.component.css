@@ -1,0 +1,15 @@
+.aboutMe {
+    background-color:#1a92ca;
+    border:4px #1a92ca solid;
+    padding:1em;
+    border-radius:2em;
+    position: relative;
+}
+
+.aboutMe:hover {
+    background-color: #7cdaff;
+}
+
+div {
+    font-size: large;
+}
