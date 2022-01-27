@@ -21,6 +21,7 @@ public class CommentController {
 	private static PersonService userServ;
 	private static TrainerService trainServ;
 	
+
 	public CommentController() {super();}
 	// field injection
 		@Autowired
@@ -29,6 +30,7 @@ public class CommentController {
 			this.trainServ=trainServ;
 		}
 		
+
 	
 	@PostMapping
 	public ResponseEntity<Void> addComment(@RequestBody UserComments newComment) {

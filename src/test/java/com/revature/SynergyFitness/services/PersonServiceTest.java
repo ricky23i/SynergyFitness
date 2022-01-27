@@ -6,6 +6,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -37,6 +38,10 @@ public class PersonServiceTest {
 	private PostRepository postRepo;
 	@Autowired
 	private PersonService personServ;
+	
+	private static Role role;
+	
+	private static Set<Person> mockTrainers;
 	
 	private static Set<Post> mockPosts;
 	
@@ -70,6 +75,22 @@ public class PersonServiceTest {
 			if (i<3)
 				comment.setComment_data("OK");
 			mockComments.add(comment);
+		}
+	}
+	
+	@BeforeAll
+	public static void mockTrainersSetUp() {
+		mockTrainers = new HashSet<>();
+		role = new Role();
+		role.setRoleId(2);
+		
+			
+		for (int i=1; i<=5; i++) {
+			Person person = new Person();
+			person.setId(i);
+			if (i<3)
+				person.setRole(role);
+			mockTrainers.add(person);
 		}
 	}
 	
@@ -137,7 +158,57 @@ public class PersonServiceTest {
 		Person actualPerson = personServ.register(person);
 		assertNull(actualPerson);
 	}
+	
+	@Test
+	public void updateSuccessfully() {
+		Person mockPerson = new Person();
+		mockPerson.setId(1);
+		
+		when(personRepo.existsById(1)).thenReturn(true);
+		when(personRepo.save(Mockito.any(Person.class))).thenReturn(mockPerson);
+		when(personRepo.findById(1)).thenReturn(Optional.of(mockPerson));
 
+		Person updatedPerson = personServ.updateUser(mockPerson);
+		assertNotNull(updatedPerson);
+	}
+	
+	@Test
+	public void updateSomethingWrong() {
+		Person mockPerson = new Person();
+		mockPerson.setId(1);
+		
+		when(personRepo.existsById(1)).thenReturn(false);
 
+		Person updatedPerson = personServ.updateUser(mockPerson);
+		assertNull(updatedPerson);
+	}
+	
+//	public void viewTrainers() {
+//		when(personRepo.findByRole(2)).thenReturn(mockTrainers)
+//		
+//		Set<Person> actualTrainers = personServ.viewTrainers();
+//		
+//		assertEquals(mockTrainers, actualTrainers);
+//	}
+
+	public void getPostByTrainer() {
+		
+	}
+	
+	public void getPostById() {
+		
+	}
+
+	public void addComment() {
+		
+	}
+	
+	public void getcallories() {
+		
+	}
+	
+	public void getAboutMyByID() {
+		
+	}
 }
 

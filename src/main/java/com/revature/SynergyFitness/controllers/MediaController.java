@@ -39,7 +39,7 @@ public class MediaController {
 		public MediaController(MediaService mediaServ) {
 			this.mediaServ=mediaServ;
 		}
-		
+
 	
 	private static final String MEDIA_URL = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\media";
 		
