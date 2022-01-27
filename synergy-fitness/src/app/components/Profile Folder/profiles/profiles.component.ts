@@ -9,7 +9,7 @@ import { AboutMeService } from 'src/app/services/about-me.service';
 
 
 @Component({
-  selector: 'app-profile',
+  selector: 'app-profiles',
   templateUrl: './profiles.component.html',
   styleUrls: ['./profiles.component.css']
 })

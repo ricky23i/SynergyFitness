@@ -8,7 +8,7 @@ import { UserService } from 'src/app/services/user.service';
 import { AboutMeService } from 'src/app/services/about-me.service';
 
 @Component({
-  selector: 'app-profiles',
+  selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
