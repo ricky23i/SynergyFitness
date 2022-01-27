@@ -39,6 +39,10 @@ public class PersonServiceTest {
 	@Autowired
 	private PersonService personServ;
 	
+	private static Role role;
+	
+	private static Set<Person> mockTrainers;
+	
 	private static Set<Post> mockPosts;
 	
 	private static Set<UserComments> mockComments;
@@ -71,6 +75,22 @@ public class PersonServiceTest {
 			if (i<3)
 				comment.setComment_data("OK");
 			mockComments.add(comment);
+		}
+	}
+	
+	@BeforeAll
+	public static void mockTrainersSetUp() {
+		mockTrainers = new HashSet<>();
+		role = new Role();
+		role.setRoleId(2);
+		
+			
+		for (int i=1; i<=5; i++) {
+			Person person = new Person();
+			person.setId(i);
+			if (i<3)
+				person.setRole(role);
+			mockTrainers.add(person);
 		}
 	}
 	
@@ -163,14 +183,13 @@ public class PersonServiceTest {
 		assertNull(updatedPerson);
 	}
 	
-	@Test
-	public void getStreak() {
-		
-	}
-	
-	public void viewTrainers() {
-		
-	}
+//	public void viewTrainers() {
+//		when(personRepo.findByRole(2)).thenReturn(mockTrainers)
+//		
+//		Set<Person> actualTrainers = personServ.viewTrainers();
+//		
+//		assertEquals(mockTrainers, actualTrainers);
+//	}
 
 	public void getPostByTrainer() {
 		
