@@ -24,10 +24,16 @@ import com.revature.SynergyFitness.services.TrainerService;
 @RequestMapping(path="/AboutMe")
 @CrossOrigin(origins="http://localhost:4200")
 public class AboutMeController {
+	private static PersonService userServ;
+	private static TrainerService trainServ;
+	
+	public AboutMeController() { super(); }
+	
 	@Autowired
-	private PersonService userServ;
-	@Autowired
-	private TrainerService trainServ;
+	public AboutMeController(PersonService userServ, TrainerService trainServ) {
+		this.userServ= userServ;
+		this.trainServ= trainServ;
+	}
 	
 	
 	@GetMapping
