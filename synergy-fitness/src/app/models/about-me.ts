@@ -3,7 +3,7 @@ import { Person } from "./person";
 
 export class AboutMe {
     constructor(
-        public id:number,
+        public aboutMeId:number,
         public user:Person,
         public description:string,
         public media:Media,

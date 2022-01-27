@@ -22,10 +22,10 @@ export class AboutMeService {
   regHeaders = {'Content-type':'application/json'};
 
   constructor(private http: HttpClient, private urlService:UrlService) { 
-    this.aboutMesUrl = urlService.url + '/AboutMe';
-    this.aboutMeUrl = urlService.url + '/AboutMe/:id';
-    this.updateAboutMeUrl = urlService.url + '/AboutMe/:id';
-    this.searchAboutMeUrl = urlService.url + '/AboutMe/?name';
+    this.aboutMesUrl = urlService.url + 'AboutMe';
+    this.aboutMeUrl = urlService.url + 'AboutMe/:id';
+    this.updateAboutMeUrl = urlService.url + 'AboutMe/:id';
+    this.searchAboutMeUrl = urlService.url + 'AboutMe/?name';
   }
 
   // getAboutMes(): Observable<AboutMe[]> {
@@ -34,7 +34,7 @@ export class AboutMeService {
   async getAboutMes(): Promise<AboutMe[]> {
     let response = await fetch(this.aboutMesUrl);
 
-    if (response.status===200) {
+    if (response.status===200 || response.status===201) {
       return await response.json();
     } else return null;
   }

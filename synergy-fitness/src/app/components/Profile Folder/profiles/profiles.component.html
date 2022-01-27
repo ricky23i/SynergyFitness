@@ -1,9 +1,12 @@
 <p>profiles works!</p>
-<ul class="aboutme">
+<!-- <ul class="aboutme">
     <li *ngfor="let aboutMe of aboutMes">
-        <a routerLink="/AboutMe/{{aboutMe.id}}">
+        <a routerLink="/user/{{aboutMe.id}}">
             <span class="badge">{{aboutMe.id}}</span> {{AboutMe.user}}
         </a>
     </li>
-</ul>
+</ul> -->
+<div>
+    <app-profile *ngFor="let aboutMe of aboutMes" [aboutMe]="aboutMe"></app-profile>
+</div>
 <button (click)="goBack()">go back</button>

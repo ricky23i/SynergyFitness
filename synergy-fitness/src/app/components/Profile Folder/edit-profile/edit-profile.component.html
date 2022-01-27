@@ -1,29 +1,5 @@
-<p>profile works!</p>
-    <div>
-    <!-- [disabled]=((this.AboutMe.user) == (this.userServ.loggedInUser))> -->
-    <h2>{{this.aboutMe.user.gymUsername}}</h2>
-    <div><span>id:</span>{{aboutMe.id}}</div>
-    <div>
-        {{this.aboutMe.user.gymUsername}}
-    </div>
-    <div>
-        {{this.aboutMe.media.mediaUrl}}
-    </div>
-    <div>
-        {{this.aboutMe.age}}
-    </div>
-    <div>
-        {{this.aboutMe.certs}}
-    </div>
-    <div>
-        {{this.aboutMe.description}}
-    </div>
-    <div>
-        {{this.aboutMe.experience}}
-    </div>
-    <button (click)="goBack()">go back</button>
-</div>
-<div *ngIf="aboutMe">
+<p>edit-profile works!</p>
+<div *ngIf="editAboutMe">
     <!-- [disabled]=!((this.AboutMe.user) == (this.userServ.loggedInUser)) -->
     <h2>{{this.aboutMe.user.gymUsername}}</h2>
     <div><span>id:</span>{{aboutMe.id}}</div>
@@ -54,5 +30,3 @@
     <button (click)="goBack()">go back</button>
     <button (click)="save()">save</button>
 </div>
-
-
