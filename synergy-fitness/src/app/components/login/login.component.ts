@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   logIn() {
     this.userServ.logIn(this.usernameInput,this.passwordInput).then(resp => {
       this.login.emit();
+      location.reload();
     });
   }
 
