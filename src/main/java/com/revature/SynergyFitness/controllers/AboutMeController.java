@@ -27,6 +27,7 @@ public class AboutMeController {
 	private static PersonService userServ;
 	private static TrainerService trainServ;
 	
+
 	public AboutMeController() {super();}
 	// field injection
 		@Autowired
@@ -34,7 +35,6 @@ public class AboutMeController {
 			this.userServ=userServ;
 			this.trainServ=trainServ;
 		}
-		
 	
 	
 	@GetMapping
