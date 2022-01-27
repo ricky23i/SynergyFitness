@@ -23,22 +23,9 @@ export class ProfilesComponent implements OnInit {
      ) { }
 
   async ngOnInit(): Promise<void> {
-    // this.getAboutMes();
     this.aboutMes = await this.aboutMeServ.getAboutMes();
     console.log(this.aboutMes);
-    // this.userServ.checkLogin().then(resp => {
-    //   this.user=this.userServ.loggedInUser;
-    //   console.log(this.user);
-    // });
   }
-
-  // getAboutMes(): void {
-  //   this.aboutMeServ.getAboutMes()
-  //   .subscribe(aboutMes => this.aboutMes =  aboutMes);
-  // }
-  // async getAboutMes(): Promise<void> {
-  //   this.aboutMes = await this.aboutMeServ.getAboutMes();
-  // }
 
   goBack(): void {
     this.location.back();

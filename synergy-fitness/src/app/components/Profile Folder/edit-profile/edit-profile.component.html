@@ -1,31 +1,30 @@
 <p>edit-profile works!</p>
 <div *ngIf="editAboutMe">
-    <!-- [disabled]=!((this.AboutMe.user) == (this.userServ.loggedInUser)) -->
     <h2>{{this.aboutMe.user.gymUsername}}</h2>
-    <div><span>id:</span>{{aboutMe.id}}</div>
+    <div><span>id:</span>{{aboutMe.aboutMeId}}</div>
     <div>
         <label for="AboutMe-Trainer">Trainer: </label>
-        <input id="AboutMe-Trainer" [(ngmodel)]="this.aboutMe.user.gymUsername" placeholder="Trainer Name">
+        <input id="AboutMe-Trainer" [(ngmodel)]="this.editaboutMe.user.gymUsername" placeholder="Trainer Name">
     </div>
     <div>
         <label for="Trainer-Picture">Image: </label>
-        <input id="Trainer-Picture" [(ngmodel)]="this.aboutMe.media.url" placeholder="Trainer Picture">
+        <input id="Trainer-Picture" [(ngmodel)]="this.editaboutMe.media.url" placeholder="Trainer Picture">
     </div>
     <div>
         <label for="AboutMe-age">Age: </label>
-        <input id="AboutMe-age" [(ngmodel)]="this.aboutMe.age" placeholder="Trainer Age">
+        <input id="AboutMe-age" [(ngmodel)]="this.editaboutMe.age" placeholder="Trainer Age">
     </div>
     <div>
         <label for="AboutMe-certs">Certifications: </label>
-        <input id="AboutMe-certs" [(ngmodel)]="this.aboutMe.certs" placeholder="Trainer Certifications">
+        <input id="AboutMe-certs" [(ngmodel)]="this.editaboutMe.certs" placeholder="Trainer Certifications">
     </div>
     <div>
         <label for="AboutMe-Desc">Description: </label>
-        <input id="AboutMe-Desc" [(ngmodel)]="this.aboutMe.description" placeholder="Trainer Description">
+        <input id="AboutMe-Desc" [(ngmodel)]="this.editaboutMe.description" placeholder="Trainer Description">
     </div>
     <div>
         <label for="AboutMe-exp">Age: </label>
-        <input id="AboutMe-exp" [(ngmodel)]="this.aboutMe.experience" placeholder="Trainer Experience">
+        <input id="AboutMe-exp" [(ngmodel)]="this.editaboutMe.experience" placeholder="Trainer Experience">
     </div>
     <button (click)="goBack()">go back</button>
     <button (click)="save()">save</button>
