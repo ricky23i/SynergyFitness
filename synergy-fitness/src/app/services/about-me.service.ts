@@ -23,8 +23,8 @@ export class AboutMeService {
 
   constructor(private http: HttpClient, private urlService:UrlService) { 
     this.aboutMesUrl = urlService.url + 'AboutMe';
-    this.aboutMeUrl = urlService.url + 'AboutMe/:id';
-    this.updateAboutMeUrl = urlService.url + 'AboutMe/:id';
+    this.aboutMeUrl = urlService.url + 'AboutMe/';
+    this.updateAboutMeUrl = urlService.url + 'AboutMe/';
     this.searchAboutMeUrl = urlService.url + 'AboutMe/?name';
   }
 
@@ -44,8 +44,7 @@ export class AboutMeService {
   //   return this.http.get<AboutMe>(url);
   // }
   async getAboutMe(id: number): Promise<AboutMe> {
-    let response = await fetch(this.aboutMeUrl);
-
+    let response = await fetch(this.aboutMeUrl + id);
     if (response.status===200) {
       return await response.json();
     } else return null;
@@ -54,12 +53,14 @@ export class AboutMeService {
   // updateAboutMe(aboutMe: AboutMe): Observable<any> {
   // return this.http.put(this.aboutMeUrl, aboutMe, this.httpOptions)
   // }
-  async updateAboutMe(aboutMe: AboutMe): Promise<void> {
-    let response = await fetch(this.updateAboutMeUrl, {
+  async updateAboutMe(aboutMe: AboutMe): Promise<Boolean> {
+    let response = await fetch(this.updateAboutMeUrl + aboutMe.aboutMeId, {
       method: 'POST',
       body: JSON.stringify(aboutMe),
       headers: this.regHeaders
     });
+      if (response.status===201) return true;
+      else return false;
   }
 
   searchAboutMe(term: string): Observable<AboutMe[]> {
