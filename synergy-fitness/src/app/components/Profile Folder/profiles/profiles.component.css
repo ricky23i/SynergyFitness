@@ -1,0 +1,6 @@
+div {
+    display:grid;
+    grid:auto-flow / repeat(auto-fit,minmax(30%,1fr));
+    align-items: baseline;
+    gap:.5em;
+}
