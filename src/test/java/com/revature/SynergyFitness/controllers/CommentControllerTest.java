@@ -1,5 +1,2 @@
 package com.revature.SynergyFitness.controllers;
-
-public class CommentControllerTest {
-
-}
+public class CommentControllerTest {}

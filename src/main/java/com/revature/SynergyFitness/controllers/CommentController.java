@@ -21,13 +21,16 @@ public class CommentController {
 	private static PersonService userServ;
 	private static TrainerService trainServ;
 	
-	public CommentController() { super(); }
-	
-	@Autowired
-	public CommentController(PersonService userServ, TrainerService trainServ) {
-		this.userServ= userServ;
-		this.trainServ= trainServ;
-	}
+
+	public CommentController() {super();}
+	// field injection
+		@Autowired
+		public CommentController(PersonService userServ, TrainerService trainServ) {
+			this.userServ=userServ;
+			this.trainServ=trainServ;
+		}
+		
+
 	
 	@PostMapping
 	public ResponseEntity<Void> addComment(@RequestBody UserComments newComment) {

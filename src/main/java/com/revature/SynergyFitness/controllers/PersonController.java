@@ -19,23 +19,24 @@ import com.revature.SynergyFitness.Beans.CalorieTracker;
 import com.revature.SynergyFitness.Beans.Person;
 import com.revature.SynergyFitness.exceptions.UserNameAlreadyExistsException;
 import com.revature.SynergyFitness.services.PersonService;
-import com.revature.SynergyFitness.services.TrainerService;
 import com.revature.SynergyFitness.exceptions.IncorrectCredentialsException;
 
 @RestController // basically puts @ResponseBody over ALL methods - no returning views
 @RequestMapping(path="/users") // all requests starting with /pets come to this controller
 @CrossOrigin(origins="http://localhost:4200") // accepts requests from angular
 public class PersonController {
-	private static PersonService userServ;
-	private static TrainerService trainServ;
+
 	
+	private static PersonService userServ;
+	
+	// default constructor
 	public PersonController() { super(); }
 	
 	@Autowired
-	public PersonController(PersonService userServ, TrainerService trainServ) {
-		this.userServ= userServ;
-		this.trainServ= trainServ;
+	public PersonController(PersonService userServ) {
+		this.userServ=userServ;
 	}
+	
 	
 	@PostMapping
 	public ResponseEntity<Void> register(@RequestBody Person newUser) {
@@ -123,8 +124,8 @@ public class PersonController {
 	@GetMapping
 	public ResponseEntity<Set<Person>> viewAllTrainers() {
 
-		Set<Person> availablePets = userServ.viewTrainers();
-		return ResponseEntity.ok(availablePets);
+		Set<Person> availablePersons = userServ.viewTrainers();
+		return ResponseEntity.ok(availablePersons);
 	
 	}
 	
