@@ -26,7 +26,8 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getAboutMe();
+    console.log(this.aboutMe);
+    this.viewAboutMe();
 
     this.userServ.checkLogin().then(resp => {
       this.user=this.userServ.loggedInUser;
@@ -39,11 +40,11 @@ export class ProfileComponent implements OnInit {
   //   this.aboutMeServ.getAboutMe(id)
   //     .subscribe(aboutMe => this.aboutMe = aboutMe);
   // }
-  async getAboutMe() { 
-    if (this.aboutMe.id) {
-      let aboutMe = await this.aboutMeServ.getAboutMe(this.aboutMe.id);
+  async viewAboutMe() { 
+    if (this.aboutMe.aboutMeId) {
+      console.log(this.aboutMe);
+      let aboutMe = await this.aboutMeServ.getAboutMe(this.aboutMe.aboutMeId);
       if (aboutMe) this.aboutMe = aboutMe;
-
     }
   }
 

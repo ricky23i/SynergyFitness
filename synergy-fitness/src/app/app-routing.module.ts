@@ -26,7 +26,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'post', component: PostComponent },
   { path: 'upload', component: UploadComponent },
-  { path: 'userprofile', component: UserprofileComponent },
   { path: 'userprofile', component: UserprofileComponent }
 ];
 

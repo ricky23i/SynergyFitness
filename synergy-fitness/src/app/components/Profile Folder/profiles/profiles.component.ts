@@ -14,8 +14,7 @@ import { AboutMeService } from 'src/app/services/about-me.service';
   styleUrls: ['./profiles.component.css']
 })
 export class ProfilesComponent implements OnInit {
-  aboutMes: AboutMe[] = [];
-  user:Person;
+  aboutMes: AboutMe[];
 
   constructor(
     private aboutMeServ: AboutMeService,
@@ -26,11 +25,11 @@ export class ProfilesComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     // this.getAboutMes();
     this.aboutMes = await this.aboutMeServ.getAboutMes();
-    
-    this.userServ.checkLogin().then(resp => {
-      this.user=this.userServ.loggedInUser;
-      console.log(this.user);
-    });
+    console.log(this.aboutMes);
+    // this.userServ.checkLogin().then(resp => {
+    //   this.user=this.userServ.loggedInUser;
+    //   console.log(this.user);
+    // });
   }
 
   // getAboutMes(): void {
