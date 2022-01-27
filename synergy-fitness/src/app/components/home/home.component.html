@@ -1,25 +1,45 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>User Name :{{this.post.user.gymUsername}}</mat-card-title>
-        <mat-card-subtitle>{{this.post.postData}}</mat-card-subtitle>
-    </mat-card-header>
-    <!--<img mat-card-image src="C:\Users\user\Documents\Workouts\workout2.jpg">-->
-    <mat-card-content>
-        {{this.post.user.gymUsername}}
-    </mat-card-content>
-    <!-- <mat-card-actions>
-        <mat-icon class="action-item" color="warn">chat_bubble_outline</mat-icon>
-        <mat-icon class="action-item" color="warn">favortie_border</mat-icon>
-        <mat-icon class="action-item" color="warn">save</mat-icon>
-    </mat-card-actions> -->
-</mat-card>
-<h1> {{this.post.user.gymUsername}}</h1>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<div class="card gedf-card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="mr-2">
+                    <img class="rounded-circle" width="45" src="http://localhost:8080/default.jpg" alt="">
+                </div>
+                <div class="ml-2">
+                    <div class="h5 m-0">@{{this.post.user.gymUsername}}</div>
+                    <div class="h7 text-muted">{{this.post.user.firstname}} {{this.post.user.lastname}}</div>
+                </div>
+            </div>
+            <div>
+                <div class="dropdown">
+                    <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-ellipsis-h"></i>
+                        
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
+                        <div class="h6 dropdown-header">Configuration</div>
+                        <a class="dropdown-item" href="#">Save</a>
+                        <a class="dropdown-item" href="#">Hide</a>
+                        <a class="dropdown-item" href="#">Report</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    </div>
+    <div class="card-body">
+       
 
-
-<!--<h1>This is Home page</h1>
-<h5>this is like the news feed, or wall, where posts will appear</h5>
-
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>-->
+        <p class="card-text">
+            {{this.post.postData}}
+        </p>
+    </div>
+    <div class="card-footer">
+        <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+        <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+        <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+    </div>
+</div>
