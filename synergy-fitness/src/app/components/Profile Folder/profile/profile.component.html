@@ -1,27 +1,25 @@
-<p>profile works!</p>
     <div *ngIf="aboutMe">
     <!-- [disabled]=((this.AboutMe.user) == (this.userServ.loggedInUser))> -->
     <h2>{{this.aboutMe.user.gymUsername}}</h2>
-    <div><span>id:</span>{{aboutMe.id}}</div>
+    <div><span>id:</span>{{aboutMe.aboutMeId}}</div>
     <div>
-        {{this.aboutMe.user.gymUsername}}
+        <span>{{this.aboutMe.user.gymUsername}}</span>
     </div>
-    <div>
+    <!-- <div>
         {{this.aboutMe.media.mediaUrl}}
+    </div> -->
+    <div>
+        <span>{{this.aboutMe.age}}</span>
     </div>
     <div>
-        {{this.aboutMe.age}}
+        <span>{{this.aboutMe.certs}}</span>
     </div>
     <div>
-        {{this.aboutMe.certs}}
+        <span>{{this.aboutMe.description}}</span>
     </div>
     <div>
-        {{this.aboutMe.description}}
+        <span>{{this.aboutMe.experience}}</span>
     </div>
-    <div>
-        {{this.aboutMe.experience}}
-    </div>
-    <button (click)="goBack()">go back</button>
 </div>
 
 
