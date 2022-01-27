@@ -1,7 +1,8 @@
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, Input, OnInit } from '@angular/core';
 import { Person } from 'src/app/models/person';
 import { Post } from 'src/app/models/post';
 import { UserService } from 'src/app/services/user.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-post',
@@ -10,11 +11,12 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CreatePostComponent implements OnInit {
 selectedImageFile
-newpost:Post = new Post(1, null, " ");
+newpost:Post= new Post(0, null, " ");
 message:string="";
 user:Person;
 
-  constructor(public userServ:UserService) { }
+  constructor(public userServ:UserService,
+    private location: Location) { }
 
   ngOnInit(): void {
     this.userServ.checkLogin().then(resp => {
@@ -41,6 +43,9 @@ user:Person;
    )
   }
 
+goBack(): void {
+    this.location.back();
+  }
 async addPost(){
     if(this.userServ.loggedInUser){
         this.newpost.user=this.user;
@@ -49,7 +54,7 @@ async addPost(){
         let success = await this.userServ.addPost(this.newpost);
         this.message="Post Uploaded";
     }
-
+    this.goBack();
 }
 }
 

@@ -11,7 +11,7 @@ import { Person } from 'src/app/models/person';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  getpost:Post;
+  @Input() post:Post;
   constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {}

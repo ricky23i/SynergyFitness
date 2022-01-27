@@ -73,6 +73,7 @@ export class UserService {
   }
 
   async addPost(post:Post): Promise<void> {
+    this.authHeaders.Token = localStorage.getItem('Token');
     let resp = await fetch(this.url.url + 'posts', {method:'POST',body:JSON.stringify(post),
     headers:this.regHeaders});
  

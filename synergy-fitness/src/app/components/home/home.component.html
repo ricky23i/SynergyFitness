@@ -1,18 +1,19 @@
 <mat-card>
     <mat-card-header>
-        <mat-card-title>{{this.getpost.user.gymUsername}}</mat-card-title>
-        <mat-card-subtitle>{{this.getpost.postData}}</mat-card-subtitle>
+        <mat-card-title>User Name :{{this.post.user.gymUsername}}</mat-card-title>
+        <mat-card-subtitle>{{this.post.postData}}</mat-card-subtitle>
     </mat-card-header>
     <!--<img mat-card-image src="C:\Users\user\Documents\Workouts\workout2.jpg">-->
     <mat-card-content>
-        Like, Share, and Subscribe!
+        {{this.post.user.gymUsername}}
     </mat-card-content>
-    <mat-card-actions>
+    <!-- <mat-card-actions>
         <mat-icon class="action-item" color="warn">chat_bubble_outline</mat-icon>
         <mat-icon class="action-item" color="warn">favortie_border</mat-icon>
         <mat-icon class="action-item" color="warn">save</mat-icon>
-    </mat-card-actions>
+    </mat-card-actions> -->
 </mat-card>
+<h1> {{this.post.user.gymUsername}}</h1>
 
 
 
