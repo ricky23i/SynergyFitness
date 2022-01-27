@@ -28,18 +28,25 @@ import com.revature.SynergyFitness.services.TrainerService;
 @RequestMapping(path="/posts") // all requests starting with /pets come to this controller
 @CrossOrigin(origins="http://localhost:4200/") // accepts requests from angular
 public class PostController {
-
+	private static PersonService userServ;
+	private static TrainerService trainServ;
+	
+	public PostController() {super();}
 	// field injection
 		@Autowired
-		private PersonService userServ;
-		@Autowired
-		private TrainerService trainServ;
+		public PostController(PersonService userServ, TrainerService trainServ) {
+			this.userServ=userServ;
+			this.trainServ=trainServ;
+		}
+		
+		
 		
 		@GetMapping
 		public ResponseEntity<List<Post>> getPosts() {
 			return ResponseEntity.ok(trainServ.getAllPosts());
 			//return ResponseEntity.status(HttpStatus.OK).body(availablePets);
 		}
+		
 		
 	
 		
