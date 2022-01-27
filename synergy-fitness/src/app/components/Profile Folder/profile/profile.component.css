@@ -10,6 +10,11 @@
     background-color: #7cdaff;
 }
 
+h2 {
+    font-size: larger;
+    text-align: justify;
+    font-weight: bold;
+}
 div {
     font-size: large;
 }

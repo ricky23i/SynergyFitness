@@ -35,11 +35,6 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  // getAboutMe(): void {
-  //   const id = Number(this.route.snapshot.paramMap.get('id'));
-  //   this.aboutMeServ.getAboutMe(id)
-  //     .subscribe(aboutMe => this.aboutMe = aboutMe);
-  // }
   async viewAboutMe() { 
     if (this.aboutMe.aboutMeId) {
       console.log(this.aboutMe);
@@ -52,38 +47,5 @@ export class ProfileComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-  // async updateAboutMe(aboutme: AboutMe){
-  //   if (this.userServ.loggedInUser && (this.aboutMe.user = this.userServ.loggedInUser)) {
-  //     let success = await this.updateAboutMe(this.aboutMe);
-  //     if (success) {
-  //     this.aboutMe.age =  this.aboutMe.age;
-  //     this.aboutMe.certs = this.aboutMe.certs;
-  //     this.aboutMe.description = this.aboutMe.description;
-  //     this.aboutMe.experience = this.aboutMe.experience;
-  //     this.aboutMe.media = this.aboutMe.media;
-  //     this.message = "AboutMe Updated";
-  //   } else this.message = 'Something went wrong. Please try again later.';
-  //   } else {
-  //     this.message = 'You have to be logged in to edit user profile!';
-  //   }
-  // }
-
-  // save(): void {
-  //   if (this.aboutMe) {
-  //     this.aboutMeServ.updateAboutMe(this.aboutMe)
-  //     .subscribe(() => this.goBack)
-  //   }
-  // }
-
-  // async save(){
-  //   if (this.userServ.loggedInUser){
-  //     let success = await this.aboutMeServ.updateAboutMe(this.aboutMe);
-  //   }
-  // }
-  // async updateAboutMe(aboutme: AboutMe): Promsie<boolean> {
-  //   this.authHeaders.Token 
-  //   let resp = await fetch(this.url.url + 'AboutMes/' + this.aboutMe.id), {method:'PUT', body:JSON.stringify(aboutme)}
-  //   if (resp.status===200) return true;
-  //   else return false;
 }
 
