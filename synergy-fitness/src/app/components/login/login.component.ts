@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 
@@ -12,16 +13,20 @@ export class LoginComponent implements OnInit {
   usernameInput:string;
   passwordInput:string;
 
-  constructor(private userServ:UserService) { }
+  constructor(private userServ:UserService, private router:Router) { }
 
   ngOnInit(): void {
   }
 
   logIn() {
-    this.userServ.logIn(this.usernameInput,this.passwordInput).then(resp => {
-      this.login.emit();
-      location.reload();
-    });
+    this.userServ.logIn(this.usernameInput,this.passwordInput)
+      .then(resp => {
+        this.login.emit();
+        this.router.navigate(['/post']);
+      })
+      .then(resp => {
+        location.reload();
+      });
   }
 
 }

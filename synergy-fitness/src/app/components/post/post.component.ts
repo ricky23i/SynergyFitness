@@ -11,21 +11,27 @@ templateUrl: './post.component.html',
  styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+    loggedInUser:Person;
     posts:Post[];
-        user: Person;
-        message:string="";
+    user: Person;
+    message:string="";
+
 constructor(
     public userServ:UserService,
     private dialog: MatDialog) { }
 
  async ngOnInit(): Promise<void> {
-    
-    this.posts= await this.userServ.getPosts();
+      this.setup();
+      this.posts= await this.userServ.getPosts();
     }
  onCreatePostClick(){
      this.dialog.open(CreatePostComponent);
     }
 
-
+  setup() {
+      this.userServ.checkLogin().then(resp => {
+        this.loggedInUser = this.userServ.loggedInUser;
+      });
+    }
 
 }
