@@ -43,18 +43,16 @@ user:Person;
    )
   }
 
-goBack(): void {
-    this.location.back();
-  }
+
 async addPost(){
     if(this.userServ.loggedInUser){
         this.newpost.user=this.user;
-        this.newpost.postData= (<HTMLInputElement>document.getElementById("wrkout")).value;
+        this.newpost.postData= (<HTMLInputElement>document.getElementById("wrkout222")).value;
         console.log(this.newpost);
         let success = await this.userServ.addPost(this.newpost);
         this.message="Post Uploaded";
     }
-    this.goBack();
+   
 }
 }
 

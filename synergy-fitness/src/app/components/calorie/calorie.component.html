@@ -2,7 +2,7 @@
 <div class="calorietracker"  >
     <h2>Track your calories for {{currentDate | date:'MM-dd-yyyy'}}</h2>
    <h3>Total Calories</h3>
- <p>{{this.user.calorieTracker.totalCalories }}
+ <p id="lcals">{{this.user.calorieTracker.totalCalories }}
  </p>
     <h3>All Food</h3>
   <p>{{this.user.calorieTracker.foodList }}</p>
@@ -18,4 +18,4 @@
     <input id="foodl" type="string" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
   </div>
   <button type="button" class="btn btn-primary btn-sm" id="calbutton" (click)="addCalories()" [disabled]="!userServ.loggedInUser">Add to Day</button>
-  <p>{{message}}</p> 
+  <p id="msg">{{message}}</p> 
