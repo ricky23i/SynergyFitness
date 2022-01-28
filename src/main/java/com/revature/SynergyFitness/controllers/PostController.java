@@ -51,14 +51,11 @@ public class PostController {
 	
 		
 		@PostMapping
-		public ResponseEntity<Void> addPost(@RequestBody Post newPost) {
-			
-			
-			if (newPost !=null
-					) {
+		public ResponseEntity<Post> addPost(@RequestBody Post newPost) {
+			if (newPost !=null) {
 				System.out.println(newPost);
-				trainServ.addPost(newPost);
-				return ResponseEntity.status(HttpStatus.CREATED).build();
+				Post post = trainServ.addPost(newPost);
+				return ResponseEntity.ok(post);
 			}
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}

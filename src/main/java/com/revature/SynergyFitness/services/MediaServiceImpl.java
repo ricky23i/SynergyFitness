@@ -1,5 +1,7 @@
 package com.revature.SynergyFitness.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
@@ -48,5 +50,21 @@ public class MediaServiceImpl implements MediaService {
 		if (mediaFromDatabase.isPresent()) return mediaFromDatabase.get();
 		else return null;
 
+	}
+
+	@Override
+	@Transactional
+	public List<Media> findByPost(int postId) {
+		// TODO Auto-generated method stub
+		List<Media> mediaList = mediaRepo.findAll();
+		List<Media> newMediaList = new ArrayList<>();
+		
+		mediaList.forEach(media -> {
+			if(media.getPost().getPostId() == postId) {
+				newMediaList.add(media);
+			}
+		});
+		
+		return newMediaList;
 	}
 }

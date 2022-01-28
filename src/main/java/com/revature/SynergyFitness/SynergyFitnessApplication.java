@@ -9,5 +9,4 @@ public class SynergyFitnessApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SynergyFitnessApplication.class, args);
 	}
-
 }
