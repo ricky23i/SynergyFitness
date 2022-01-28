@@ -1,5 +1,4 @@
 package com.revature.SynergyFitness.pages;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,26 +7,17 @@ import org.openqa.selenium.support.PageFactory;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-public class profilesPage {
+public class loginPage {
 	private WebDriver driver;
-	
 	@FindBy(id="seltest")
 	private WebElement profiledata;
 	
-	public profilesPage(WebDriver driver) {
+	public loginPage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
 	public void navigateTo() {
 		driver.get("http://localhost:4200/users");
-	}
-//	@SuppressWarnings("deprecation")
-	public String getElementValue() {
-		WebDriverWait wait = new WebDriverWait(driver,15);
-		By element= By.id("seltest");
-		wait.until(ExpectedConditions.presenceOfElementLocated(element));
-		return profiledata.getText();
 	}
 
 }

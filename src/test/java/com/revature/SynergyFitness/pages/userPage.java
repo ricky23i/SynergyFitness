@@ -9,25 +9,18 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class profilesPage {
-	private WebDriver driver;
+public class userPage {
+private WebDriver driver;
 	
 	@FindBy(id="seltest")
 	private WebElement profiledata;
 	
-	public profilesPage(WebDriver driver) {
+	public userPage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
 	public void navigateTo() {
 		driver.get("http://localhost:4200/users");
-	}
-//	@SuppressWarnings("deprecation")
-	public String getElementValue() {
-		WebDriverWait wait = new WebDriverWait(driver,15);
-		By element= By.id("seltest");
-		wait.until(ExpectedConditions.presenceOfElementLocated(element));
-		return profiledata.getText();
 	}
 
 }
