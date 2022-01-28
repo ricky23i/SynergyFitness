@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.revature.SynergyFitness.pages.userPage;
 
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -73,5 +74,10 @@ public class userStepImpl {
 			wait.until(ExpectedConditions.presenceOfElementLocated(element));
 			  WebElement text= driver.findElement(By.id("ffname"));
 			  assertNotNull(text.getText());
+	}
+	
+	@AfterAll
+	public static void closeDriver() {
+		driver.quit();
 	}
 }
