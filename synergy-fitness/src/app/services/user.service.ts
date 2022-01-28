@@ -3,6 +3,7 @@ import { AboutMe } from '../models/about-me';
 import { Media } from '../models/media';
 import { Person } from '../models/person';
 import { Post } from '../models/post';
+import { MediaService } from './media.service';
 import { UrlService } from './url.service';
 
 @Injectable({
@@ -13,7 +14,7 @@ export class UserService {
   authHeaders = {'Content-type':'application/json','Token':''};
   regHeaders = {'Content-type':'application/json'};
 
-  constructor(private url:UrlService) { }
+  constructor(private url:UrlService, private mediaServ: MediaService) { }
 
   async checkLogin() {
     let token = localStorage.getItem('Token');
@@ -75,12 +76,18 @@ export class UserService {
     else return false;
   }
 
-  async addPost(post:Post): Promise<void> {
+  async addPost(post:Post): Promise<any> {
     this.authHeaders.Token = localStorage.getItem('Token');
     let resp = await fetch(this.url.url + 'posts', {method:'POST',body:JSON.stringify(post),
     headers:this.regHeaders});
- 
-}
+
+    if(resp.status == 200) {
+      console.log('Posted HERE');
+      let savedPost = await resp.json();
+      console.log(savedPost);
+      return savedPost;
+    }
+  }
 
   async getPosts(): Promise<Post[]> {
     let resp = await fetch(this.url.url + 'posts');
