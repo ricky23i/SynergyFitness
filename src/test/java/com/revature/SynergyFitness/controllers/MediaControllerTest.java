@@ -46,7 +46,7 @@ public class MediaControllerTest {
 	@Test
 	public void safeInfoSuccessfully() throws Exception {
 		Media newMedia = new Media();
-		when(mediaServ.saveMedia(newMedia)).thenReturn(newMedia);
+		when(mediaServ.saveMedia(newMedia)).thenReturn(1);
 		
 		String jsonMedia = objMapper.writeValueAsString(newMedia);
 		

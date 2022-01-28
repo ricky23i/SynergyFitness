@@ -36,7 +36,7 @@ public class MediaServiceTest {
 		
 		when(mediaRepo.save(media)).thenReturn(mockMedia);
 		
-		Media newId = mediaServ.saveMedia(media);
+		int newId = mediaServ.saveMedia(media);
 		
 		assertNotEquals(0, newId);
 	}
@@ -47,7 +47,7 @@ public class MediaServiceTest {
 		
 		when(mediaRepo.save(media)).thenReturn(media);
 		
-		Media newId = mediaServ.saveMedia(media);
+		int newId = mediaServ.saveMedia(media);
 		
 		assertEquals(0,newId);
 
