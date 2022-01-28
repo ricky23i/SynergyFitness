@@ -30,3 +30,9 @@ body {
     content: none;
     display: none;
 }
+
+.img-post {
+  width: 450px;
+  height: 450px;
+  border-radius: 15%;
+}
