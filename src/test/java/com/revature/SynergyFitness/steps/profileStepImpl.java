@@ -7,14 +7,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import com.revature.SynergyFitness.pages.profilesPage;
 
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
 public class profileStepImpl {
-	private profilesPage page;
-	private WebDriver driver;
-	{
-		File file =new File("SynergyFitnessBackEnd/src/test/resources/chromedriver.exe");
+	private static profilesPage page;
+	private static WebDriver driver;
+	
+	@BeforeAll
+	public static void setupDriver() {
+		File file =new File("src/test/resources/chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 		
 		driver = new ChromeDriver();
