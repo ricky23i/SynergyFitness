@@ -277,16 +277,16 @@ public class PersonServiceTest {
 	
 	@Test
 	public void editCommentDoesNotExist() {
-//		when(personRepo.findById(2)).thenReturn(Optional.empty());
-//		
-//		UserComments editedComment = new UserComments ();
-//		editedComment.setUser_comment_id(2);
-//		editedComment.setComment_data("Yes");
-//		
-//		UserComments actualComment = personServ.editComment(editedComment);
-//		
-//		assertNull(actualComment);
-//		verify(personRepo, times(0)).save(Mockito.any(UserComments.class));
+		when(commentRepo.findById(2)).thenReturn(Optional.empty());
+		
+		UserComments editedComment = new UserComments ();
+		editedComment.setUser_comment_id(2);
+		editedComment.setComment_data("Yes");
+		
+		UserComments actualComment = personServ.editComment(editedComment);
+		
+		assertNull(actualComment);
+		verify(commentRepo, times(0)).save(Mockito.any(UserComments.class));
 	}
 
 	
@@ -307,22 +307,6 @@ public class PersonServiceTest {
 		
 		Post actualPost = personServ.getPostById(1);
 		assertNull(actualPost);
-	}
-	
-	@Test
-	public void addCalories() {
-		
-	}
-	
-	@Test
-	public void getcalloriesExists() {
-//		CalorieTracker mockCalorie = new CalorieTracker();
-//		mockCalorie.setUserID(1);
-//		
-//		when(postRepo.findById(1)).thenReturn(Optional.of(mockCalorie));
-//		
-//		CalorieTracker actualCalorie = personServ.getCalories(1);
-//		assertEquals(mockCalorie, actualPost);
 	}
 	
 	@Test
