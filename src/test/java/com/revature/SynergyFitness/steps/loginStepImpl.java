@@ -67,7 +67,6 @@ public class loginStepImpl {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
 				.withTimeout(Duration.ofSeconds(5))
 				.pollingEvery(Duration.ofMillis(50));
-		wait.until(ExpectedConditions.numberOfElementsToBeLessThan(By.id("loginForm"), 1));
 		wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.id("manageUser"),0));
 		
 		WebElement navLink = driver.findElement(By.id("manageUser"));
