@@ -154,8 +154,13 @@ public class PersonServiceImpl implements PersonService{
 	@Override
 	@Transactional
 	public UserComments editComment(UserComments upComment) {
-	
-		return comRepo.findById(upComment.getUser_comment_id()).get();
+		Optional<UserComments> commentFromDatabase = comRepo.findById(upComment.getUser_comment_id());
+		if (commentFromDatabase.isPresent()) {
+			comRepo.save(upComment);
+			return comRepo.findById(upComment.getUser_comment_id()).get();
+		}
+		return null;
+
 	}
 
 	@Override

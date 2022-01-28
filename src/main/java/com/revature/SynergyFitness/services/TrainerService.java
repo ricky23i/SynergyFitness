@@ -17,6 +17,6 @@ public interface TrainerService {
 	public int addVideo(Media mediaToAdd);
 	public Media editVideo(Media mediaToEdit);
 	public void deleteVideo(Media mediaToRemove);
-	public int addAboutMe(AboutMe me);
-	public AboutMe editAboutMe(AboutMe upme);
+	public int addAboutMe(AboutMe newAboutMe);
+	public AboutMe editAboutMe(AboutMe aboutMeToEdit);
 }
