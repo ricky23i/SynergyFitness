@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import com.revature.SynergyFitness.pages.profilesPage;
 
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -33,5 +34,10 @@ public class profileStepImpl {
 	public void profiles_load() {
 		
 	   assertNotNull(page.getElementValue());
+	}
+	
+	@AfterAll
+	public static void closeDriver() {
+		driver.quit();
 	}
 }
