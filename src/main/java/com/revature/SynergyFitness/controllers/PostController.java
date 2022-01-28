@@ -47,15 +47,11 @@ public class PostController {
 			//return ResponseEntity.status(HttpStatus.OK).body(availablePets);
 		}
 		
-		
-	
-		
 		@PostMapping
-		public ResponseEntity<Post> addPost(@RequestBody Post newPost) {
+		public ResponseEntity<Void> addPost(@RequestBody Post newPost) {
 			if (newPost !=null) {
-				System.out.println(newPost);
-				Post post = trainServ.addPost(newPost);
-				return ResponseEntity.ok(post);
+				trainServ.addPost(newPost);
+				return ResponseEntity.status(HttpStatus.CREATED).build();
 			}
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}

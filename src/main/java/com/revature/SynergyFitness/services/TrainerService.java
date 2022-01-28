@@ -11,7 +11,7 @@ import com.revature.SynergyFitness.Beans.Post;
 @Service
 public interface TrainerService {
 	public List<Post> getAllPosts();
-	public Post addPost(Post newPost);
+	public int addPost(Post newPost);
 	public Post editPost(Post postToEdit);
 	public void deletePost(Post postToDelete);
 	public int addVideo(Media mediaToAdd);

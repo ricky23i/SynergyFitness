@@ -53,8 +53,8 @@ public class TrainerServiceImpl implements TrainerService{
 	
 	@Override
 	@Transactional
-	public Post addPost(Post newPost) {
-		return postRepo.save(newPost);
+	public int addPost(Post newPost) {
+		return postRepo.save(newPost).getPostId();
 	}
 
 	@Override
