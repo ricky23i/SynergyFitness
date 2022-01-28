@@ -62,7 +62,7 @@ public class PostsControllerTest {
 	public void addPostSuccessfully() throws Exception {
 		Post newPost = new Post();
 		Post mockPost = new Post();
-		when(trainServ.addPost(newPost)).thenReturn(mockPost);
+		when(trainServ.addPost(newPost)).thenReturn(1);
 		
 		String jsonPet = objMapper.writeValueAsString(newPost);
 		
