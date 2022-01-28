@@ -1,5 +1,6 @@
 package com.revature.SynergyFitness.services;
 
+import java.util.Optional;
 import java.util.List;
 import java.util.Set;
 
@@ -35,24 +36,35 @@ public class PersonServiceImpl implements PersonService{
 		this.postRepo=postRepo;
 		this.meRepo=meRepo;
 	}
+	
 	@Override
-	@Transactional
 	public AboutMe getAboutMeById(int aboutMeId) {
-		return meRepo.getById(aboutMeId);
+		Optional<AboutMe> aboutMe = meRepo.findById(aboutMeId);
+		if (aboutMe.isPresent()) return aboutMe.get();
+		else return null;
 	}
 	
 	@Override
 	@Transactional
 	public Person register(Person newUser) throws UserNameAlreadyExistsException {
-		int newId = personRepo.save(newUser).getUserId();
-		if (newId > 0) {
-			newUser.setUserId(newId);
-			return newUser;
-		} else if (newId == -1) {
-			throw new UserNameAlreadyExistsException();
+		try {
+				newUser = personRepo.save(newUser);
+				return newUser;
+		} catch (Exception e) {
+			if (e.getMessage()!=null && e.getMessage().contains("unique"))
+				throw new UserNameAlreadyExistsException();
+			else return null;
 		}
-		return null;
 	}
+//		int newId = personRepo.save(newUser).getUserId();
+//		if (newId > 0) {
+//			newUser.setUserId(newId);
+//			return newUser;
+//		} else if (newId == -1) {
+//			throw new UserNameAlreadyExistsException();
+//		}
+//		return null;
+//	}
 
 	@Override
 	@Transactional
@@ -68,7 +80,9 @@ public class PersonServiceImpl implements PersonService{
 	@Override
 	@Transactional
 	public Person getUserById(int UserId) {
-		return personRepo.findById(UserId).get();
+		Optional<Person> person = personRepo.findById(UserId);
+		if (person.isPresent()) return person.get();
+		else return null;
 	}
 
 	@Override
@@ -106,7 +120,9 @@ public class PersonServiceImpl implements PersonService{
 	@Override
 	@Transactional
 	public Post getPostById(int Postid) {
-		return postRepo.getById(Postid);
+		Optional<Post> post = postRepo.findById(Postid);
+		if (post.isPresent()) return post.get();
+		else return null;
 	}
 
 	@Override
