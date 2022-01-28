@@ -2,6 +2,7 @@ package com.revature.SynergyFitness.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,10 @@ public class MediaServiceImpl implements MediaService {
 
 	@Override
 	@Transactional
-	public Media saveMedia(Media media) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return mediaRepo.save(media);
+	public int saveMedia(Media media) throws IllegalArgumentException {
+		Media mediaAdded = mediaRepo.save(media);
+		if (mediaAdded != null) return mediaAdded.getMediaId();
+		else return 0;
 	}
 
 	@Override
@@ -44,8 +46,10 @@ public class MediaServiceImpl implements MediaService {
 	@Override
 	@Transactional
 	public Media getByID(int id) {
-		// TODO Auto-generated method stub
-		return mediaRepo.getById(id);
+		Optional<Media> mediaFromDatabase = mediaRepo.findById(id);
+		if (mediaFromDatabase.isPresent()) return mediaFromDatabase.get();
+		else return null;
+
 	}
 
 	@Override

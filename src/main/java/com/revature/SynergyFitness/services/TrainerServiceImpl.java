@@ -2,6 +2,7 @@ package com.revature.SynergyFitness.services;
 
 import java.util.List;
 import java.util.Set;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -23,28 +24,33 @@ public class TrainerServiceImpl implements TrainerService{
 	private MediaRepository mediaRepo;
 	private AboutMeRepository meRepo;
 	
-	@Override
-	@Transactional
-	public int addAboutMe(AboutMe me) {
-		
-		return meRepo.save(me).getAboutMeId();
-	}
-	@Override
-	@Transactional
-	public AboutMe editAboutMe(AboutMe upme) {
-		AboutMe aboutMeFromDatabase = meRepo.findById(upme.getAboutMeId()).get();
-		if (aboutMeFromDatabase !=null) {
-			meRepo.save(upme);
-			return meRepo.findById(upme.getAboutMeId()).get();		
-		}
-		return null;
-	}
 	@Autowired
-	public TrainerServiceImpl(PersonRepository personRepo, PostRepository postRepo, MediaRepository mediaRepo) {
+	public TrainerServiceImpl(PersonRepository personRepo, PostRepository postRepo, MediaRepository mediaRepo, AboutMeRepository meRepo) {
 		this.personRepo = personRepo;
 		this.postRepo = postRepo;
 		this.mediaRepo = mediaRepo;
+		this.meRepo = meRepo;
 	}
+	
+	@Override
+	@Transactional
+	public int addAboutMe(AboutMe newAboutMe) {
+		AboutMe AboutMeAdded = meRepo.save(newAboutMe);
+		if (AboutMeAdded != null) return AboutMeAdded.getAboutMeId();
+		else return 0;
+	}
+	@Override
+	@Transactional
+	public AboutMe editAboutMe(AboutMe aboutMeToEdit) {
+		Optional<AboutMe> AboutMeFromDatabase = meRepo.findById(aboutMeToEdit.getAboutMeId());
+		if (AboutMeFromDatabase.isPresent()) {
+			meRepo.save(aboutMeToEdit);
+			return meRepo.findById(aboutMeToEdit.getAboutMeId()).get();
+		}
+		return null;
+
+	}
+	
 	@Override
 	@Transactional
 	public Post addPost(Post newPost) {
@@ -54,10 +60,10 @@ public class TrainerServiceImpl implements TrainerService{
 	@Override
 	@Transactional
 	public Post editPost(Post postToEdit) {
-		Post postFromDatabase = postRepo.findById(postToEdit.getPostId()).get();
-		if (postFromDatabase !=null) {
+		Optional<Post> PostFromDatabase = postRepo.findById(postToEdit.getPostId());
+		if (PostFromDatabase.isPresent()) {
 			postRepo.save(postToEdit);
-			return postRepo.findById(postToEdit.getPostId()).get();		
+			return postRepo.findById(postToEdit.getPostId()).get();
 		}
 		return null;
 	}
