@@ -20,7 +20,7 @@ const routes: Routes = [
   { path:'user/:id', component: ProfileComponent  },
   { path:'users', component: ProfilesComponent  },
   { path: 'users/search/:id', component: ProfileSearchComponent  },
-  { path: 'user/edit/:id' , component: EditProfileComponent  },
+  { path: 'user/edit/:id' , component: EditProfileComponent  },       // --> app-edit-profile (if logged in as a trainer)
   { path: 'signup', component: SignupComponent },
   { path: 'calorietracker', component: CalorieComponent },
   { path: 'build-guide', component: BuildGuideComponent },
