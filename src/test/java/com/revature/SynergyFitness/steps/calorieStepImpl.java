@@ -78,6 +78,7 @@ public class calorieStepImpl {
 		 WebDriverWait wait = new WebDriverWait(driver,15);
 		   By element= By.id("msg");
 			wait.until(ExpectedConditions.presenceOfElementLocated(element));
+			 WebDriverWait wait1 = new WebDriverWait(driver,2000);
 		WebElement text = driver.findElement(By.id("msg"));
 		 assertNotNull(text.getText());
 	}
