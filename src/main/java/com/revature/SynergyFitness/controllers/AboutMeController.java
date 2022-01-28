@@ -55,8 +55,8 @@ public class AboutMeController {
 	}
 	
 	@PutMapping(path="/{aboutMeId}")
-	public ResponseEntity<AboutMe> getAboutMeById(@PathVariable int AboutMeId, @RequestBody AboutMe AboutMeToEdit) {
-		if (AboutMeToEdit != null && AboutMeToEdit.getAboutMeId() == AboutMeId) {
+	public ResponseEntity<AboutMe> getAboutMeById(@PathVariable int aboutMeId, @RequestBody AboutMe AboutMeToEdit) {
+		if (AboutMeToEdit != null && AboutMeToEdit.getAboutMeId() == aboutMeId) {
 			AboutMeToEdit = trainServ.editAboutMe(AboutMeToEdit);
 			
 			if (AboutMeToEdit != null)
