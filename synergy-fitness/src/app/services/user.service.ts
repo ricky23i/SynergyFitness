@@ -42,6 +42,9 @@ export class UserService {
     if (resp.status===200) {
       let token = await resp.json();
       localStorage.setItem('Token', token);
+    } else if (resp.status===404) {
+      let msg = "Username or password was incorrect.";
+      alert(msg);
     }
   }
 
