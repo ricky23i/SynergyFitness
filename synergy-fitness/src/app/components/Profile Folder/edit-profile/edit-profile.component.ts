@@ -16,7 +16,7 @@ export class EditProfileComponent implements OnInit {
   editAboutMe: AboutMe;
   user:Person;
   showError:Boolean;
-
+  showSuccess:Boolean;
   constructor(
     private route: ActivatedRoute, 
     private userServ: UserService,
@@ -43,11 +43,11 @@ export class EditProfileComponent implements OnInit {
   }
 
   async save(){
-    if (this.userServ.loggedInUser.id = this.editAboutMe.user.id){
+    if (this.userServ.loggedInUser.id === this.editAboutMe.user.id){
       let success = await this.aboutMeServ.updateAboutMe(this.editAboutMe)
-      if (success) this.setup();
-      else this.showError=true;
-    }
+      if (!success) this.setup();
+      this.showSuccess=true;
+    } else this.showError=true;
   }
 
   setup() {
