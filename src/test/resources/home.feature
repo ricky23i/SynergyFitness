@@ -6,7 +6,9 @@ Feature: Home feed
 		
 		Scenario: Submit Post
 		Given the user is on the home component
-		And the user is logged in
-		When the user submits a valid post
+		And the user is loggedin
+		And the user clicks post button
+		When the user types post
+		And the user clicks submit
 		Then the post shows on the feed
 		

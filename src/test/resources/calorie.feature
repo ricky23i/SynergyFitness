@@ -10,4 +10,3 @@ Feature: Calorie Tracker
 		And the user is logged in
 		When the user enters calories
 		Then the appropiate msg appears 
-		

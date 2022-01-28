@@ -20,7 +20,7 @@ private WebDriver driver;
 		PageFactory.initElements(driver, this);
 	}
 	public void navigateTo() {
-		driver.get("http://localhost:4200/users");
+		driver.get("http://localhost:4200/userprofile");
 	}
 
 }
