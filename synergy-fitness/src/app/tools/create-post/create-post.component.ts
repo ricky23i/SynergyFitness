@@ -45,14 +45,10 @@ export class CreatePostComponent implements OnInit {
     )
   }
 
-  goBack(): void {
-    this.location.back();
-  }
-
   async addPost() {
     if (this.userServ.loggedInUser) {
       this.newpost.user = this.user;
-      this.newpost.postData = (<HTMLInputElement>document.getElementById("wrkout")).value;
+      this.newpost.postData = (<HTMLInputElement>document.getElementById("wrkout222")).value;
       console.log(this.newpost);
       let success = await this.userServ.addPost(this.newpost);
       this.message = "Post Uploaded";
@@ -96,7 +92,6 @@ export class CreatePostComponent implements OnInit {
     this.progress.status = 'uploading'
     this.progress.percentage = Math.round((loaded / total) * 100);
   }
-
 }
 
 

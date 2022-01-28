@@ -31,16 +31,14 @@
 
     </div>
     <div class="card-body">
-
         <div>
-          <p class="card-text">
+          <p class="card-text" id="posttext">
               {{this.post.postData}}
           </p>
         </div>
         <div class="d-flex flex-row align-items-center feed-text px-2">
           <img *ngIf="this.post.media_url !== null" class="img-post" src="{{this.post.media_url}}" alt="">
         </div>
-
     </div>
     <div class="card-footer">
         <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
