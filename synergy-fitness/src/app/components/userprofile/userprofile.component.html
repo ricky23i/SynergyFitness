@@ -1,0 +1,32 @@
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="http://localhost:8080/default.jpg"><span class="font-weight-bold">{{this.user.gymUsername }}</span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" [(ngModel)]="this.user.firstname" placeholder="{{this.user.firstname }}" value="" id="ffname"></div>
+                    <div class="col-md-6"><label class="labels">Last name</label><input type="text" class="form-control" value="" [(ngModel)]="this.user.lastname" placeholder="{{this.user.lastname }}"></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control"[(ngModel)]="this.user.gymUsername"  placeholder="{{this.user.gymUsername}}" value=""></div>
+                    <div class="col-md-12"><label class="labels">Password</label><input type="password" class="form-control" [(ngModel)]="this.user.password" placeholder="password" value=""></div>
+                    <div class="col-md-6"><label class="labels">Sign In Streak</label><p style="padding: 10px; border: 2px solid black;">0</p></div>
+                    <div class="col-md-6"><label class="labels">Last Sign In</label><p style="padding: 10px; border: 2px solid black;">{{this.user.lastsignindate| date:'MM-dd-yyyy'}}</p></div>
+                    
+                </div>
+                
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" (click)="updatePerson()" type="button">Save Profile</button></div>
+                 <ng-container *ngIf="showError">
+                    Something went wrong. Please try again.
+                 </ng-container>
+            </div>
+        </div>
+        
+      
+    </div>
+</div>

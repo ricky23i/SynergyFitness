@@ -1,0 +1,21 @@
+
+<div class="calorietracker"  >
+    <h2>Track your calories for {{currentDate | date:'MM-dd-yyyy'}}</h2>
+   <h3>Total Calories</h3>
+ <p id="lcals">{{this.user.calorieTracker.totalCalories }}
+ </p>
+    <h3>All Food</h3>
+  <p>{{this.user.calorieTracker.foodList }}</p>
+    
+</div>
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Calories</span>
+    <input id="calsadd" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Food</span>
+    <input id="foodl" type="string" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
+  </div>
+  <button type="button" class="btn btn-primary btn-sm" id="calbutton" (click)="addCalories()" [disabled]="!userServ.loggedInUser">Add to Day</button>
+  <p id="msg">{{message}}</p> 

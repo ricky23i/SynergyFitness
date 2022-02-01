@@ -1,0 +1,71 @@
+<div class="p-5 mb-4 bg-light rounded-3">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a *ngIf="!loggedInUser" class="navbar-brand" href="/signup">
+        <label class="display-6 me-2"> Synergy Fitness</label>
+      </a>
+      <a *ngIf="loggedInUser" class="navbar-brand" href="/userprofile">
+        <label class="display-6 me-2">Hi {{ loggedInUser.firstname }} !</label>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item" >
+            <a class="nav-link" aria-current="page" [routerLink]="'/post'" [routerLinkActive]="'active'"
+              [routerLinkActiveOptions]="{ exact: true }">Home</a>
+          </li>
+          <li class="nav-item" *ngIf="loggedInUser">
+            <a class="nav-link" [routerLink]="'/calorietracker'" [routerLinkActive]="'active'" >Calorie Tracker</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link" [routerLink]="'/users'" [routerLinkActive]="'active'" >All Trainers</a>
+          </li>
+          <li class="nav-item" *ngIf="loggedInUser">
+            <a *ngIf="loggedInUser.role.roleId === 1" class="nav-link" [routerLink]="'/user/edit/:id'" [routerLinkActive]="'active'">Edit Trainer Profile</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">|||</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" [routerLinkActive]="'active'" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dev Help Links
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" [routerLink]="'/login'">login page</a></li>
+              <li><a class="dropdown-item" [routerLink]="'/users'">profiles page</a></li>
+              <li><a class="dropdown-item" [routerLink]="'/user/:id'">profile page</a></li>
+              <li><a class="dropdown-item" [routerLink]="'/user/edit/:id'">profile edit page</a></li>
+              <li><a class="dropdown-item" [routerLink]="'/post'">post page</a></li>
+              <li><a class="dropdown-item" [routerLink]="'/signup'">signup page</a></li>
+              <li><a class="dropdown-item" [routerLink]="'/upload'">upload</a></li>
+              <li><a class="dropdown-item" [routerLink]="'/userprofile'">user</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            </ul>
+          </li> -->
+        </ul>
+        <button  *ngIf="!loggedInUser; else user" (click)="showLogin=!showLogin" id="login" type="button" class="btn btn-secondary btn-sm pull-right" data-bs-target="#loginModal" data-bs-toggle="modal">
+          Log In
+        </button>
+        <!-- <button id="toggleLogin" class="btn btn-primary pull-right" [routerLink]="'/login'" data-bs-target="#loginModal" data-bs-toggle="modal" href="#" role="button">Login</button> -->
+        <ng-template #user>
+          <span id="manageUser">{{ loggedInUser.gymUsername }}</span>&nbsp;&nbsp;&nbsp;
+          <button (click)="logOut()" id="logout" type="button" class="btn btn-secondary btn-sm pull-right">Log Out</button>
+      </ng-template>
+      </div>
+    </div>
+  </nav>
+</div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal" tabindex="-1" data-bs-backdrop="static">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <app-login></app-login>
+          </div>
+      </div>
+  </div>
