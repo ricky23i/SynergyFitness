@@ -4,6 +4,7 @@ A social media app where trainers and users can interact to talk about physical 
 
 
 #Implementations
+
 Users can post and upload pictures to share among all trainers and regular users
 A calories tracker is available to all users and trainers
 Users and trainers can update their profile
